@@ -13,9 +13,9 @@
             </div>
         </div>
         <div class="positionBar">
-            <p>左</p>
-            <p>右</p>
-            <p>中</p>
+            <p @click="iconLeft">左</p>
+            <p @click="iconRight">右</p>
+            <p @click="iconMiddle">中</p>
             <p>领口</p>
         </div>
     </div>
@@ -29,6 +29,23 @@
                 isLeft : true,
                 isMiddle : false,
                 isRight : false
+            }
+        },
+        methods:{
+            iconLeft(){
+                this.isLeft = true;
+                this.isMiddle = false;
+                this.isRight = false;
+            },
+            iconRight(){
+                this.isLeft = false;
+                this.isMiddle = false;
+                this.isRight = true;
+            },
+            iconMiddle(){
+                this.isLeft = false;
+                this.isMiddle = true;
+                this.isRight = false;
             }
         }
     }
@@ -94,7 +111,7 @@
     }
 
     .iconMiddle img{
-        width: 30px;
+        width: 60px;
         height: auto;
         position: relative;
         bottom: 13rem;
