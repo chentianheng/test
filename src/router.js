@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 // import Home from './views/Home.vue'
-import ClothesDemo from './views/clothesDemo'
+import ClothesHome from './views/clothesEdit/clothesHome'
+import Front from './views/clothesEdit/components/front'
+import Back from './views/clothesEdit/components/back'
 
 Vue.use(Router)
 
@@ -11,8 +13,27 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'clothesDemo',
-      component: ClothesDemo
+      redirect:'/front',
+      name: 'clothesHome',
+      component: ClothesHome,
+      children:[
+        {
+          path:'/front',
+          name:'front',
+          component:Front,
+          meta:{
+            title:'正面'
+          }
+        },
+        {
+          path: '/back',
+          name: 'back',
+          component: Back,
+          meta: {
+            title: '背面'
+          }
+        }
+      ]
     },
     {
       path: '/about',
