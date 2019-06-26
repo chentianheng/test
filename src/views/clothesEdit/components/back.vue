@@ -2,7 +2,7 @@
     <div class="container">
         <!--衣服视图-->
         <div class="clothesImg">
-            <img src="../../../assets/clothes/front.png"  alt=""/>
+            <img src="../../../assets/clothes/back.png"  alt=""/>
             <i v-show="iconShow" class="iconMiddle"><img :src="imgUrl" height="30" alt=""/></i>
             <p class="text" v-show="textShow" :style="{ fontSize: fontSize + 'px' }">{{ textMsg }}</p>
         </div>
