@@ -12,7 +12,9 @@
         <div id="nav">
             <div class="middleContainer">
                 <router-link to="/front" class="leftBtn"><img src="../../assets/icon/left.png" alt=""></router-link>
-                <keep-alive><router-view/></keep-alive>
+                <transition name="cub">
+                    <keep-alive><router-view/></keep-alive>
+                </transition>
                 <router-link to="/back" class="rightBtn"><img src="../../assets/icon/next.png" alt=""></router-link>
             </div>
 
@@ -30,6 +32,18 @@
 </script>
 
 <style scoped>
+    /*动画*/
+    .cub-enter-active {
+        transition: all .8s ease;
+    }
+    .cub-leave-active{
+        opacity: 0;
+        /*transition: all 0s cubic-bezier(1.0,0.5,0.8,1.0);*/
+    }
+    .cub-enter,.cub-leave-to{
+        transform:translateX(10rem);
+        opacity: 0;
+    }
     .bgContainer {
         display: flex;
         flex-direction: column;

@@ -259,7 +259,7 @@
 
     .positionItem {
         color: #1a3b88;
-        margin-left: 4px;
+        margin-left: 1rem;
         width: 2.8rem;
         height: 1.2rem;
         border-radius: 4px;
