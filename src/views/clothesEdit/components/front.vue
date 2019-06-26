@@ -8,8 +8,10 @@
         <!--图标选择栏-->
         <div class="iconBar">
             <i class="icon"><img src="../../../assets/icon/text.png" height="45" width="45" alt=""/></i>
-            <i @click="change0" class="icon"><img src="../../../assets/icon/bmw.png" height="45" width="45" alt=""/></i>
-            <i @click="change1" class="icon"><img src="../../../assets/icon/cog.png" height="45" width="45" alt=""/></i>
+            <i @click="change0" class="icon"><img src="../../../assets/icon/icon0.png" height="45" width="45" alt=""/></i>
+            <!--<i @click="change1" class="icon"><img src="../../../assets/icon/cog.png" height="45" width="45" alt=""/></i>-->
+            <i @click="change1" class="icon"><img src="../../../assets/icon/icon1.png" height="45" width="45" alt=""/></i>
+            <i @click="change3" class="icon"><img src="../../../assets/icon/icon3.png" height="45" width="45" alt=""/></i>
 
         </div>
         <!--位置控制栏-->
@@ -51,10 +53,13 @@
                 this.isRight = false;
             },
             change0(){
-                this.imgUrl = require("@/assets/icon/bmw.png");
+                this.imgUrl = require("@/assets/icon/icon0.png");
             },
             change1(){
-                this.imgUrl = require("@/assets/icon/cog.png");
+                this.imgUrl = require("@/assets/icon/icon1.png");
+            },
+            change3(){
+                this.imgUrl = require("@/assets/icon/icon3.png");
             }
         }
     }
@@ -73,8 +78,6 @@
     }
 
     .clothesImg {
-        /*display: flex;*/
-        /*justify-content: center;*/
         width: 15rem;
         height: 18rem;
         overflow-y: hidden;

@@ -37,6 +37,7 @@
         background-image: url("../../assets/background-1.png");
         background-size:  100%  auto;
         background-repeat: no-repeat;
+        background-color: black;
     }
 
     .title {
@@ -121,7 +122,7 @@
         font-size: 16px;
         margin-top: 2rem;
         height: 40px;
-        width: 120px;
+        width: 150px;
         color: white;
         border: none;
     }
