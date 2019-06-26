@@ -65,21 +65,6 @@
             textReduce(){
                 this.fontSize --;
             },
-            iconLeft(){
-                this.isLeft = true;
-                this.isMiddle = false;
-                this.isRight = false;
-            },
-            iconRight(){
-                this.isLeft = false;
-                this.isMiddle = false;
-                this.isRight = true;
-            },
-            iconMiddle(){
-                this.isLeft = false;
-                this.isMiddle = true;
-                this.isRight = false;
-            },
             changeText(){
                 this.textShow = true;
                 this.iconShow = false;
