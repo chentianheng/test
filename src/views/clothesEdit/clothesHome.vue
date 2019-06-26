@@ -1,20 +1,20 @@
 <template>
     <div class="bgContainer">
         <p class="title">#全新BMW3系广州发布会寻找潮流达人#</p>
-        <div class="colorBar">
-            <p>颜色</p>
-            <div class="white"></div>
-            <div class="black"></div>
-            <div class="blue"></div>
-            <div class="orange"></div>
-            <div class="grey"></div>
-        </div>
+
         <div id="nav">
             <div class="middleContainer">
                 <router-link to="/front" class="leftBtn"><img src="../../assets/icon/left.png" alt=""></router-link>
                 <transition name="cub">
                     <keep-alive><router-view/></keep-alive>
                 </transition>
+                <div class="colorBar">
+                    <div class="white"></div>
+                    <div class="black"></div>
+                    <div class="blue"></div>
+                    <div class="orange"></div>
+                    <div class="grey"></div>
+                </div>
                 <router-link to="/back" class="rightBtn"><img src="../../assets/icon/next.png" alt=""></router-link>
             </div>
 
@@ -65,56 +65,59 @@
 
     .colorBar {
         display: flex;
+        flex-direction: column;
+        margin-top: 4.5rem;
     }
 
-    .colorBar p {
-        color: white;
-        font-size: 14px;
-        padding-right: 1rem;
-    }
 
     .white {
-        height: 20px;
-        width: 20px;
+        height: 16px;
+        width: 16px;
         background-color: white;
         border-radius: 60px;
-        margin-right: 1rem;
+        margin-bottom: 0.5rem;
+        margin-left: 0.5rem;
     }
 
     .black {
-        height: 20px;
-        width: 20px;
+        height: 16px;
+        width: 16px;
         background-color: black;
         border-radius: 60px;
-        margin-right: 1rem;
+        margin-bottom: 0.5rem;
+        margin-left: 0.5rem;
     }
 
     .blue {
-        height: 20px;
-        width: 20px;
+        height: 16px;
+        width: 16px;
         background-color: blue;
         border-radius: 60px;
-        margin-right: 1rem;
+        margin-bottom: 0.5rem;
+        margin-left: 0.5rem;
     }
 
     .orange {
-        height: 20px;
-        width: 20px;
+        height: 16px;
+        width: 16px;
         background-color: orange;
         border-radius: 60px;
-        margin-right: 1rem;
+        margin-bottom: 0.5rem;
+        margin-left: 0.5rem;
     }
 
     .grey {
-        height: 20px;
-        width: 20px;
+        height: 16px;
+        width: 16px;
         background-color: grey;
         border-radius: 60px;
-        margin-right: 1rem;
+        margin-right: 0.5rem;
+        margin-left: 0.5rem;
     }
 
     #nav {
-        padding: 15px;
+        margin-top: 15px;
+        padding: 0;
         color: white;
     }
 
@@ -144,14 +147,16 @@
     .middleContainer {
         display: flex;
         /*justify-content: center;*/
-        align-items: center;
+        /*align-items: center;*/
     }
 
     .leftBtn img{
         width: 30px;
+        margin-top: 7rem;
     }
 
     .rightBtn img{
         width: 30px;
+        margin-top: 7rem;
     }
 </style>

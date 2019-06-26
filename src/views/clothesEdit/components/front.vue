@@ -224,12 +224,14 @@
         justify-content: space-between;
         align-items: center;
         font-size: 14px;
+        margin-left: calc(16px + 1rem);
     }
 
     .clothesImg {
         width: 15rem;
         height: 18rem;
         overflow-y: hidden;
+        margin-left: calc(16px + 1rem);
     }
 
     .clothesImg img {
@@ -240,6 +242,7 @@
     .textBar {
         display: flex;
         margin-bottom: 1rem;
+        margin-left: calc(16px + 1rem);
     }
 
     .plus {
@@ -264,7 +267,7 @@
 
     .container textarea {
         width: 10rem;
-        background-color: rgba(255,255,255,0.1);
+        background-color: rgba(255,255,255,0.5);
         border: none;
         font-size: 14px;
     }
@@ -317,6 +320,7 @@
         background-color: rgba(255,255,255,0.1);
         overflow-y: hidden;
         overflow-x: auto;
+        margin-left: calc(16px + 1rem);
     }
     /*滚动条样式*/
     .iconBar::-webkit-scrollbar {
