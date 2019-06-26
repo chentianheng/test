@@ -40,7 +40,7 @@
         <!--位置控制栏-->
         <div class="positionBar">
             <p>位置  </p>
-            <p class="positionItem" @click="iconMiddle">后背</p>
+            <p class="positionItem" >后背</p>
         </div>
     </div>
 
