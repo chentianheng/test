@@ -12,9 +12,9 @@
         </div>
         <!--我的作品-->
         <!--todo：根据缓存查到昵称，然后请求查看票数-->
-        <p class="name">我的票数：111111</p>
-        <p class="name">我的排名：1</p>
-        <button class="blueButton">我的作品</button>
+        <!--<p class="name">我的票数：111111</p>-->
+        <!--<p class="name">我的排名：1</p>-->
+        <!--<button class="blueButton">我的作品</button>-->
     </div>
 </template>
 
@@ -141,7 +141,7 @@
         flex-wrap:wrap;
         overflow-y: auto;
         width: 21rem;
-        height: 24rem;
+        height: 25rem;
         margin-top: 1rem;
         margin-bottom: 1rem;
         background-color: rgba(255,255,255,0.1);
@@ -169,11 +169,12 @@
 
     .subTitleImg {
         width: 12rem;
+        margin-bottom: 4px;
     }
 
     .subTitle {
         color: rgba(255,255,255,0.7);
-        font-size: 12px;
+        font-size: 11px;
     }
 
     .name {

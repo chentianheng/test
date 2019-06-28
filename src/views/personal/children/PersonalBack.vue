@@ -2,8 +2,11 @@
     <div class="clothesImg">
         <div :class="`clothes${color}`"></div>
         <!--衣服上的文字-->
-        <p class="text" v-show="textShow" :style="{fontSize: this.text.fontSize-2 + 'px'}">{{ text.textMsg }}</p>
-        <!--图标的位置，写n个样式地址-->
+        <p class="text"
+           v-show="textShow"
+           :style="{fontSize: this.text.fontSize-3 + 'px'}"
+           v-html="text.textMsg"
+        ></p>
         <i class="position1" v-show="iconShow"><img :src="iconUrl" alt=""></i>
     </div>
 </template>
@@ -16,8 +19,8 @@
                 iconUrl:require("@/assets/icon/pic10.png"),
                 color:"White",
                 text:{
-                    textMsg:"11111",
-                    fontSize:25
+                    textMsg:"aa&#10;1aaaa",
+                    fontSize:15
                 },
                 user:{
                     name:"user111",
@@ -83,7 +86,7 @@
         height: auto;
         width: 4rem;
         position: relative;
-        bottom: 9.5rem;
+        bottom: 11rem;
         white-space: pre-line;
     }
 </style>
