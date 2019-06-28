@@ -2,7 +2,7 @@
     <div class="clothesImg">
         <div :class="`clothes${color}`"></div>
         <!--衣服上的文字-->
-        <p class="text" v-show="textShow">{{ text.textMsg }}</p>
+        <p class="text" v-show="textShow" :style="{fontSize: this.text.fontSize-2 + 'px'}">{{ text.textMsg }}</p>
         <!--图标的位置，写n个样式地址-->
         <i class="position1" v-show="iconShow"><img :src="iconUrl" alt=""></i>
     </div>
@@ -17,7 +17,7 @@
                 color:"White",
                 text:{
                     textMsg:"11111",
-                    fontSize:12
+                    fontSize:25
                 },
                 user:{
                     name:"user111",
