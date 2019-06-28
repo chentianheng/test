@@ -20,8 +20,9 @@
   }
 </script>
 <style>
+  @import "./assets/common/font/font.css";
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: BMW-Light,'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -41,5 +42,6 @@
 }
   *{
     margin: 0;
+
   }
 </style>

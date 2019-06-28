@@ -313,7 +313,7 @@
         width: 40px;
         position: relative;
         bottom: 13rem;
-        right: 3rem;
+        right: 2.5rem;
     }
 
     .position2 img{
@@ -321,7 +321,7 @@
         width: 40px;
         position: relative;
         bottom: 13rem;
-        left: 3rem;
+        left: 2.5rem;
     }
 
     .position3 img{

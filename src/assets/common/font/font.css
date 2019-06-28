@@ -1,0 +1,20 @@
+@font-face {
+    font-family: 'BMW-Light';
+    src: url('BMWGlobal-Pro-light.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'BMW-Reg';
+    src: url('BMWGlobal-Pro-reg.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'BMW-Bold';
+    src: url('BMWGlobal-Pro-bold.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
