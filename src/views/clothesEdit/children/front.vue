@@ -3,12 +3,12 @@
 <!--衣服视图-->
         <div class="clothesImg">
              <img src="../../../assets/clothes/front.png"  alt=""/>
-             <i v-show="iconShow" :class="{ iconLeft: isLeft , iconMiddle: isMiddle , iconRight: isRight }"><img :src="imgUrl" height="30" alt=""/></i>
-             <p class="text" v-show="textShow" :style="{ fontSize: fontSize + 'px' }">{{ textMsg }}</p>
+             <i v-show="iconShow" :class="`position${position.status}`"><img :src="imgUrl" height="30" alt=""/></i>
+             <p class="text" v-show="textShow" :style="{ fontSize: text.fontSize + 'px' }">{{ text.textMsg }}</p>
         </div>
         <transition name="fade">
             <div class="textBar" v-show="textShow">
-                <textarea v-model="textMsg" placeholder="请输入文字" ></textarea>
+                <textarea v-model=" text.textMsg" placeholder="请输入文字" ></textarea>
                 <i @click="textPlus" class="plus" ></i>
                 <i @click="textReduce" class="reduce" ></i>
             </div>
@@ -40,9 +40,9 @@
         <!--位置控制栏-->
         <div class="positionBar">
             <p>位置  </p>
-            <p class="positionItem" @click="iconLeft">左胸</p>
-            <p class="positionItem" @click="iconRight">右胸</p>
-            <p class="positionItem" @click="iconMiddle">前胸</p>
+            <p :class=" `positionItem${positionItem.positionItem1}` " @click="iconLeft">左胸</p>
+            <p :class=" `positionItem${positionItem.positionItem2}` " @click="iconRight">右胸</p>
+            <p :class=" `positionItem${positionItem.positionItem3}` " @click="iconMiddle">前胸</p>
         </div>
     </div>
 
@@ -53,37 +53,47 @@
         name: "front",
         data(){
             return{
-                isLeft : false,
-                isMiddle : false,
-                isRight : true,
+                positionItem:{
+                    positionItem1:"Active",
+                    positionItem2:"Off",
+                    positionItem3:"Off"
+                },
+                position:{
+                    status:1
+                },
                 imgUrl:require("@/assets/icon/bmw.png"),
                 textShow : false,
                 iconShow : true,
-                textMsg : "",
-                fontSize : 12
+                text:{
+                    textMsg : "",
+                    fontSize : 12
+                },
             }
         },
         methods:{
             textPlus(){
-                this.fontSize ++;
+                this.text.fontSize ++;
             },
             textReduce(){
-                this.fontSize --;
+                this.text.fontSize --;
             },
             iconLeft(){
-                this.isLeft = true;
-                this.isMiddle = false;
-                this.isRight = false;
+                this.position.status =1;
+                this.positionItem.positionItem1 ="Active";
+                this.positionItem.positionItem2 ="Off";
+                this.positionItem.positionItem3 ="Off";
             },
             iconRight(){
-                this.isLeft = false;
-                this.isMiddle = false;
-                this.isRight = true;
+                this.position.status =2;
+                this.positionItem.positionItem1 ="Off";
+                this.positionItem.positionItem2 ="Active";
+                this.positionItem.positionItem3 ="Off";
             },
             iconMiddle(){
-                this.isLeft = false;
-                this.isMiddle = true;
-                this.isRight = false;
+                this.position.status =3;
+                this.positionItem.positionItem1 ="Off";
+                this.positionItem.positionItem2 ="Off";
+                this.positionItem.positionItem3 ="Active";
             },
             changeText(){
                 this.textShow = true;
@@ -93,109 +103,109 @@
                 this.imgUrl = require("@/assets/icon/pic0.png");
                 this.textShow = false;
                 this.iconShow = true;
-                this.textMsg = "";
+                this.text.textMsg = "";
             },
             change1(){
                 this.imgUrl = require("@/assets/icon/pic1.png");
                 this.textShow = false;
                 this.iconShow = true;
-                this.textMsg = "";
+                this.text.textMsg = "";
             },
             change3(){
                 this.imgUrl = require("@/assets/icon/pic3.png");
                 this.textShow = false;
                 this.iconShow = true;
-                this.textMsg = "";
+                this.text.textMsg = "";
             },
             change4(){
                 this.imgUrl = require("@/assets/icon/pic4.png");
                 this.textShow = false;
                 this.iconShow = true;
-                this.textMsg = "";
+                this.text.textMsg = "";
             },
             change5(){
                 this.imgUrl = require("@/assets/icon/pic5.png");
                 this.textShow = false;
                 this.iconShow = true;
-                this.textMsg = "";
+                this.text.textMsg = "";
             },
             change6(){
                 this.imgUrl = require("@/assets/icon/pic6.png");
                 this.textShow = false;
                 this.iconShow = true;
-                this.textMsg = "";
+                this.text.textMsg = "";
             },
             change7(){
                 this.imgUrl = require("@/assets/icon/pic7.png");
                 this.textShow = false;
                 this.iconShow = true;
-                this.textMsg = "";
+                this.text.textMsg = "";
             },
             change8(){
                 this.imgUrl = require("@/assets/icon/pic8.png");
                 this.textShow = false;
                 this.iconShow = true;
-                this.textMsg = "";
+                this.text.textMsg = "";
             },
             change9(){
                 this.imgUrl = require("@/assets/icon/pic9.png");
                 this.textShow = false;
                 this.iconShow = true;
-                this.textMsg = "";
+                this.text.textMsg = "";
             },
             change10(){
                 this.imgUrl = require("@/assets/icon/pic10.png");
                 this.textShow = false;
                 this.iconShow = true;
-                this.textMsg = "";
+                this.text.textMsg = "";
             },
             change11(){
                 this.imgUrl = require("@/assets/icon/pic11.png");
                 this.textShow = false;
                 this.iconShow = true;
-                this.textMsg = "";
+                this.text.textMsg = "";
             },
             change12(){
                 this.imgUrl = require("@/assets/icon/pic12.png");
                 this.textShow = false;
                 this.iconShow = true;
-                this.textMsg = "";
+                this.text.textMsg = "";
             },
             change13(){
                 this.imgUrl = require("@/assets/icon/pic13.png");
                 this.textShow = false;
                 this.iconShow = true;
-                this.textMsg = "";
+                this.text.textMsg = "";
             },
             change14(){
                 this.imgUrl = require("@/assets/icon/pic14.png");
                 this.textShow = false;
                 this.iconShow = true;
-                this.textMsg = "";
+                this.text.textMsg = "";
             },
             change15(){
                 this.imgUrl = require("@/assets/icon/pic15.png");
                 this.textShow = false;
                 this.iconShow = true;
-                this.textMsg = "";
+                this.text.textMsg = "";
             },
             change16(){
                 this.imgUrl = require("@/assets/icon/pic16.png");
                 this.textShow = false;
                 this.iconShow = true;
-                this.textMsg = "";
+                this.text.textMsg = "";
             },
             change17(){
                 this.imgUrl = require("@/assets/icon/pic17.png");
                 this.textShow = false;
                 this.iconShow = true;
-                this.textMsg = "";
+                this.text.textMsg = "";
             },
             change18(){
                 this.imgUrl = require("@/assets/icon/pic18.png");
                 this.textShow = false;
                 this.iconShow = true;
-                this.textMsg = "";
+                this.text.textMsg = "";
             },
         }
     }
@@ -280,7 +290,7 @@
         line-height: 1.75em;
     }
 
-    .positionItem {
+    .positionItemOff {
         color: #1a3b88;
         margin-left: 4px;
         width: 2.8rem;
@@ -289,7 +299,16 @@
         background-color: rgba(255,255,255,0.5);
     }
 
-    .iconLeft img{
+    .positionItemActive {
+        color: #1a3b88;
+        margin-left: 4px;
+        width: 2.8rem;
+        height: 1.2rem;
+        border-radius: 4px;
+        background-color: rgba(255,255,255,0.8);
+    }
+
+    .position1 img{
         height: auto;
         width: 40px;
         position: relative;
@@ -297,20 +316,22 @@
         right: 3rem;
     }
 
-    .iconMiddle img{
-        height: auto;
-        width: 80px;
-        position: relative;
-        bottom: 12rem;
-    }
-
-    .iconRight img{
+    .position2 img{
         height: auto;
         width: 40px;
         position: relative;
         bottom: 13rem;
         left: 3rem;
     }
+
+    .position3 img{
+        height: auto;
+        width: 80px;
+        position: relative;
+        bottom: 12rem;
+    }
+
+
 
     .iconBar {
         display: flex;

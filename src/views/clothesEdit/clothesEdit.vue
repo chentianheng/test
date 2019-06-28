@@ -1,10 +1,10 @@
 <template>
     <div class="bgContainer">
-        <p class="title">#全新BMW3系广州发布会寻找潮流达人#</p>
+        <p class="title">#一直潮一直秀——THE3联名T恤设计大赛#</p>
 
         <div id="nav">
             <div class="middleContainer">
-                <router-link to="/front" class="leftBtn"><img src="../../assets/icon/left.png" alt=""></router-link>
+                <router-link to="/front" class="directionBtn"><img src="../../assets/icon/left.png" alt=""></router-link>
                 <transition name="cub">
                     <keep-alive><router-view/></keep-alive>
                 </transition>
@@ -15,7 +15,7 @@
                     <div class="orange"></div>
                     <div class="grey"></div>
                 </div>
-                <router-link to="/back" class="rightBtn"><img src="../../assets/icon/next.png" alt=""></router-link>
+                <router-link to="/back" class="directionBtn"><img src="../../assets/icon/next.png" alt=""></router-link>
             </div>
 
         </div>
@@ -150,13 +150,10 @@
         /*align-items: center;*/
     }
 
-    .leftBtn img{
+    .directionBtn img{
         width: 30px;
         margin-top: 7rem;
     }
 
-    .rightBtn img{
-        width: 30px;
-        margin-top: 7rem;
-    }
+
 </style>

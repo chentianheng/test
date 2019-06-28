@@ -1,9 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import Home from './views/Home.vue'
-import ClothesHome from './views/clothesEdit/clothesHome'
-import Front from './views/clothesEdit/components/front'
-import Back from './views/clothesEdit/components/back'
+import ClothesHome from './views/clothesEdit/clothesEdit'
+import Front from './views/clothesEdit/children/front'
+import Back from './views/clothesEdit/children/back'
+import Ranking from './views/rankingList/rankingList'
+import Personal from './views/personal/Personal'
+import PersonalFront from './views/personal/children/PersonalFront'
+import PersonalBack from './views/personal/children/PersonalBack'
 
 Vue.use(Router)
 
@@ -33,15 +36,36 @@ export default new Router({
             title: '背面'
           }
         }
-      ]
+      ]},
+    {
+      path:'/ranking',
+      name:'ranking',
+      component:Ranking,
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
+      path:'/personal',
+      name:'personal',
+      component:Personal,
+      redirect:'/personal/front',
+      children: [
+        {
+          path:'/personal/front',
+          name:'front',
+          component:PersonalFront,
+          meta:{
+            title:'正面'
+          }
+        },
+        {
+          path:'/personal/back',
+          name:'back',
+          component:PersonalBack,
+          meta:{
+            title:'背面'
+          }
+        }
+      ]
     }
+
   ]
 })
