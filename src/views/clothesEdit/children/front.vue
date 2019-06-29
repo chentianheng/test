@@ -18,8 +18,15 @@
             <!--显示文字输入-->
             <i @click="changeText" class="icon" ><img src="../../../assets/icon/text.png" height="45" width="45" alt=""/></i>
             <!--显示18个控件-->
-            <i @click="change0" class="icon"><img src="../../../assets/icon/icon0.png" height="45" width="45" alt=""/></i>
-            <i @click="change1" class="icon"><img src="../../../assets/icon/icon1.png" height="45" width="45" alt=""/></i>
+            <!--todo:修改控件显示-->
+            <i class="icon"
+               @click="changeIcon"
+               v-for="iconBar in iconBars"
+               :key="iconBar.id"
+            ><img :src="iconBar.iconUrl" height="45" width="45" alt=""></i>
+
+            <i @click="change0" class="icon"><img src="../../../assets/icon/icon1.png" height="45" width="45" alt=""/></i>
+            <i @click="change1" class="icon"><img src="../../../assets/icon/icon2.png" height="45" width="45" alt=""/></i>
             <i @click="change3" class="icon"><img src="../../../assets/icon/icon3.png" height="45" width="45" alt=""/></i>
             <i @click="change4" class="icon"><img src="../../../assets/icon/icon4.png" height="45" width="45" alt=""/></i>
             <i @click="change5" class="icon"><img src="../../../assets/icon/icon5.png" height="45" width="45" alt=""/></i>
@@ -68,6 +75,20 @@
                     textMsg : "",
                     fontSize : 12
                 },
+                iconBars:[
+                    {
+                        id:1,
+                        iconUrl:require("@/assets/icon/icon1.png"),
+                        imgUrl:require("@/assets/icon/pic1.png"),
+                    },{
+                        id:2,
+                        iconUrl:require("@/assets/icon/icon2.png"),
+                        imgUrl:require("@/assets/icon/pic2.png"),
+                    },{
+                        id:3,
+                        iconUrl:require("@/assets/icon/icon3.png"),
+                        imgUrl:require("@/assets/icon/pic3.png"),
+                    }]
             }
         },
         methods:{
@@ -99,14 +120,20 @@
                 this.textShow = true;
                 this.iconShow = false;
             },
+            changeIcon(){
+                this.imgUrl = this.iconBar.imgUrl;
+                this.textShow = false;
+                this.iconShow = true;
+                this.text.textMsg = "";
+            },
             change0(){
-                this.imgUrl = require("@/assets/icon/pic0.png");
+                this.imgUrl = require("@/assets/icon/pic1.png");
                 this.textShow = false;
                 this.iconShow = true;
                 this.text.textMsg = "";
             },
             change1(){
-                this.imgUrl = require("@/assets/icon/pic1.png");
+                this.imgUrl = require("@/assets/icon/pic2.png");
                 this.textShow = false;
                 this.iconShow = true;
                 this.text.textMsg = "";

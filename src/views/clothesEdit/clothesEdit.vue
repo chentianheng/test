@@ -1,7 +1,8 @@
 <template>
     <div class="bgContainer">
+        <transition name="cub">
         <p class="title">#一直潮一直秀——THE3联名T恤设计大赛#</p>
-
+        </transition>
         <div id="nav">
             <div class="middleContainer">
                 <router-link to="/front" class="directionBtn"><img src="../../assets/icon/left.png" alt=""></router-link>
