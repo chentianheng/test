@@ -1,10 +1,10 @@
 <template>
     <div class="bgContainer">
 
-        <p class="title">#一直潮一直秀——THE3联名T恤设计大赛#</p>
+        <p class="title animated fadeInUp">#一直潮一直秀——THE3联名T恤设计大赛#</p>
 
         <div id="nav">
-            <div class="middleContainer">
+            <div class="middleContainer animated  zoomIn">
                 <!--<router-link to="/front" class="directionBtn"><img src="../../assets/icon/left.png" alt=""></router-link>-->
                 <transition name="cub">
                 <!--front衣服视图-->
@@ -102,7 +102,7 @@
 
         </div>
 
-        <button class="blueButton" @click="toInfo">提交</button>
+        <button class="blueButton animated fadeInUp" @click="toInfo">提交</button>
     </div>
 </template>
 
@@ -348,7 +348,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        background-image: url("../assets/background-1.png");
+        background-image: url("../assets/background.png");
         background-size:  100%  auto;
         background-repeat: no-repeat;
         background-color: black;
@@ -360,6 +360,7 @@
         font-weight: 600;
         margin-top: 2rem;
         margin-bottom: 1rem;
+        animation-delay: 200ms;
     }
 
     .positionBar {
@@ -580,10 +581,12 @@
         width: 150px;
         color: white;
         border: none;
+        animation-delay: 800ms;
     }
 
     .middleContainer {
         display: flex;
+        animation-delay: 500ms;
         /*justify-content: center;*/
         /*align-items: center;*/
     }

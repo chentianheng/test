@@ -1,6 +1,6 @@
 <template>
     <div class="bgContainer">
-        <div class="tableContainer">
+        <div class="tableContainer animated fadeInUp">
             <p class="title">填写信息</p>
             <!--选择宝马3的理由-->
             <label class="label" for="like">*选择全新宝马3系的理由：</label>
@@ -41,7 +41,7 @@
             </select>
         </div>
 
-        <button class="blueButton">提交并上传作品</button>
+        <button class="blueButton animated fadeIn">提交并上传作品</button>
 
     </div>
 </template>
@@ -159,5 +159,6 @@
         width: 150px;
         color: white;
         border: none;
+        animation-delay: 800ms;
     }
 </style>
