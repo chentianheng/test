@@ -1,13 +1,13 @@
 <template>
     <div class="clothesImg">
-        <div :class="`clothes${color}`"></div>
+        <div :class="`back${clothes.color}`"></div>
         <!--衣服上的文字-->
         <p class="text"
-           v-show="textShow"
-           :style="{fontSize: this.text.fontSize-3 + 'px'}"
-           v-html="text.textMsg"
+           v-show="clothes.back.textShow"
+           :style="{fontSize: clothes.back.text.fontSize-3 + 'px'}"
+           v-html="clothes.back.text.textMsg"
         ></p>
-        <i class="position1" v-show="iconShow"><img :src="iconUrl" alt=""></i>
+        <i class="position1" v-show="clothes.back.iconShow"><img :src="clothes.back.imgUrl" alt=""></i>
     </div>
 </template>
 
@@ -16,20 +16,35 @@
         name: "PersonalBack",
         data(){
             return{
-                iconUrl:require("@/assets/icon/pic10.png"),
-                color:"White",
-                text:{
-                    textMsg:"aa&#10;1aaaa",
-                    fontSize:15
+                clothes:{
+                    front:{
+                        position:1,
+                        imgUrl:require("@/assets/icon/pic1.png"),
+                        textShow : false,
+                        iconShow : true,
+                        text:{
+                            textMsg : "",
+                            fontSize : 12
+                        },
+                    },
+                    back:{
+                        position:3,
+                        imgUrl:require("@/assets/icon/pic1.png"),
+                        textShow : true,
+                        iconShow : false,
+                        text:{
+                            textMsg : "1231&#10;12312",
+                            fontSize : 12
+                        },
+                    },
+                    color:"Blue",
                 },
                 user:{
                     name:"user111",
                     headImgURL:require("@/assets/icon/icon15.png"),
                     vote:10000,
                     rank:1
-                },
-                textShow:true,
-                iconShow:false
+                }
             }
         }
     }
@@ -61,8 +76,40 @@
     }
 
     /*不同颜色的衣服的样式*/
-    .clothesWhite {
-        background-image: url("../../../assets/clothes/back.png");
+    .backWhite {
+        background-image: url("../../../assets/clothes/backWhite.png");
+        background-size: auto 11.5rem;
+        width: 11rem;
+        height: 14rem;
+        background-repeat: no-repeat;
+    }
+
+    .backBlack {
+        background-image: url("../../../assets/clothes/backBlack.png");
+        background-size: auto 11.5rem;
+        width: 11rem;
+        height: 14rem;
+        background-repeat: no-repeat;
+    }
+
+    .backBlue {
+        background-image: url("../../../assets/clothes/backBlue.png");
+        background-size: auto 11.5rem;
+        width: 11rem;
+        height: 14rem;
+        background-repeat: no-repeat;
+    }
+
+    .backOrange {
+        background-image: url("../../../assets/clothes/backOrange.png");
+        background-size: auto 11.5rem;
+        width: 11rem;
+        height: 14rem;
+        background-repeat: no-repeat;
+    }
+
+    .backGrey {
+        background-image: url("../../../assets/clothes/backGrey.png");
         background-size: auto 11.5rem;
         width: 11rem;
         height: 14rem;
@@ -88,5 +135,6 @@
         position: relative;
         bottom: 11rem;
         white-space: pre-line;
+        color: #757575;
     }
 </style>

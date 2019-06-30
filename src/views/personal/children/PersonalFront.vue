@@ -1,13 +1,13 @@
 <template>
     <div class="clothesImg">
-        <div :class="`clothes${color}`"></div>
+        <div :class="`front${clothes.color}`"></div>
         <!--衣服上的文字-->
         <p class="text"
-           v-show="textShow"
-           :style="{fontSize: this.text.fontSize-3 + 'px'}"
-           v-html="text.textMsg"
+           v-show="clothes.front.textShow"
+           :style="{fontSize: this.clothes.front.text.fontSize-3 + 'px'}"
+           v-html="clothes.front.text.textMsg"
         ></p>
-        <i :class="`position${position.status}`" v-show="iconShow"><img :src="iconUrl" alt=""></i>
+        <i :class="`position${clothes.front.position}`" v-show="clothes.front.iconShow"><img :src="clothes.front.imgUrl" alt=""></i>
     </div>
 </template>
 
@@ -16,23 +16,35 @@
         name: "PersonalFront",
         data(){
             return{
-                iconUrl:require("@/assets/icon/pic10.png"),
-                color:"White",
-                position:{
-                    status:1
-                },
-                text:{
-                    textMsg:"11111",
-                    fontSize:12
+                clothes:{
+                    front:{
+                        position:1,
+                        imgUrl:require("@/assets/icon/pic1.png"),
+                        textShow : false,
+                        iconShow : true,
+                        text:{
+                            textMsg : "",
+                            fontSize : 12
+                        },
+                    },
+                    back:{
+                        position:3,
+                        imgUrl:require("@/assets/icon/pic1.png"),
+                        textShow : false,
+                        iconShow : true,
+                        text:{
+                            textMsg : "",
+                            fontSize : 12
+                        },
+                    },
+                    color:"Blue",
                 },
                 user:{
                     name:"user111",
                     headImgURL:require("@/assets/icon/icon15.png"),
                     vote:10000,
                     rank:1
-                },
-                textShow:false,
-                iconShow:true
+                }
             }
         }
     }
@@ -52,27 +64,54 @@
     }
 
     .clothesImg {
-        /*padding-top: 1rem;*/
         margin-top: 2.2rem;
         display: flex;
         flex-direction: column;
-        /*justify-content: center;*/
         align-items: center;
         width: 11rem;
         height: 16rem;
         overflow-y: hidden;
-        /*overflow-x: hidden;*/
     }
 
     /*不同颜色的衣服的样式*/
-    .clothesWhite {
-        /*margin-top: 2.5rem;*/
-        background-image: url("../../../assets/clothes/front.png");
+    .frontWhite {
+        background-image: url("../../../assets/clothes/frontWhite.png");
         background-size: auto 11.5rem;
         width: 11rem;
         height: 14rem;
         background-repeat: no-repeat;
+    }
 
+    .frontBlack {
+        background-image: url("../../../assets/clothes/frontBlack.png");
+        background-size: auto 11.5rem;
+        width: 11rem;
+        height: 14rem;
+        background-repeat: no-repeat;
+    }
+
+    .frontBlue {
+        background-image: url("../../../assets/clothes/frontBlue.png");
+        background-size: auto 11.5rem;
+        width: 11rem;
+        height: 14rem;
+        background-repeat: no-repeat;
+    }
+
+    .frontOrange {
+        background-image: url("../../../assets/clothes/frontOrange.png");
+        background-size: auto 11.5rem;
+        width: 11rem;
+        height: 14rem;
+        background-repeat: no-repeat;
+    }
+
+    .frontGrey {
+        background-image: url("../../../assets/clothes/frontGrey.png");
+        background-size: auto 11.5rem;
+        width: 11rem;
+        height: 14rem;
+        background-repeat: no-repeat;
     }
 
     /*正中间*/

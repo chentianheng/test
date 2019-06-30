@@ -1,12 +1,14 @@
 <template>
     <div @click="toPerson" class="worksContainer">
         <div class="clothesWork">
-            <div class="clothesImg">
-                <div :class="`clothes${data.color}`"></div>
-                <!--衣服上的文字-->
-                <p class="text" v-show="data.textShow">{{ data.text.textMsg }}</p>
-                <!--图标的位置，写n个样式地址-->
-                <i :class="`position${data.position.status}`" v-show="data.iconShow"><img :src="data.iconUrl" alt=""></i>
+            <div class="clothesImgBoarder">
+                <div class="clothesImg">
+                    <div :class="`front${data.clothes.color}`"></div>
+                    <!--衣服上的文字-->
+                    <p class="text" v-show="data.clothes.front.textShow">{{ data.clothes.front.text.textMsg }}</p>
+                    <!--图标的位置，写n个样式地址-->
+                    <i :class="`position${data.clothes.front.position}`" v-show="data.clothes.front.iconShow"><img :src="data.clothes.front.imgUrl" alt=""></i>
+                </div>
             </div>
             <p class="name">{{ data.user.name }}</p>
             <div class="vote">票数：{{ data.user.vote }}</div>
@@ -51,18 +53,22 @@
         align-items: center;
     }
 
-    .clothesImg {
-        padding-top: 1rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+    .clothesImgBoarder {
         width: 8rem;
-        height: 7rem;
+        height: 8rem;
         overflow-y: hidden;
-        /*margin-left: calc(16px + 1rem);*/
         border:solid 2px #193b83;
         background-color:rgba(25,59,131,0.2);
+    }
+
+    .clothesImg {
+        margin-top: 1rem;
+        display: flex;
+        flex-direction: column;
+        /*justify-content: center;*/
+        align-items: center;
+        width: 8rem;
+        height: 10rem;
     }
 
     .name {
@@ -94,14 +100,52 @@
         right: 3.5rem;
     }
     /*不同颜色的衣服的样式*/
-    .clothesWhite {
+    .frontWhite {
         /*padding-top: 1rem;*/
-        background-image: url("../../../assets/clothes/front.png");
+        background-image: url("../../../assets/clothes/frontWhite.png");
         background-size: auto 5rem;
         width: 5rem;
         height: 5rem;
         background-repeat: no-repeat;
     }
+
+    .frontBlack {
+        /*padding-top: 1rem;*/
+        background-image: url("../../../assets/clothes/frontBlack.png");
+        background-size: auto 5rem;
+        width: 5rem;
+        height: 5rem;
+        background-repeat: no-repeat;
+    }
+
+    .frontBlue {
+        /*padding-top: 1rem;*/
+        background-image: url("../../../assets/clothes/frontBlue.png");
+        background-size: auto 5rem;
+        width: 5rem;
+        height: 5rem;
+        background-repeat: no-repeat;
+    }
+
+    .frontOrange {
+        /*padding-top: 1rem;*/
+        background-image: url("../../../assets/clothes/frontOrange.png");
+        background-size: auto 5rem;
+        width: 5rem;
+        height: 5rem;
+        background-repeat: no-repeat;
+    }
+
+    .frontGrey {
+        /*padding-top: 1rem;*/
+        background-image: url("../../../assets/clothes/frontGrey.png");
+        background-size: auto 5rem;
+        width: 5rem;
+        height: 5rem;
+        background-repeat: no-repeat;
+    }
+
+
 
     /*正中间*/
     .position1 {
@@ -113,7 +157,7 @@
 
     .position1 img{
         height: auto;
-        width: 2rem;
+        width: 1.8rem;
     }
     /*左側*/
     .position2 {

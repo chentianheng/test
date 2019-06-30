@@ -1,14 +1,15 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import ClothesHome from './views/clothesEdit/clothesEdit'
-import Front from './views/clothesEdit/children/front'
-import Back from './views/clothesEdit/children/back'
-import Ranking from './views/rankingList/rankingList'
+import Clothes from './views/ClothesEdit'
+import Ranking from './views/rankingList/RankingList'
 import Personal from './views/personal/Personal'
 import PersonalFront from './views/personal/children/PersonalFront'
 import PersonalBack from './views/personal/children/PersonalBack'
+import Introduction from './views/Introduce'
+import Home from './views/Home'
+import Information from './views/Information'
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
   mode: 'history',
@@ -16,27 +17,24 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect:'/front',
-      name: 'clothesHome',
-      component: ClothesHome,
-      children:[
-        {
-          path:'/front',
-          name:'front',
-          component:Front,
-          meta:{
-            title:'正面'
-          }
-        },
-        {
-          path: '/back',
-          name: 'back',
-          component: Back,
-          meta: {
-            title: '背面'
-          }
-        }
-      ]},
+      name: 'home',
+      component: Home,
+    },
+    {
+      path: '/introduction',
+      name: 'introduction',
+      component: Introduction,
+    },
+    {
+      path: '/clothes',
+      name: 'clothes',
+      component: Clothes,
+    },
+    {
+      path: '/information',
+      name: 'information',
+      component: Information,
+    },
     {
       path:'/ranking',
       name:'ranking',
