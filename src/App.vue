@@ -4,9 +4,24 @@
       <!--<router-link to="/">Home</router-link> |-->
       <!--<router-link to="/about">About</router-link>-->
     <!--</div>-->
+    <img style="position: absolute;height: 45px;width: auto;left: 10px;top: 10px;z-index: 10"
+         src="./assets/icon/music.png" @click="startPlayOrPause" alt=""/>
+
     <keep-alive>
       <router-view :style="{height : myHeight}"/>
     </keep-alive>
+
+    <div>
+      <audio ref="audio" id="music_mp3_0" class="dn"
+             :src="music" :preload="audio.preload"
+             @play="onPlay"
+             @error="onError"
+             @waiting="onWaiting"
+             @playing="onPlaying"
+             @pause="onPause"
+             @timeupdate="onTimeupdate"
+             @loadedmetadata="onLoadedmetadata"></audio>
+    </div>
 
   </div>
 </template>
@@ -14,10 +29,125 @@
   export  default {
     data(){
       return{
-        myHeight: (window.innerHeight) + 'px'
+        myHeight: (window.innerHeight) + 'px',
+        music: 'https://zhaocha.yf-gz.cn/file/1558359586024_7e903f1a0ab60a058a2f3157b9ac84c8.mp3',
+        audio: {
+          currentTime: 0,
+          maxTime: 0,
+          playing: false,
+          muted: true,
+          speed: 1,
+          waiting: true,
+          preload: 'auto'
+        },
+        time:10,
+        controlList: {
+          // 不显示下载
+          noDownload: false,
+          // 不显示静音
+          noMuted: false,
+          // 不显示音量条
+          noVolume: false,
+          // 不显示进度条
+          noProcess: false,
+          // 只能播放一个
+          onlyOnePlaying: false,
+          // 不要快进按钮
+          noSpeed: false
+        },
       }
+    },
+    methods:{
+      //处理微信浏览器音乐自动播放问题
+      audioAutoPlay() {
+        var musicEle0 = document.getElementById('music_mp3_0');
+        musicEle0.play();
+      },
+      musicPlay(isPlay) {
+        if (isPlay && !this.audio.playing) {
+          this.startPlay()
+        }
+        if (!isPlay && !this.audio.playing) {
+          this.pausePlay()
+        }
+      },
+      onError() {
+        console.log('onError')
+        this.audio.waiting = true
+      }
+      ,
+      startPlayOrPause() {
+        // const that = this
+        return this.audio.playing ? this.pausePlay() : this.startPlay()
+      }
+      ,
+      // 开始播放
+      startPlay() {
+        this.$refs.audio.play()
+      }
+      ,
+      // 暂停
+      //haha
+      pausePlay() {
+        this.$refs.audio.pause()
+      }
+      ,
+      // 当音频暂停
+      onPause(e) {
+        this.audio.playing = false
+      }
+      ,
+      // 当音频开始等待
+      onWaiting(res) {
+      }
+      ,
+      onPlaying(res) {
+      }
+      ,
+      // 当音频开始播放
+      onPlay(res) {
+        // console.log('onPlay')
+        this.audio.playing = true
+        this.audio.loading = false
+        if (!this.controlList.onlyOnePlaying) {
+          return
+        }
+        let target = res.target
+        let audios = document.getElementsByTagName('audio');
+        [...audios].forEach((item) => {
+          if (item !== target) {
+            item.pause()
+          }
+        })
+      }
+      ,
+      // 当timeupdate事件大概每秒一次，用来更新音频流的当前播放时间
+      onTimeupdate(res) {
+        this.audio.currentTime = res.target.currentTime
+        this.sliderTime = parseInt(this.audio.currentTime / this.audio.maxTime * 100)
+      }
+      ,
+      // 当加载语音流元数据完成后，会触发该事件的回调函数
+      // 语音元数据主要是语音的长度之类的数据
+      onLoadedmetadata(res) {
+        // console.log('onLoadedmetadata')
+        // this.showPositionValue = true
+        // const that = this
+        this.audio.waiting = false
+        this.audio.maxTime = parseInt(res.target.duration)
+        if (!this.audio.playing) {
+          this.startPlay()
+        }
+      }
+    },
+    mounted() {
+      // this.timer()
+      // this.wxConfig()
     }
+    ,
   }
+
+
 </script>
 <style>
   @import "./assets/common/font/font.css";
