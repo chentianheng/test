@@ -1,7 +1,7 @@
 <template>
     <div class="bgContainer">
 
-        <p class="title animated fadeInUp">#一直潮一直秀——THE3联名T恤设计大赛#</p>
+        <!--<p class="title animated fadeInUp">#一直潮一直秀——THE3联名T恤设计大赛#</p>-->
 
         <div id="nav">
             <div class="middleContainer animated  zoomIn">
@@ -103,7 +103,7 @@
         </div>
 
         <button class="blueButton animated fadeInUp" @click="toInfo">提交</button>
-        <footer style="position: absolute;bottom: 2rem;color: #727171;font-size: 16px">最终解释权归所有BMW中国所有</footer>
+        <!--<footer style="position: absolute;bottom: 2rem;color: #727171;font-size: 16px">最终解释权归所有BMW中国所有</footer>-->
     </div>
 </template>
 
@@ -575,6 +575,7 @@
     .middleContainer {
         display: flex;
         animation-delay: 500ms;
+        margin-top: 2rem;
         /*justify-content: center;*/
         /*align-items: center;*/
     }

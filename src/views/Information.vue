@@ -43,7 +43,7 @@
         <!--提交按钮-->
         <button class="blueButton animated fadeIn" @click="upload">提交并上传作品</button>
         <!--页脚-->
-        <footer style="position: absolute;bottom: 2rem;color: #727171;font-size: 16px">最终解释权归所有BMW中国所有</footer>
+        <!--<footer style="position: absolute;bottom: 2rem;color: #727171;font-size: 16px">最终解释权归所有BMW中国所有</footer>-->
         <!--隐藏弹框-->
         <div class="blackContainer animated zoomIn" v-show="clothes.uploadSuccessful" >
             <img class="animated bounceIn delay-1s" src="../assets/icon/gift-2.png" alt="">
@@ -138,7 +138,7 @@
         padding-left: 5px;
     }
     .nameInput {
-        width: 55%;
+        width: 50%;
         height: 2rem;
         border: solid 1px transparent;
         -moz-appearance:none;

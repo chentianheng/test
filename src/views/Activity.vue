@@ -27,7 +27,6 @@
                 outHeight: this.innerHeight
             }
         }
-
     }
 </script>
 
