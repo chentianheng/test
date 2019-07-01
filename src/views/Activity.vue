@@ -1,19 +1,17 @@
 <template>
     <div class="bgContainer">
-        <div class="imgContainer">
+        <!--<div :style="{height : outHeight}"></div>-->
+        <div class="imgContainer" :style="{height : innerHeight}">
             <div class="card1 animated fadeInLeft"></div>
             <div class="card2 animated fadeInRight"></div>
             <div class="card3 animated fadeInLeft"></div>
-            <div class="card4 animated fadeInRight">
-
-            </div>
-            <!--&lt;!&ndash;绝对定位&ndash;&gt;-->
-            <img class="content4 animated bounceIn" src="../assets/activity/4.png" alt="">
+            <div class="card4 animated fadeInRight"></div>
+        </div>
             <img class="content1 animated bounceIn" src="../assets/activity/1.png" alt="">
             <img class="content2 animated bounceIn" src="../assets/activity/2.png" alt="">
             <img class="content3 animated bounceIn" src="../assets/activity/3.png" alt="">
+            <img class="content4 animated bounceIn" src="../assets/activity/4.png" alt="">
 
-        </div>
     </div>
 
 
@@ -22,18 +20,37 @@
 
 <script>
     export default {
-        name: "Activity"
+        name: "Activity",
+        data(){
+            return{
+                innerHeight: (window.innerHeight) + 'px',
+                outHeight: this.innerHeight
+            }
+        }
+
     }
 </script>
 
 <style scoped>
     .bgContainer {
-        display: flex;
-        flex-direction: column;
-        align-items: center;;
-        background-size:  100%  auto;
         background-repeat: no-repeat;
         background-color: #f69202;
+        display: flex;
+        flex-direction: column;
+        overflow-y: hidden;
+        position: relative;
+    }
+
+    .imgContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .imgCardContainer{
+        width: 100%;
+        height: auto;
     }
 
     .card1 {
@@ -76,16 +93,18 @@
         background-size:  100% auto;
     }
 
-    .imgCard {
-        width: 100%;
-        height: auto;
-    }
+    /*.content1{*/
+        /*width: 14rem;*/
+        /*height: 7rem;*/
+        /*position: relative;*/
+        /*animation-delay: 1000ms;*/
+    /*}*/
 
     .content1{
         width: 60%;
         position: absolute;
-        top: 8%;
-        left: 5%;
+        top: 9%;
+        left: 2%;
         animation-delay: 1000ms;
     }
 
@@ -107,6 +126,9 @@
 
     .content4{
         width: 60%;
+        position: absolute;
+        top: 70%;
+        right: 2%;
         animation-delay: 1500ms;
         overflow-y: hidden;
     }
