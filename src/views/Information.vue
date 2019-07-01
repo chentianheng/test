@@ -15,7 +15,7 @@
 
                 <!--姓名-->
 
-                <input type="text" id="name" class="nameInput" placeholder="姓名" v-model="name">
+                <input type="text" id="name" class="nameInput" placeholder="姓名" v-model="clothes.name">
 
                 <!--性别-->
 
@@ -45,12 +45,12 @@
         <!--页脚-->
         <footer style="position: absolute;bottom: 2rem;color: #727171;font-size: 16px">最终解释权归所有BMW中国所有</footer>
         <!--隐藏弹框-->
-        <div class="blackContainer animated zoomIn" v-show="uploadSuccessful" >
+        <div class="blackContainer animated zoomIn" v-show="clothes.uploadSuccessful" >
             <img class="animated bounceIn delay-1s" src="../assets/icon/gift-2.png" alt="">
             <p class="pTitle">设计上传完成</p>
             <p class="content">*了解更多活动详情，请咨询宝马当地授权经销商。</p>
             <button class="voteBtn">分享拉票</button>
-            <button class="voteBtn">发布会详情</button>
+            <button class="voteBtn" @click="toInvitation">发布会详情</button>
         </div>
 
     </div>
@@ -66,12 +66,12 @@
         },
         created() {
             this.clothes = this.$store.state.clothes
-            this.fourS.selected = "请选择经销商"
+            this.clothes.fourS.selected = "请选择经销商"
         },
         methods:{
             upload(){
                 this.$store.commit("setClothes", this.clothes)
-                this.uploadSuccessful = !this.uploadSuccessful
+                this.clothes.uploadSuccessful = !this.clothes.uploadSuccessful
                 const axios = require('axios');
                 axios({
                     method: 'post',
@@ -81,8 +81,9 @@
                     }
                 })
             },
-
-
+            toInvitation(){
+                this.$router.push('/invitation')
+            }
 
         }
     }

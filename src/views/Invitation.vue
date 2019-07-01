@@ -1,5 +1,5 @@
 <template>
-    <div class="bgContainer">
+    <div class="bgContainer animated fadeInUp">
         <img class="design" src="../assets/design.png" alt="">
         <img class="content" src="../assets/designTitle.png" alt="">
         <img class="content" src="../assets/designSubTitle.png" alt="">
@@ -10,9 +10,10 @@
         <br>
         <p class="title">活动流程</p>
         <p class="detail">18:30-19:00  签到入场 30分钟</p>
-        <p class="detail">18:30-19:00  签到入场 30分钟</p>
-        <p class="detail">18:30-19:00  签到入场 30分钟</p>
-        <p class="detail">18:30-19:00  签到入场 30分钟</p>
+        <p class="detail">19:30-19:55  BMW3系故事说 25分钟</p>
+        <p class="detail">19:55-20:21  新车亮相讲解 26分钟</p>
+        <p class="detail">20:21-20:30  重燃MISSION3 9分钟</p>
+        <p class="detail">20:30-21:00  BMW3系电音派对 30分钟</p>
         <footer style="color: #727171;font-size: 16px;margin-top: 2px;position: absolute;bottom: 1rem">最终解释权归所有BMW中国所有</footer>
     </div>
 </template>
@@ -59,7 +60,7 @@
         width: 75%;
         margin-top: 4px;
         text-align: left;
-        font-weight: 300;
+        font-weight: 600;
     }
 
     .detail {
@@ -70,6 +71,6 @@
         width: 75%;
         margin-top: 4px;
         text-align: left;
-        font-weight: 300;
+        font-weight: 600;
     }
 </style>
