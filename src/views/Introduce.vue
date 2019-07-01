@@ -9,8 +9,9 @@
             <img class="animated fadeInUp content2" src="../assets/introduce/5.png" alt="">
             <img class="animated fadeInUp content2" src="../assets/introduce/6.png" alt="">
         </div>
-
+        <footer style="color: #727171;font-size: 16px;margin-top: 2px">最终解释权归所有BMW中国所有</footer>
     </div>
+
 </template>
 
 <script>
@@ -42,7 +43,7 @@
         align-items: center;
         background-color: rgba(0,0,0,0.7);
         width: 90%;
-        height: 95%;
+        height: 90%;
         overflow-y: auto;
     }
 

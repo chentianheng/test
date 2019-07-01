@@ -8,6 +8,7 @@ import PersonalBack from './views/personal/children/PersonalBack'
 import Introduction from './views/Introduce'
 import Home from './views/Home'
 import Information from './views/Information'
+import Invitation from './views/Invitation'
 
 Vue.use(Router);
 
@@ -63,6 +64,14 @@ export default new Router({
           }
         }
       ]
+    },
+    {
+      path:'/invitation',
+      name:'invitation',
+      component:Invitation,
+      meta:{
+        title:'发布详情页'
+      }
     }
 
   ]

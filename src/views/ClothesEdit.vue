@@ -13,7 +13,7 @@
                         <div class="clothesImg">
                             <!--<img :src="clothesImgUrl"  alt=""/>-->
                             <div :class="`front${clothes.color}`"></div>
-                            <i v-show="clothes.front.iconShow" :class="`position${clothes.front.position}`"><img :src="imgUrl" height="30" alt=""/></i>
+                            <i v-show="clothes.front.iconShow" :class="`position${clothes.front.position}`"><img :src="frontImgUrl" height="30" alt=""/></i>
                             <p class="text" v-show="clothes.front.textShow" :style="{ fontSize: clothes.front.text.fontSize + 'px' }">{{ clothes.front.text.textMsg }}</p>
                         </div>
                     </div>
@@ -55,7 +55,7 @@
                     <div class="clothesImgBoarder">
                         <div class="clothesImg">
                             <div :class="`back${clothes.color}`"></div>
-                            <i v-show="clothes.back.iconShow" :class="`position${clothes.back.position}`"><img :src="imgUrl" height="30" alt=""/></i>
+                            <i v-show="clothes.back.iconShow" :class="`position${clothes.back.position}`"><img :src="backImgUrl" height="30" alt=""/></i>
                             <p class="text" v-show="clothes.back.textShow" :style="{ fontSize: clothes.back.text.fontSize + 'px' }">{{ clothes.back.text.textMsg }}</p>
                         </div>
                     </div>
@@ -103,6 +103,7 @@
         </div>
 
         <button class="blueButton animated fadeInUp" @click="toInfo">提交</button>
+        <footer style="position: absolute;bottom: 2rem;color: #727171;font-size: 16px">最终解释权归所有BMW中国所有</footer>
     </div>
 </template>
 
@@ -112,27 +113,6 @@
         data(){
             return{
                 clothes:{
-                    front:{
-                        position:1,
-                        imgUrl:require("@/assets/icon/pic1.png"),
-                        textShow : false,
-                        iconShow : true,
-                        text:{
-                            textMsg : "",
-                            fontSize : 12
-                        },
-                    },
-                    back:{
-                        position:3,
-                        imgUrl:require("@/assets/icon/pic1.png"),
-                        textShow : false,
-                        iconShow : true,
-                        text:{
-                            textMsg : "",
-                            fontSize : 12
-                        },
-                    },
-                    color:"White",
                 },
                 positionItem:{
                     positionItem1:"Active",
@@ -224,11 +204,15 @@
                         iconUrl:require("@/assets/icon/icon28.png"),
                         imgUrl:require("@/assets/icon/pic28.png"),
                     }],
-                imgUrl:require("@/assets/icon/pic1.png"),
+                frontImgUrl:require("@/assets/icon/pic1.png"),
+                backImgUrl:require("@/assets/icon/pic1.png"),
                 frontShow:true,
                 backShow:false
 
             }
+        },
+        created(){
+            this.clothes = this.$store.state.clothes
         },
         methods:{
             frontTextPlus(){
@@ -287,13 +271,15 @@
                 this.clothes.back.iconShow = false;
             },
             frontChangeIcon(index){
-                this.imgUrl = this.iconBars[index].imgUrl;
+                this.frontImgUrl = this.iconBars[index].imgUrl;
+                this.clothes.front.imgUrl = this.imgUrl;
                 this.clothes.front.textShow = false;
                 this.clothes.front.iconShow = true;
                 this.clothes.front.text.textMsg = "";
             },
             backChangeIcon(index){
-                this.imgUrl = this.iconBars[index].imgUrl;
+                this.backImgUrl = this.iconBars[index].imgUrl;
+                this.clothes.back.imgUrl = this.imgUrl;
                 this.clothes.back.textShow = false;
                 this.clothes.back.iconShow = true;
                 this.clothes.back.text.textMsg = "";
@@ -314,6 +300,8 @@
                 this.clothes.color = "Grey"
             },
             toInfo(){
+                console.log(this.clothes)
+                this.$store.commit("setClothes", this.clothes)
                 this.$router.push('/information')
             }
         }
