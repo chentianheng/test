@@ -21,21 +21,39 @@ router.beforeEach((to, from, next) => {
   if (openID){
     axios.get('/bmw/api/user/' + openID)
         .then(function (response) {
-          console.log(response);
-          // store.commit()
+            let result = response.data
+            if (result.status === 1) {
+                let user = result.data;
+                store.commit("setUser", user)
+                VueCookie.set("openID", user.openID)
+            } else {
+                console.log(result.msg)
+            }
         })
   } else {
     //  静态授权
     if(to.name === "personal"){
       axios.get('/bmw/api/mp/oauth2/base?code=' + code)
           .then(function (response) {
-            console.log(response);
-            // store.commit()
+              let result = response.data
+              if (result.status === 1) {
+                  let openID = result.data;
+                  VueCookie.set("openID", openID)
+              } else {
+                  console.log(result.msg)
+              }
           })
     } else {
       axios.get('/bmw/api/mp/oauth2?code=' + code)
           .then(function (response) {
-            console.log(response);
+              let result = response.data
+              if (result.status === 1) {
+                  let user = result.data;
+                  store.commit("setUser", user)
+                  VueCookie.set("openID", user.openID)
+              } else {
+                  console.log(result.msg)
+              }
             // store.commit()
           })
     }
