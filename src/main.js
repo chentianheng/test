@@ -25,7 +25,7 @@ router.beforeEach((to, from, next) => {
             if (result.status === 1) {
                 let user = result.data;
                 store.commit("setUser", user)
-                VueCookie.set("openID", user.openId)
+                VueCookie.set("openID", user.openID)
             } else {
                 console.log(result.msg)
             }
@@ -50,7 +50,7 @@ router.beforeEach((to, from, next) => {
               if (result.status === 1) {
                   let user = result.data;
                   store.commit("setUser", user)
-                  VueCookie.set("openID", user.openId)
+                  VueCookie.set("openID", user.openID)
               } else {
                   console.log(result.msg)
               }

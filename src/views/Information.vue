@@ -76,9 +76,7 @@
                 axios({
                     method: 'post',
                     url:'/bmw/api/user/',
-                    data:{
-                        json: this.clothes
-                    }
+                    data:this.clothes
                 })
             },
             toInvitation(){
