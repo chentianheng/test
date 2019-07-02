@@ -5,8 +5,16 @@ import store from './store'
 import animated from 'animate.css'
 import axios from 'axios'
 import VueCookie from 'vue-cookie';
+// import VueTouch from 'vue-touch';
 
 Vue.use(VueCookie);
+
+// 引入左右滑动事件
+// Vue.use(VueTouch, {name: 'v-touch'});
+// VueTouch.config.swipe = {
+//     threshold: 100 //手指左右滑动距离
+// }
+
 Vue.config.productionTip = false
 
 router.beforeEach((to, from, next) => {

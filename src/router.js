@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Clothes from './views/ClothesEdit'
+import Clothes from './views/Clothes'
 import Ranking from './views/rankingList/RankingList'
 import Personal from './views/personal/Personal'
 import PersonalFront from './views/personal/children/PersonalFront'

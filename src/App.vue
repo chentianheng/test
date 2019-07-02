@@ -12,7 +12,7 @@
     </keep-alive>
 
     <div>
-      <audio ref="audio" id="music_mp3_0" class="dn"
+      <audio ref="audio" id="music_mp3_0" class="dn" loop="loop"
              :src="music" :preload="audio.preload"
              @play="onPlay"
              @error="onError"
@@ -26,6 +26,7 @@
   </div>
 </template>
 <script>
+
   export  default {
     data(){
       return{
@@ -58,19 +59,39 @@
       }
     },
     methods:{
-      //处理微信浏览器音乐自动播放问题
-      audioAutoPlay() {
-        var musicEle0 = document.getElementById('music_mp3_0');
-        musicEle0.play();
-      },
-      musicPlay(isPlay) {
-        if (isPlay && !this.audio.playing) {
-          this.startPlay()
-        }
-        if (!isPlay && !this.audio.playing) {
-          this.pausePlay()
-        }
-      },
+      // todo:引入微信js接口
+      // audioAutoPlay(id){
+      //   var audio = document.getElementById(id);
+      //
+      //   if (window.WeixinJSBridge) {
+      //     WeixinJSBridge.invoke('getNetworkType', {}, function (e) {
+      //       audio.play();
+      //     }, false);
+      //   } else {
+      //     document.addEventListener("WeixinJSBridgeReady", function () {
+      //       WeixinJSBridge.invoke('getNetworkType', {}, function (e) {
+      //         audio.play();
+      //       });
+      //     }, false);
+      //   }
+      //   audio.play();
+      //
+      //   return false;
+      // },
+
+      // //处理微信浏览器音乐自动播放问题
+      // audioAutoPlay() {
+      //   var musicEle0 = document.getElementById('music_mp3_0');
+      //   musicEle0.play();
+      // },
+      // musicPlay(isPlay) {
+      //   if (isPlay && !this.audio.playing) {
+      //     this.startPlay()
+      //   }
+      //   if (!isPlay && !this.audio.playing) {
+      //     this.pausePlay()
+      //   }
+      // },
       onError() {
         console.log('onError')
         this.audio.waiting = true
@@ -87,7 +108,6 @@
       }
       ,
       // 暂停
-      //haha
       pausePlay() {
         this.$refs.audio.pause()
       }
@@ -106,7 +126,7 @@
       ,
       // 当音频开始播放
       onPlay(res) {
-        // console.log('onPlay')
+        console.log('onPlay')
         this.audio.playing = true
         this.audio.loading = false
         if (!this.controlList.onlyOnePlaying) {
@@ -140,11 +160,6 @@
         }
       }
     },
-    mounted() {
-      // this.timer()
-      // this.wxConfig()
-    }
-    ,
   }
 
 

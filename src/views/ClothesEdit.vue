@@ -77,7 +77,6 @@
                                v-for="(iconBar,index) in iconBars"
                                :key="index"
                             ><img :src="iconBar.iconUrl" height="45" width="45" alt=""></i>
-
                         </div>
                         <!--位置控制栏-->
                         <div class="positionBar">
@@ -412,8 +411,8 @@
 
 
     .white {
-        height: 16px;
-        width: 16px;
+        height: 24px;
+        width: 24px;
         background-color: white;
         border-radius: 60px;
         margin-bottom: 0.5rem;
@@ -421,8 +420,8 @@
     }
 
     .black {
-        height: 16px;
-        width: 16px;
+        height: 24px;
+        width: 24px;
         background-color: black;
         border-radius: 60px;
         margin-bottom: 0.5rem;
@@ -430,8 +429,8 @@
     }
 
     .blue {
-        height: 16px;
-        width: 16px;
+        height: 24px;
+        width: 24px;
         background-color: blue;
         border-radius: 60px;
         margin-bottom: 0.5rem;
@@ -439,8 +438,8 @@
     }
 
     .orange {
-        height: 16px;
-        width: 16px;
+        height: 24px;
+        width: 24px;
         background-color: orange;
         border-radius: 60px;
         margin-bottom: 0.5rem;
@@ -448,8 +447,8 @@
     }
 
     .grey {
-        height: 16px;
-        width: 16px;
+        height: 24px;
+        width: 24px;
         background-color: grey;
         border-radius: 60px;
         margin-right: 0.5rem;

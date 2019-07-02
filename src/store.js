@@ -7,8 +7,14 @@ export default new Vuex.Store({
   state: {
     clothes:{
        front:{
-         position:1,
-         imgUrl:require("@/assets/icon/pic1.png"),
+         position:{
+             leftShow : true,
+             rightShow : false,
+             middleShow : false
+         },
+         frontLeftImgUrl:"",
+         frontRightImgUrl:"",
+         frontMiddleImgUrl:"",
          textShow : false,
          iconShow : true,
          text:{
@@ -17,8 +23,7 @@ export default new Vuex.Store({
          },
        },
        back:{
-         position:3,
-         imgUrl:require("@/assets/icon/pic1.png"),
+         backImgUrl:"",
          textShow : false,
          iconShow : true,
          text:{
