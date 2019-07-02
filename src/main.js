@@ -37,8 +37,8 @@ router.beforeEach((to, from, next) => {
                 store.commit("setUser", user)
                 VueCookie.set("openID", user.openID)
                 if (from.name === "home") {
-                    console.log(user.clothes)
-                    if (user.clothes) {
+                    console.log(user.clothesJson)
+                    if (user.clothesJson) {
                         next({ path: '/ranking' })
                     }else {
                         next()
@@ -71,8 +71,8 @@ router.beforeEach((to, from, next) => {
                   store.commit("setUser", user)
                   VueCookie.set("openID", user.openID)
                   if (from.name === "home") {
-                      console.log(user.clothes)
-                      if (user.clothes) {
+                      console.log(user.clothesJson)
+                      if (user.clothesJson) {
                           next({ path: '/ranking' })
                       }else {
                           next()
