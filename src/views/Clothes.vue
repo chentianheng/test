@@ -42,7 +42,7 @@
             <div class="black" @click="changeBlack"></div>
             <div class="blue" @click="changeBlue"></div>
             <div class="orange" @click="changeOrange"></div>
-            <div class="grey" @click="changeGrey"></div>
+            <!--<div class="grey" @click="changeGrey"></div>-->
         </div>
         <!--position操控-->
         <div class="positionContainer animated bounceInRight" v-show="position.positionShow">
@@ -111,7 +111,7 @@
 
         <!--底部按钮-->
         <div class="footerBtnContainer" v-show="pathShow">
-            <router-link  to="/" class="blackBtn">取消定制</router-link>
+            <button  class="blackBtn" @click="backToHome">取消定制</button>
             <button class="blackBtn" @click="toInfo">提交作品</button>
         </div>
 
@@ -361,6 +361,17 @@
                     this.position.positionShow = true;
                     this.position.backPositionShow = false;
                 }
+            },
+            backToHome(){
+                this.frontLeftImgUrl ="";
+                this.clothes.front.frontLeftImgUrl ="";
+                this.frontRightImgUrl ="";
+                this.clothes.front.frontRightImgUrl ="";
+                this.frontMiddleImgUrl ="";
+                this.clothes.front.backImgUrl ="";
+                this.backImgUrl ="";
+                this.clothes.front.backImgUrl ="";
+                this.$router.push('/')
             },
             saveChange(){
                 this.pathShow =true ;

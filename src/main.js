@@ -34,10 +34,19 @@ router.beforeEach((to, from, next) => {
                 let user = result.data;
                 store.commit("setUser", user)
                 VueCookie.set("openID", user.openID)
+                if (from.name === "home") {
+                    console.log(user.clothes)
+                    if (user.clothes) {
+                        next({ path: '/ranking' })
+                    }else {
+                        next()
+                    }
+                }
             } else {
                 console.log(result.msg)
             }
-        })
+
+        });
   } else {
     //  静态授权
     if(to.name === "personal"){
@@ -59,6 +68,14 @@ router.beforeEach((to, from, next) => {
                   let user = result.data;
                   store.commit("setUser", user)
                   VueCookie.set("openID", user.openID)
+                  if (from.name === "home") {
+                      console.log(user.clothes)
+                      if (user.clothes) {
+                          next({ path: '/ranking' })
+                      }else {
+                          next()
+                      }
+                  }
               } else {
                   console.log(result.msg)
               }
