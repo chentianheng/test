@@ -5,6 +5,8 @@ import store from './store'
 import animated from 'animate.css'
 import axios from 'axios'
 import VueCookie from 'vue-cookie';
+
+Vue.config.devtools = true
 // import VueTouch from 'vue-touch';
 
 Vue.use(VueCookie);

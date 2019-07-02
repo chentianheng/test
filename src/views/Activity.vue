@@ -1,13 +1,13 @@
 <template>
     <div class="bgContainer">
         <!--<div :style="{height : outHeight}"></div>-->
-        <div class="imgContainer" :style="{height : innerHeight}">
+        <div class="imgContainer" :style="{height : innerHeight}" @click="toActivityTwo">
             <div class="card1 animated fadeInLeft"></div>
             <div class="card2 animated fadeInRight"></div>
             <div class="card3 animated fadeInLeft"></div>
             <div class="card4 animated fadeInRight"></div>
         </div>
-            <img class="content1 animated bounceIn" src="../assets/activity/1.png" alt="">
+            <img class="content1 animated bounceIn" src="../assets/activity/1-1.png" alt="">
             <img class="content2 animated bounceIn" src="../assets/activity/2.png" alt="">
             <img class="content3 animated bounceIn" src="../assets/activity/3.png" alt="">
             <img class="content4 animated bounceIn" src="../assets/activity/4.png" alt="">
@@ -26,6 +26,11 @@
                 innerHeight: (window.innerHeight) + 'px',
                 outHeight: this.innerHeight
             }
+        },
+        methods:{
+            toActivityTwo(){
+                this.$router.push('/activitytwo')
+            }
         }
     }
 </script>
@@ -33,7 +38,7 @@
 <style scoped>
     .bgContainer {
         background-repeat: no-repeat;
-        background-color: #f69202;
+        background-color: black;
         display: flex;
         flex-direction: column;
         overflow-y: hidden;
@@ -59,14 +64,14 @@
         background-image: url("../assets/activity/card1.png");
         background-repeat: no-repeat;
         background-color: #010415;
-        background-size: auto 100% ;
+        background-size: 100% ;
     }
 
     .card2 {
         width: 100%;
         height: 25%;
         overflow-y: hidden;
-        background-image: url("../assets/activity/card2-2.png");
+        background-image: url("../assets/activity/card2-3.png");
         background-repeat: no-repeat;
         background-color: #010415;
         background-size: auto 100% ;

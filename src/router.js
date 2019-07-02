@@ -10,6 +10,7 @@ import Home from './views/Home'
 import Information from './views/Information'
 import Invitation from './views/Invitation'
 import Activity from './views/Activity'
+import ActivityTwo from './views/ActivityTwo'
 
 Vue.use(Router);
 
@@ -81,7 +82,16 @@ export default new Router({
       meta:{
         title:'活动亮点'
       }
-    }
+    },
+    {
+      path:'/activitytwo',
+      name:'activityTwo',
+      component:ActivityTwo,
+      meta:{
+        title:'活动亮点'
+      }
+    },
+
 
   ]
 })

@@ -41,7 +41,12 @@
             </select>
         </div>
         <!--提交按钮-->
-        <button class="blueButton animated fadeIn" @click="upload">提交并上传作品</button>
+        <!--todo:增加判断和弹窗-->
+        <!--clothes.name-->
+        <!--clothes.phone-->
+        <!--clothes.sex-->
+        <!--clothes.reason.selected-->
+        <button class="blueButton animated fadeIn" @click="upload">提交并上传</button>
         <!--页脚-->
         <!--<footer style="position: absolute;bottom: 2rem;color: #727171;font-size: 16px">最终解释权归所有BMW中国所有</footer>-->
         <!--隐藏弹框-->
@@ -92,7 +97,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        background-image: url("../assets/background.png");
+        background-image: url("../assets/background-3.png");
         background-size:  100%  auto;
         background-repeat: no-repeat;
         background-color: black;
@@ -103,6 +108,7 @@
         font-size: 26px;
         color: white;
         font-weight: 300;
+        margin-bottom: 2rem;
     }
     .pTitle {
         margin-top: 1rem;
@@ -175,14 +181,22 @@
     }
 
     .blueButton {
-        background-color: #1c69d4;
+        background-color: transparent;
+        background-image: url("../assets/icon/commonBtn.png");
+        background-size: 100% auto;
+        background-repeat: no-repeat;
         font-size: 16px;
-        margin-top: 2rem;
-        height: 40px;
-        width: 150px;
+        font-weight: 500;
+        /*text-align: right;*/
+        padding-bottom: 1rem;
+        padding-left: 2rem;
+        margin-top: 3rem;
+        height: 2rem;
+        width: 12rem;
         color: white;
         border: none;
         animation-delay: 800ms;
+
     }
 
     .blackContainer {
@@ -207,7 +221,7 @@
         height: 2.2rem;
         border: none;
         background-color: transparent;
-        margin-top: 1rem;
+        margin-top: 2rem;
         color: white;
         font-size: 16px;
     }

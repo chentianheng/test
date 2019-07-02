@@ -5,11 +5,20 @@
         <div class="contents animated bounceIn " @click="toClothes">
             <img src="../assets/icon/homeIcon.png" alt="" style="width: 50%">
         </div>
+
+        <!--弹窗-->
+        <!--活动说明-->
+        <div class="img animated fadeIn" @click="show1" v-show="showOne"><img style="width: 80%" src="../assets/rules/content1.png" alt="" ></div>
+        <div class="img animated fadeIn" @click="show2" v-show="showTwo"><img style="width: 60%" src="../assets/rules/content2.png" alt="" ></div>
+        <div class="img animated fadeIn" @click="show3" v-show="showThree"><img style="width: 90%" src="../assets/rules/content3.png" alt="" ></div>
+
         <div class="footerBtn">
-            <router-link to="/introduction" class="voteBtn1 animated fadeIn"></router-link>
-            <router-link to="/introduction" class="voteBtn2 animated fadeIn"></router-link>
-            <router-link to="/introduction" class="voteBtn3 animated fadeIn"></router-link>
+            <button  class="voteBtn1 animated fadeIn" @click="show1"></button>
+            <button  class="voteBtn2 animated fadeIn" @click="show2"></button>
+            <button  class="voteBtn3 animated fadeIn" @click="show3"></button>
         </div>
+
+
 
     </div>
 </template>
@@ -17,10 +26,33 @@
 <script>
     export default {
         name: "Home",
+        data(){
+            return{
+                showOne:false,
+                showTwo:false,
+                showThree:false,
+            }
+        },
         methods:{
             toClothes(){
                 this.$router.push('/clothes')
-            }
+            },
+            show1(){
+                this.showOne = !this.showOne;
+                this.showTwo=false;
+                this.showThree=false;
+            },
+            show2(){
+                this.showTwo = !this.showTwo
+                this.showOne=false;
+                this.showThree=false;
+            },
+            show3(){
+                this.showThree = !this.showThree
+                this.showOne=false;
+                this.showTwo=false;
+            },
+
         }
     }
 </script>
@@ -67,6 +99,7 @@
     }
 
     .voteBtn1 {
+        position: relative;
         background-image: url("../assets/icon/detailBtn.png");
         background-size: 100% auto;
         background-repeat: no-repeat;
@@ -79,6 +112,7 @@
     }
 
     .voteBtn2 {
+        position: relative;
         background-image: url("../assets/icon/detailBtn-1.png");
         background-size: 100% auto;
         background-repeat: no-repeat;
@@ -107,5 +141,21 @@
         display: flex;
         justify-content: space-between;
         width: 80%;
+    }
+
+    /*新弹窗*/
+    .img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 80%;
+        height: 80%;
+        position: absolute;
+        left: 10%;
+        bottom: 10%;
+        border: solid 1px white;
+        background-color: rgba(0,0,0,0.8);
+        z-index: 100;
+        animation-duration: 500ms;
     }
 </style>

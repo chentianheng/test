@@ -411,7 +411,7 @@
         padding: 1rem 1rem 0;
         width: 15rem;
         height: 19rem;
-        background-color:rgba(153,153,153,0.8) ;
+        background-color:rgba(45,45,45,0.4) ;
         overflow-y: hidden;
         margin-bottom: 1rem;
     }
