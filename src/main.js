@@ -19,7 +19,7 @@ Vue.use(VueCookie);
 
 Vue.config.productionTip = false
 
-router.beforeEach((to, from, next) => {
+router.beforeEach( async (to, from, next) => {
   // todo:获取cookie是否有openID
   // 有：查询用户信息
   // 无：授权（动态授权，静态授权）
@@ -29,7 +29,7 @@ router.beforeEach((to, from, next) => {
   const axios = require('axios');
 
   if (openID){
-    axios.get('/bmw/api/user/' + openID)
+    await axios.get('/bmw/api/user/' + openID)
         .then(function (response) {
             let result = response.data
             if (result.status === 1) {
@@ -52,7 +52,7 @@ router.beforeEach((to, from, next) => {
   } else {
     //  静态授权
     if(to.name === "vote"){
-      axios.get('/bmw/api/mp/oauth2/base?code=' + code)
+      await axios.get('/bmw/api/mp/oauth2/base?code=' + code)
           .then(function (response) {
               let result = response.data
               if (result.status === 1) {
@@ -63,7 +63,7 @@ router.beforeEach((to, from, next) => {
               }
           })
     } else {
-      axios.get('/bmw/api/mp/oauth2?code=' + code)
+      await axios.get('/bmw/api/mp/oauth2?code=' + code)
           .then(function (response) {
               let result = response.data
               if (result.status === 1) {
