@@ -89,7 +89,7 @@
             </div>
             <p class="pTitle">设计上传完成</p>
             <!--<p class="content">*了解更多活动详情，请咨询宝马当地授权经销商。</p>-->
-            <button class="voteBtn">分享拉票</button>
+            <!--<button class="voteBtn">分享拉票</button>-->
             <button class="voteBtn" @click="toInvitation">发布会详情</button>
         </div>
 
