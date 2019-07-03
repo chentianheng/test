@@ -328,8 +328,8 @@
             },
             backMiddleChangeIcon(index){
                 this.backImgUrl = this.iconBars[index].imgUrl;
-                this.clothes.front.backImgUrl = this.backImgUrl;
-                this.clothes.front.middleShow = true;
+                this.clothes.back.backImgUrl = this.backImgUrl;
+                this.clothes.back.iconShow = true;
             },
             cancelChange(){
                 if(this.position.leftPositionShow){
@@ -355,7 +355,7 @@
                     this.position.middlePositionShow = false;
                 }else if (this.position.backPositionShow) {
                     this.backImgUrl ="";
-                    this.clothes.front.backImgUrl ="";
+                    this.clothes.back.backImgUrl ="";
                     this.pathShow =true ;
                     this.changeShow =false ;
                     this.position.positionShow = true;

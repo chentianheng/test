@@ -7,16 +7,13 @@ export default new Vuex.Store({
   state: {
     clothes:{
        front:{
-         position:{
-             leftShow : true,
-             rightShow : false,
-             middleShow : false
-         },
+         leftShow : true,
+         rightShow : false,
+         middleShow : false,
          frontLeftImgUrl:"",
          frontRightImgUrl:"",
          frontMiddleImgUrl:"",
          textShow : false,
-         iconShow : true,
          text:{
            textMsg : "",
            fontSize : 12

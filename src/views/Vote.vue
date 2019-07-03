@@ -1,136 +1,54 @@
 <template>
     <div class="bgContainer">
-        <div class="tableContainer animated fadeInUp">
-            <p class="title">填写信息</p>
-            <!--选择宝马3的理由-->
-            <label class="label" for="like">*选择全新宝马3系的理由（多选）：</label>
-            <select class="select" v-model="clothes.reason.selected"  multiple id="like">
-                    <option v-for="(multOption,index) in clothes.reason.options"
-                            :value="multOption"
-                            :key="index"
-                    >{{ multOption }}</option>
-             </select>
-            <label class="label" for="name">*请输入您的姓名：</label>
-            <div class="nameSex">
+    <!--<div class="blackContainer animated zoomIn" >-->
+        <!--&lt;!&ndash;front衣服视图&ndash;&gt;-->
+        <!--<div class="" v-show="frontShow">-->
+            <!--<div class="clothesImgBoarder">-->
+                <!--&lt;!&ndash;衣服编辑框+颜色位置&ndash;&gt;-->
+                <!--<img style="width: 30px;position: relative;left: 6rem;"-->
+                     <!--src="../assets/icon/changeIcon.png"-->
+                     <!--@click="changeClothes"-->
+                     <!--alt=""/>-->
 
-                <!--姓名-->
+                <!--<div class="clothesImg animated fadeIn">-->
+                    <!--<div :class="`front${clothes.color}`"></div>-->
+                    <!--&lt;!&ndash;左方的icon&ndash;&gt;-->
+                    <!--<i v-show="clothes.front.leftShow" class="position1"><img :src="clothes.front.frontLeftImgUrl" height="30" alt=""/></i>-->
+                    <!--&lt;!&ndash;右方的icon&ndash;&gt;-->
+                    <!--<i v-show="clothes.front.rightShow" class="position2"><img :src="clothes.front.frontRightImgUrl" height="30" alt=""/></i>-->
+                    <!--&lt;!&ndash;正方的icon&ndash;&gt;-->
+                    <!--<i v-show="clothes.front.middleShow" class="position3"><img :src="clothes.front.frontMiddleImgUrl" height="30" alt=""/></i>-->
+                    <!--<p class="text" v-show="clothes.front.textShow" :style="{ fontSize: clothes.front.text.fontSize + 'px' }">{{ clothes.front.text.textMsg }}</p>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--&lt;!&ndash;Back衣服视图&ndash;&gt;-->
+        <!--<div class="" v-show="backShow">-->
+            <!--<div class="clothesImgBoarder">-->
+                <!--&lt;!&ndash;衣服编辑框+颜色位置&ndash;&gt;-->
+                <!--<img style="width: 30px;position: relative;left: 6rem;"-->
+                     <!--src="../assets/icon/changeIcon.png"-->
+                     <!--@click="changeClothes"-->
+                     <!--alt=""/>-->
 
-                <input type="text" id="name" class="nameInput" placeholder="姓名" v-model="clothes.name">
-
-                <!--性别-->
-
-                <input id="1" type="radio" value="gentleman" v-model="clothes.sex">
-                <label class="label" for="1">先生</label>
-
-                <input id="2" type="radio" value="lady" v-model="clothes.sex">
-                <label class="label" for="2">女士</label>
-                <!--<p>{{ sex }}</p>-->
-            </div>
-
-            <!--联系方式-->
-            <label class="label" for="phone">*请输入您的手机：</label>
-            <input type="text" id="phone" class="input" placeholder="移动电话" v-model="clothes.phone">
-            <!--经销商-->
-            <label class="label" for="fourS">*经销商：</label>
-            <select class="select" v-model="clothes.fourS.selected"  id="fourS">
-                <option disabled>请选择经销商</option>
-                <option v-for="(option,index) in clothes.fourS.options"
-                        :value="option"
-                        :key="index"
-                >{{ option }}</option>
-            </select>
-        </div>
-        <!--提交按钮-->
-        <!--todo:增加判断和弹窗-->
-        <!--clothes.name-->
-        <!--clothes.phone-->
-        <!--clothes.sex-->
-        <!--clothes.reason.selected-->
-        <button class="blueButton animated fadeIn" @click="upload">提交并上传</button>
-
-        <!--隐藏弹框-->
-        <div class="blackContainer animated zoomIn" v-show="clothes.uploadSuccessful" >
-            <!--front衣服视图-->
-            <div class="" v-show="frontShow">
-                <div class="clothesImgBoarder">
-                    <!--衣服编辑框+颜色位置-->
-                    <img style="width: 30px;position: relative;left: 6rem;"
-                         src="../assets/icon/changeIcon.png"
-                         @click="changeClothes"
-                         alt=""/>
-
-                    <div class="clothesImg animated fadeIn">
-                        <div :class="`front${clothes.color}`"></div>
-                        <!--左方的icon-->
-                        <i v-show="clothes.front.leftShow" class="position1"><img :src="clothes.front.frontLeftImgUrl" height="30" alt=""/></i>
-                        <!--右方的icon-->
-                        <i v-show="clothes.front.rightShow" class="position2"><img :src="clothes.front.frontRightImgUrl" height="30" alt=""/></i>
-                        <!--正方的icon-->
-                        <i v-show="clothes.front.middleShow" class="position3"><img :src="clothes.front.frontMiddleImgUrl" height="30" alt=""/></i>
-                        <p class="text" v-show="clothes.front.textShow" :style="{ fontSize: clothes.front.text.fontSize + 'px' }">{{ clothes.front.text.textMsg }}</p>
-                    </div>
-                </div>
-            </div>
-            <!--Back衣服视图-->
-            <div class="" v-show="backShow">
-                <div class="clothesImgBoarder">
-                    <!--衣服编辑框+颜色位置-->
-                    <img style="width: 30px;position: relative;left: 6rem;"
-                         src="../assets/icon/changeIcon.png"
-                         @click="changeClothes"
-                         alt=""/>
-
-                    <div class="clothesImg animated fadeIn">
-                        <div :class="`back${clothes.color}`"></div>
-                        <i v-show="clothes.back.iconShow" class="position3"><img :src="clothes.back.backImgUrl" height="30" alt=""/></i>
-                        <p class="text" v-show="clothes.back.textShow" :style="{ fontSize: clothes.back.text.fontSize + 'px' }">{{ clothes.back.text.textMsg }}</p>
-                    </div>
-                </div>
-            </div>
-            <p class="pTitle">设计上传完成</p>
-            <!--<p class="content">*了解更多活动详情，请咨询宝马当地授权经销商。</p>-->
-            <button class="voteBtn">分享拉票</button>
-            <button class="voteBtn" @click="toInvitation">发布会详情</button>
-        </div>
-
+                <!--<div class="clothesImg animated fadeIn">-->
+                    <!--<div :class="`back${clothes.color}`"></div>-->
+                    <!--<i v-show="clothes.back.iconShow" class="position3"><img :src="clothes.back.backImgUrl" height="30" alt=""/></i>-->
+                    <!--<p class="text" v-show="clothes.back.textShow" :style="{ fontSize: clothes.back.text.fontSize + 'px' }">{{ clothes.back.text.textMsg }}</p>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<p class="pTitle">设计上传完成</p>-->
+        <!--&lt;!&ndash;<p class="content">*了解更多活动详情，请咨询宝马当地授权经销商。</p>&ndash;&gt;-->
+        <!--<button class="voteBtn">分享拉票</button>-->
+        <!--<button class="voteBtn" @click="toInvitation">发布会详情</button>-->
+    <!--</div>-->
     </div>
 </template>
 
 <script>
     export default {
-        name: "Information",
-        data(){
-            return{
-                clothes: {},
-                frontShow:true,
-                backShow:false,
-            }
-        },
-        created() {
-            this.clothes = this.$store.state.clothes
-            this.clothes.fourS.selected = "请选择经销商"
-            console.log(this.clothes)
-        },
-        methods:{
-            upload(){
-                this.$store.commit("setClothes", this.clothes)
-                this.clothes.uploadSuccessful = !this.clothes.uploadSuccessful
-                const axios = require('axios');
-                axios({
-                    method: 'post',
-                    url:'/bmw/api/user/',
-                    data:this.clothes
-                })
-            },
-            toInvitation(){
-                this.$router.push('/invitation')
-            },
-            changeClothes(){
-                this.frontShow =!this.frontShow;
-                this.backShow =!this.backShow;
-            },
-
-        }
+        name: "Vote"
     }
 </script>
 

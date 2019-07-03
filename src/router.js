@@ -2,15 +2,16 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Clothes from './views/Clothes'
 import Ranking from './views/rankingList/RankingList'
-import Personal from './views/personal/Personal'
-import PersonalFront from './views/personal/children/PersonalFront'
-import PersonalBack from './views/personal/children/PersonalBack'
+// import Personal from './views/personal/Personal'
+// import PersonalFront from './views/personal/children/PersonalFront'
+// import PersonalBack from './views/personal/children/PersonalBack'
 import Introduction from './views/Introduce'
 import Home from './views/Home'
 import Information from './views/Information'
 import Invitation from './views/Invitation'
 import Activity from './views/Activity'
 import ActivityTwo from './views/ActivityTwo'
+import Vote from './views/Vote'
 
 Vue.use(Router);
 
@@ -43,30 +44,30 @@ export default new Router({
       name:'ranking',
       component:Ranking,
     },
-    {
-      path:'/personal',
-      name:'personal',
-      component:Personal,
-      redirect:'/personal/front',
-      children: [
-        {
-          path:'/personal/front',
-          name:'front',
-          component:PersonalFront,
-          meta:{
-            title:'正面'
-          }
-        },
-        {
-          path:'/personal/back',
-          name:'back',
-          component:PersonalBack,
-          meta:{
-            title:'背面'
-          }
-        }
-      ]
-    },
+    // {
+    //   path:'/personal',
+    //   name:'personal',
+    //   component:Personal,
+    //   redirect:'/personal/front',
+    //   children: [
+    //     {
+    //       path:'/personal/front',
+    //       name:'front',
+    //       component:PersonalFront,
+    //       meta:{
+    //         title:'正面'
+    //       }
+    //     },
+    //     {
+    //       path:'/personal/back',
+    //       name:'back',
+    //       component:PersonalBack,
+    //       meta:{
+    //         title:'背面'
+    //       }
+    //     }
+    //   ]
+    // },
     {
       path:'/invitation',
       name:'invitation',
@@ -91,6 +92,15 @@ export default new Router({
         title:'活动亮点'
       }
     },
+    {
+      path:'/vote',
+      name:'vote',
+      component:Vote,
+      meta:{
+        title:'投票页面'
+      }
+    },
+
 
 
   ]

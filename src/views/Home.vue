@@ -8,9 +8,19 @@
 
         <!--弹窗-->
         <!--活动说明-->
-        <div class="img animated fadeIn" @click="show1" v-show="showOne"><img style="width: 80%" src="../assets/rules/content1.png" alt="" ></div>
-        <div class="img animated fadeIn" @click="show2" v-show="showTwo"><img style="width: 60%" src="../assets/rules/content2.png" alt="" ></div>
-        <div class="img animated fadeIn" @click="show3" v-show="showThree"><img style="width: 90%" src="../assets/rules/content3.png" alt="" ></div>
+        <div class="img animated fadeIn" @click="show1" v-show="showOne">
+            <img style="width: 80%" src="../assets/rules/content1.png" alt="" >
+            <!--页脚-->
+            <footer style="position: absolute;bottom: 2px;color: #727171;font-size: 12px">最终解释权归所有BMW中国所有</footer>
+        </div>
+        <div class="img animated fadeIn" @click="show2" v-show="showTwo">
+            <img style="width: 60%" src="../assets/rules/content2.png" alt="" >
+            <footer style="position: absolute;bottom: 2px;color: #727171;font-size: 12px">最终解释权归所有BMW中国所有</footer>
+        </div>
+        <div class="img animated fadeIn" @click="show3" v-show="showThree">
+            <img style="width: 90%" src="../assets/rules/content3.png" alt="" >
+            <footer style="position: absolute;bottom: 2px;color: #727171;font-size: 12px">最终解释权归所有BMW中国所有</footer>
+        </div>
 
         <div class="footerBtn">
             <button  class="voteBtn1 animated fadeIn" @click="show1"></button>
@@ -149,13 +159,16 @@
         justify-content: center;
         align-items: center;
         width: 80%;
-        height: 80%;
+        height: 76%;
         position: absolute;
         left: 10%;
-        bottom: 10%;
+        bottom: 15%;
         border: solid 1px white;
         background-color: rgba(0,0,0,0.8);
         z-index: 100;
         animation-duration: 500ms;
+        /*background-image: url("../assets/rules/background2.png");*/
+        /*background-size: auto 100%;*/
+        /*background-repeat: no-repeat;*/
     }
 </style>

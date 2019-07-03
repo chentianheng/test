@@ -32,7 +32,7 @@
         },
         methods:{
             toPerson(){
-                this.$router.push({path: '/personal'})
+                this.$router.push({path: '/vote'})
             }
         }
     }
