@@ -62,7 +62,7 @@
               let str = rankList[index].clothesJson;
               let encodeJSON = encodeURIComponent(str);
               let obj = JSON.parse(decodeURIComponent(encodeJSON));
-              this.works.push(obj)
+              that.works.push(obj)
             }
             // console.log(rankList)
             that.$store.commit("setRankList", rankList)
