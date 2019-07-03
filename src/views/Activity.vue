@@ -1,5 +1,7 @@
 <template>
     <div class="bgContainer">
+        <img style="position: absolute;height: 45px;width: auto;right: 10px;top: 10px;z-index: 10"
+             src="../assets/icon/ranking.png" @click="toRanking" alt=""/>
         <!--<div :style="{height : outHeight}"></div>-->
         <div class="imgContainer" :style="{height : innerHeight}" @click="toActivityTwo">
             <div class="card1 animated fadeInLeft"></div>
@@ -11,7 +13,6 @@
             <img class="content2 animated bounceIn" src="../assets/activity/2.png" alt="">
             <img class="content3 animated bounceIn" src="../assets/activity/3.png" alt="">
             <img class="content4 animated bounceIn" src="../assets/activity/4.png" alt="">
-
     </div>
 
 
@@ -30,6 +31,9 @@
         methods:{
             toActivityTwo(){
                 this.$router.push('/activitytwo')
+            },
+            toRanking(){
+                this.$router.push('/ranking')
             }
         }
     }

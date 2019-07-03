@@ -1,15 +1,15 @@
 <template>
   <div class="bgContainer">
-    <img class="subTitleImg" src="../../assets/icon/subTitleImg.png" alt="">
-    <!--<p class="subTitle">温馨提示：用户每人每天投票一次</p>-->
-    <div class="list">
+    <img class="subTitleImg animated fadeInLeftBig" src="../../assets/icon/subTitleImg.png" alt="">
+    <p class="subTitle animated fadeIn delay-1s">温馨提示：用户每人每天投票一次</p>
+    <div class="list animated bounceIn delay-1s">
       <Work
               v-for="( work,index ) in works"
               :key="index"
               :data="work"
       ></Work>
     </div>
-    <img class="footerBtn" src="../../assets/icon/detailBtn-0.png" @click="toAty" alt="">
+    <img class="footerBtn animated fadeIn delay-2s" src="../../assets/icon/detailBtn-0.png" @click="toAty" alt="">
     <!--我的作品-->
     <!--todo：根据缓存查到昵称，然后请求查看票数-->
     <!--<p class="name">我的票数：111111</p>-->
@@ -47,7 +47,7 @@
         }
       },
       rank() {
-        let number = 10;
+        let number = 40;
         const axios = require('axios')
         axios({
           method: 'get',
@@ -83,6 +83,8 @@
 
   .list {
     display: flex;
+    /*align-items: center;*/
+    justify-content: center;
     flex-wrap: wrap;
     overflow-y: auto;
     width: 90%;
@@ -115,7 +117,7 @@
 
   .subTitleImg {
     margin-top: 3rem;
-    width: 16rem;
+    width: 12rem;
     margin-bottom: 4px;
   }
 

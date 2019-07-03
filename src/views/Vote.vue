@@ -44,6 +44,11 @@
         <img class="footerBtn" src="../assets/icon/voteBtn2.png" @click="toVote" alt="">
         <img class="footerBtn" src="../assets/icon/detailBtn-0.png" @click="toAty" alt="">
     </div>
+
+        <!--toast消息-->
+        <div class="toast animated fadeIn" v-show="toastShow">
+            {{toastText}}
+        </div>
     </div>
 </template>
 
@@ -80,6 +85,8 @@
                 frontShow:true,
                 backShow:false,
                 user:{},
+                toastShow: false,
+                toastText: '',
             }
         },
         methods:{
@@ -92,11 +99,9 @@
             },
             toVote(){
                 const axios = require('axios');
+                let that = this;
                 let userID = this.user.id;
-
                 let openID = this.$store.state.user.openID;
-                console.log(userID)
-                console.log(openID)
                 axios({
                     method: 'post',
                     url:'/bmw/api/vote',
@@ -105,10 +110,23 @@
                         userID:userID
                     }
                 }).then(function (response) {
-                    console.log(response);
+                    // console.log(response);
+                    let result = response.data;
+                    let msg = result.msg;
+                    that.toast(msg);
+                    // console.log(msg);
+
                 }).catch(function (error) {
                     console.log(error);
                     });
+            },
+            toast (str) {
+                let v = this
+                v.toastText = str
+                v.toastShow = true
+                setTimeout(function(){
+                    v.toastShow = false
+                }, 1500)
             }
         }
     }
@@ -407,5 +425,28 @@
     .footerBtn {
         margin-top: 1rem;
         width: 10rem;
+    }
+
+    .toast {
+        position: fixed;
+        z-index: 2000;
+        left: 50%;
+        top:45%;
+        transition:all .5s;
+        -webkit-transform: translateX(-50%) translateY(-50%);
+        -moz-transform: translateX(-50%) translateY(-50%);
+        -ms-transform: translateX(-50%) translateY(-50%);
+        -o-transform: translateX(-50%) translateY(-50%);
+        transform: translateX(-50%) translateY(-50%);
+        text-align: center;
+        border-radius: 5px;
+        color:#FFF;
+        background: rgba(17, 17, 17, 0.7);
+        /*height: 45px;*/
+        /*line-height: 45px;*/
+        padding:   15px;
+        max-width: 150px;
+        font-size: 14px;
+        height: auto;
     }
 </style>

@@ -40,12 +40,7 @@
                 >{{ option }}</option>
             </select>
         </div>
-        <!--提交按钮-->
-        <!--todo:增加判断和弹窗-->
-        <!--clothes.name-->
-        <!--clothes.phone-->
-        <!--clothes.sex-->
-        <!--clothes.reason.selected-->
+
         <button class="blueButton animated fadeIn" @click="upload">提交并上传</button>
 
         <!--隐藏弹框-->
@@ -93,6 +88,11 @@
             <button class="voteBtn" @click="toInvitation">发布会详情</button>
         </div>
 
+        <!--toast消息-->
+        <div class="toast animated fadeIn" v-show="toastShow">
+            {{toastText}}
+        </div>
+        <!--end-->
     </div>
 </template>
 
@@ -104,23 +104,41 @@
                 clothes: {},
                 frontShow:true,
                 backShow:false,
+                toastShow: false,
+                toastText: '',
             }
         },
         created() {
             this.clothes = this.$store.state.clothes
             this.clothes.fourS.selected = "请选择经销商"
-            console.log(this.clothes)
         },
         methods:{
             upload(){
-                this.$store.commit("setClothes", this.clothes)
-                this.clothes.uploadSuccessful = !this.clothes.uploadSuccessful
-                const axios = require('axios');
-                axios({
-                    method: 'post',
-                    url:'/bmw/api/user/',
-                    data:this.clothes
-                })
+                // console.log(this.clothes.reason.selected)
+               if (this.clothes.reason.selected === null || this.clothes.reason.selected.length < 1){
+                   this.toast('请选择理由')
+               } else if (this.clothes.name === "") {
+                   this.toast('请填写姓名')
+               } else if (this.clothes.phone === "") {
+                   this.toast('请填写手机号')
+               } else if (this.clothes.fourS.selected === "请选择经销商"){
+                   this.toast('请选择经销商')
+               } else {
+                   this.$store.commit("setClothes", this.clothes)
+                   this.clothes.uploadSuccessful = !this.clothes.uploadSuccessful
+                   const axios = require('axios');
+                   axios({
+                       method: 'post',
+                       url:'/bmw/api/user/',
+                       data:this.clothes
+                   })
+               }
+                // if(this.clothes.reason.selected || this.clothes.name || this.clothes.phone || this.clothes.fourS.selected){
+
+
+                // }else {
+                //     this.toast('请完善资料')
+                // }
             },
             toInvitation(){
                 this.$router.push('/invitation')
@@ -129,6 +147,14 @@
                 this.frontShow =!this.frontShow;
                 this.backShow =!this.backShow;
             },
+            toast (str) {
+                let v = this
+                v.toastText = str
+                v.toastShow = true
+                setTimeout(function(){
+                    v.toastShow = false
+                }, 1500)
+            }
 
         }
     }
@@ -421,5 +447,26 @@
         width: 15rem;
         height: 25rem;
         background-repeat: no-repeat;
+    }
+
+    .toast {
+        position: fixed;
+        z-index: 2000;
+        left: 50%;
+        top:45%;
+        transition:all .5s;
+        -webkit-transform: translateX(-50%) translateY(-50%);
+        -moz-transform: translateX(-50%) translateY(-50%);
+        -ms-transform: translateX(-50%) translateY(-50%);
+        -o-transform: translateX(-50%) translateY(-50%);
+        transform: translateX(-50%) translateY(-50%);
+        text-align: center;
+        border-radius: 5px;
+        color:#FFF;
+        background: rgba(17, 17, 17, 0.7);
+        padding:   15px;
+        max-width: 150px;
+        font-size: 14px;
+        height: auto;
     }
 </style>
