@@ -28,7 +28,7 @@ router.beforeEach( async (to, from, next) => {
   let code =to.query.code;
   const axios = require('axios');
 
-  openID = "oHDTCwX3Ql7BkN5zeJQFFmlbHECY"
+
 
   if (openID){
     await axios.get('/bmw/api/user/' + openID)
