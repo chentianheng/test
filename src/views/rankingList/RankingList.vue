@@ -26,49 +26,45 @@
     components: {
       Work
     },
-    created() {
-      this.rank()
-    },
     data() {
       return {
-        //works数组是demo，rankList数据为正式数据
+        user: [],
         works: [],
-        rankList: [],
       }
+    },
+    created() {
+      this.init()
+      this.rank()
     },
     methods: {
       toAty() {
         this.$router.push('/activity')
       },
-      user() {
-        let self = this.$store.state.user
-        if (self) {
-          this.works.push(self)
+      init() {
+        this.user = this.$store.state.user
+        if (this.user) {
+          this.works.push(this.user)
         }
       },
       rank() {
         let number = 10;
-        let that = this
         const axios = require('axios')
         axios({
           method: 'get',
           url: '/bmw/api/user/rank?number=' + number,
           responseType: 'json'
-        }).then(function (response) {
+        }).then(response => {
           let result = response.data;
           if (result.status === 1) {
             let rankList = result.data;
             for (let index in rankList) {
-              let str = rankList[index].clothesJson;
-              let encodeJSON = encodeURIComponent(str);
-              let obj = JSON.parse(decodeURIComponent(encodeJSON));
-              that.works.push(obj)
+              let user = rankList[index]
+              if (!!this.user && user.openID !== this.user.openID) {
+                this.works.push(rankList[index]);
+              }
             }
-            // console.log(rankList)
-            that.$store.commit("setRankList", rankList)
           }
         });
-        this.rankList = this.$store.state.rankList;
       }
     }
   }
