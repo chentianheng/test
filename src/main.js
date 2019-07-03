@@ -25,7 +25,7 @@ router.beforeEach( async (to, from, next) => {
   const axios = require('axios');
   let user = store.state.user
 
-  if (user){
+  if (user && user.hasOwnProperty("openID")){
     if (to.name === "clothes") {
       // console.log(user.clothesJson)
       if (user.clothesJson) {
