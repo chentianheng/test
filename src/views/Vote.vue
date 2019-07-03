@@ -50,82 +50,36 @@
 <script>
     export default {
         name: "Vote",
+         created(){
+            // 1.从路由拿回openID
+            this.openID = this.$route.query.openID
+            // 2.对接接口，获取数据并储存
+            const axios = require('axios');
+             axios( {
+                method:'get',
+                url:'/bmw/api/user/' + this.openID,
+                responseType: 'json'
+            }).then(response => {
+                let result = response.data;
+                if (result.status === 1){
+                    this.user = result.data;
+                    // console.log(this.user)
+                    this.user.clothes = JSON.parse(decodeURIComponent(encodeURIComponent(this.user.clothesJson )))
+
+                } else {
+                    console.log(result.msg)
+                }
+            })
+
+            // console.log(this.user)
+            // console.log(this.user.clothes)
+        },
         data(){
             return{
-                //works数组是demo，rankList数据为正式数据
-                works:[{
-                    city: "广州",
-                    clothesJson: {
-                        front:{
-                            leftShow : true,
-                            rightShow : true,
-                            middleShow : true,
-                            frontLeftImgUrl:require("@/assets/icon/pic9.png"),
-                            frontRightImgUrl:require("@/assets/icon/pic1.png"),
-                            frontMiddleImgUrl:require("@/assets/icon/pic3.png"),
-                            textShow : false,
-                            text:{
-                                textMsg : "",
-                                fontSize : 12
-                            },
-                        },
-                        back:{
-                            backImgUrl:"",
-                            textShow : false,
-                            iconShow : true,
-                            text:{
-                                textMsg : "",
-                                fontSize : 12
-                            },
-                        },
-                        color:"White",
-                        reason:{
-                            options:["外观", "内饰", "操控", "品牌", "科技感", "动力"],
-                            selected:[],
-                        },
-                        name:"",
-                        sex:"lady",
-                        phone:"",
-                        fourS:{
-                            options:[
-                                "广州宝悦汽车贸易有限公司",
-                                "广东粤宝汽车销售服务有限公司",
-                                "广州宝悦汽车贸易有限公司第一分公司",
-                                "广州宝泽汽车销售服务有限公司",
-                                "广州粤之宝汽车销售服务有限公司",
-                                "广州宝泰行汽车销售服务有限公司",
-                                "广州市广德宝汽车销售服务有限公司",
-                                "广州市昌宝汽车销售服务有限公司",
-                                "广州宝升行汽车销售服务有限公司",
-                                "广州君宝汽车销售服务有限公司",
-                                "广东南方宝诚汽车销售服务有限公司"],
-                            selected:"",
-                        },
-                        uploadSuccessful:false
-
-                    },
-                    country: "中国",
-                    createdTime: 1561712169000,
-                    groupId: 0,
-                    headImgUrl: "http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTI8xh7PP4kT4Ud9icROGjFeUduAnAJwCcaP0jmt95uNwKoqqY53qyAXYCiaM1fal25DYDrWxujPAzjQ/132",
-                    id: 1,
-                    language: "zh_CN",
-                    nickname: "Rico",
-                    openId: "oHDTCwe1bF3_w4LIu4cvqM-16J7o",
-                    province: "广东",
-                    qrScene: "",
-                    qrSceneStr: "",
-                    remark: "",
-                    sex: 1,
-                    sexDesc: "男",
-                    subscribeScene: "",
-                    unionId: "",
-                    vote: 0
-                },
-                ],
-                rankList:[],
+                openID:"",
                 frontShow:true,
                 backShow:false,
+                user:{},
             }
         },
         methods:{

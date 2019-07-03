@@ -53,7 +53,12 @@
     },
     methods: {
       toPerson() {
-        this.$router.push({path: '/vote'})
+        this.$router.push({
+          path: '/vote',
+          query:{
+            openID : this.data.openID
+          }
+        })
       }
     }
   }
