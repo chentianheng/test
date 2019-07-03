@@ -7,9 +7,9 @@
     <img style="position: absolute;height: 45px;width: auto;left: 10px;top: 10px;z-index: 10"
          src="./assets/icon/music.png" @click="startPlayOrPause" alt=""/>
 
-    <keep-alive>
+
       <router-view :style="{height : myHeight}"/>
-    </keep-alive>
+
 
     <div>
       <audio ref="audio" id="music_mp3_0" class="dn" loop="loop"

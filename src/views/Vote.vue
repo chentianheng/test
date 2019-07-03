@@ -11,37 +11,37 @@
                      alt=""/>
 
                 <div class="clothesImg animated fadeIn">
-                    <!--todo:字符串拼接：works.clothesJson.color就会报错，查查是不是长度问题还是其他问题-->
-                    <!--<div :class="`front${works.clothesJson.color}`"></div>-->
-                    <!--&lt;!&ndash;左方的icon&ndash;&gt;-->
-                    <!--<i v-show="works.clothesJson.front.leftShow" class="position1"><img :src="works.clothesJson.front.frontLeftImgUrl" height="30" alt=""/></i>-->
-                    <!--&lt;!&ndash;右方的icon&ndash;&gt;-->
-                    <!--<i v-show="works.clothesJson.front.rightShow" class="position2"><img :src="works.clothesJson.front.frontRightImgUrl" height="30" alt=""/></i>-->
-                    <!--&lt;!&ndash;正方的icon&ndash;&gt;-->
-                    <!--<i v-show="works.clothesJson.front.middleShow" class="position3"><img :src="works.clothesJson.front.frontMiddleImgUrl" height="30" alt=""/></i>-->
-                    <!--<p class="text" v-show="works.clothesJson.front.textShow" :style="{ fontSize: works.clothesJson.front.text.fontSize + 'px' }">{{ works.clothesJson.front.text.textMsg }}</p>-->
+
+                    <div :class="`front${this.user.clothes.color}`"></div>
+                    <!--左方的icon-->
+                    <i v-show="this.user.clothes.front.leftShow" class="position1"><img :src="this.user.clothes.front.frontLeftImgUrl" height="30" alt=""/></i>
+                    <!--右方的icon-->
+                    <i v-show="this.user.clothes.front.rightShow" class="position2"><img :src="this.user.clothes.front.frontRightImgUrl" height="30" alt=""/></i>
+                    <!--正方的icon-->
+                    <i v-show="this.user.clothes.front.middleShow" class="position3"><img :src="this.user.clothes.front.frontMiddleImgUrl" height="30" alt=""/></i>
+                    <p class="text" v-show="this.user.clothes.front.textShow" :style="{ fontSize: this.user.clothes.front.text.fontSize + 'px' }">{{ this.user.clothes.front.text.textMsg }}</p>
                 </div>
             </div>
         </div>
-        <!--&lt;!&ndash;Back衣服视图&ndash;&gt;-->
-        <!--<div class="" v-show="backShow">-->
-            <!--<div class="clothesImgBoarder">-->
-                <!--&lt;!&ndash;衣服编辑框+颜色位置&ndash;&gt;-->
-                <!--<img style="width: 30px;position: relative;left: 6rem;"-->
-                     <!--src="../assets/icon/changeIcon.png"-->
-                     <!--@click="changeClothes"-->
-                     <!--alt=""/>-->
+        <!--Back衣服视图-->
+        <div class="" v-show="backShow">
+            <div class="clothesImgBoarder">
+                <!--衣服编辑框+颜色位置-->
+                <img style="width: 30px;position: relative;left: 6rem;"
+                     src="../assets/icon/changeIcon.png"
+                     @click="changeClothes"
+                     alt=""/>
 
-                <!--<div class="clothesImg animated fadeIn">-->
-                    <!--<div :class="`back${works.clothesJson.color}`"></div>-->
-                    <!--<i v-show="works.clothesJson.back.iconShow" class="position3"><img :src="works.clothesJson.back.backImgUrl" height="30" alt=""/></i>-->
-                    <!--&lt;!&ndash;<p class="text" v-show="works.clothesJson.back.textShow" :style="{ fontSize: works.clothesJson.back.text.fontSize + 'px' }">{{ clothes.back.text.textMsg }}</p>&ndash;&gt;-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
+                <div class="clothesImg animated fadeIn">
+                    <div :class="`back${this.user.clothes.color}`"></div>
+                    <i v-show="this.user.clothes.back.iconShow" class="position3"><img :src="this.user.clothes.back.backImgUrl" height="30" alt=""/></i>
+                    <!--<p class="text" v-show="works.clothesJson.back.textShow" :style="{ fontSize: works.clothesJson.back.text.fontSize + 'px' }">{{ clothes.back.text.textMsg }}</p>-->
+                </div>
+            </div>
+        </div>
         <!--<p class="pTitle">设计上传完成</p>-->
         <!--<p class="content">*了解更多活动详情，请咨询宝马当地授权经销商。</p>-->
-        <img class="footerBtn" src="../assets/icon/voteBtn2.png" alt="">
+        <img class="footerBtn" src="../assets/icon/voteBtn2.png" @click="toVote" alt="">
         <img class="footerBtn" src="../assets/icon/detailBtn-0.png" @click="toAty" alt="">
     </div>
     </div>
@@ -65,7 +65,7 @@
                     this.user = result.data;
                     // console.log(this.user)
                     this.user.clothes = JSON.parse(decodeURIComponent(encodeURIComponent(this.user.clothesJson )))
-
+                    // console.log(this.user)
                 } else {
                     console.log(result.msg)
                 }
@@ -89,6 +89,26 @@
             },
             toAty(){
                 this.$router.push('/activity')
+            },
+            toVote(){
+                const axios = require('axios');
+                let userID = this.user.id;
+
+                let openID = this.$store.state.user.openID;
+                console.log(userID)
+                console.log(openID)
+                axios({
+                    method: 'post',
+                    url:'/bmw/api/vote',
+                    params: {
+                        openID:openID,
+                        userID:userID
+                    }
+                }).then(function (response) {
+                    console.log(response);
+                }).catch(function (error) {
+                    console.log(error);
+                    });
             }
         }
     }

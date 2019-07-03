@@ -28,7 +28,7 @@ router.beforeEach( async (to, from, next) => {
   let code =to.query.code;
   const axios = require('axios');
 
-
+  openID = "oHDTCwX3Ql7BkN5zeJQFFmlbHECY"
 
   if (openID){
     await axios.get('/bmw/api/user/' + openID)
@@ -39,7 +39,7 @@ router.beforeEach( async (to, from, next) => {
                 store.commit("setUser", user)
                 VueCookie.set("openID", user.openID)
                 if (from.name === "home") {
-                    console.log(user.clothesJson)
+                    // console.log(user.clothesJson)
                     if (user.clothesJson) {
                         next({ path: '/ranking' })
                     }else {
