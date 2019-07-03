@@ -3,18 +3,26 @@
         <div class="clothesWork">
             <div class="clothesImgBoarder">
                 <div class="clothesImg">
-                    <div :class="`front${data.clothes.color}`"></div>
+                    <div :class="`front${data.clothesJson.color}`"></div>
                     <!--衣服上的文字-->
-                    <p class="text" v-show="data.clothes.front.textShow">{{ data.clothes.front.text.textMsg }}</p>
-                    <!--图标的位置，写n个样式地址-->
-                    <i :class="`position${data.clothes.front.position}`" v-show="data.clothes.front.iconShow"><img :src="data.clothes.front.imgUrl" alt=""></i>
+                    <p class="text"
+                       v-show="data.clothesJson.front.textShow"
+                       :style="{fontSize: data.clothesJson.front.text.fontSize-6 + 'px'}"
+                       v-html="data.clothesJson.front.text.textMsg"
+                    ></p>
+                    <!--左方的icon-->
+                    <i v-show="data.clothesJson.front.leftShow" class="position2"><img :src="data.clothesJson.front.frontLeftImgUrl" height="30" alt=""/></i>
+                    <!--右方的icon-->
+                    <i v-show="data.clothesJson.front.rightShow" class="position3"><img :src="data.clothesJson.front.frontRightImgUrl" height="30" alt=""/></i>
+                    <!--正方的icon-->
+                    <i v-show="data.clothesJson.front.middleShow" class="position1"><img :src="data.clothesJson.front.frontMiddleImgUrl" height="30" alt=""/></i>
                 </div>
             </div>
-            <p class="name">{{ data.user.name }}</p>
-            <div class="vote">票数：{{ data.user.vote }}</div>
+            <p class="name">{{ data.nickname }}</p>
+            <div class="vote">票数：{{ data.vote }}</div>
             <!--<div class="vote">排名：{{ user.rank }}</div>-->
         </div>
-        <img class="headImg" :src="data.user.headImgURL" alt="">
+        <img class="headImg" :src="data.headImgUrl" alt="">
     </div>
 </template>
 
@@ -57,11 +65,12 @@
         width: 8rem;
         height: 8rem;
         overflow-y: hidden;
-        border:solid 2px #193b83;
-        background-color:rgba(25,59,131,0.2);
+        border:solid 2px white;
+        background-color:rgba(133,133,133,0.4);
     }
 
     .clothesImg {
+        position: relative;
         margin-top: 1rem;
         display: flex;
         flex-direction: column;
@@ -81,14 +90,14 @@
 
     .vote {
         width: 6rem;
-        border:solid 1px #193b83;
+        border:solid 1px white;
         background-color:rgba(25,59,131,0.1);
         margin-top: 6px;
         color: white;
         font-weight: 200;
         font-size: 12px;
-        padding-top: 2px;
-        padding-bottom: 2px;
+        /*padding-top: 2px;*/
+        /*padding-bottom: 2px;*/
     }
 
     .headImg {
@@ -151,8 +160,9 @@
     .position1 {
         height: auto;
         width: 2rem;
-        position: relative;
-        bottom: 4rem;
+        position: absolute;
+        bottom: 6.8rem;
+
     }
 
     .position1 img{
@@ -163,9 +173,9 @@
     .position2 {
         height: auto;
         width: 2rem;
-        position: relative;
-        bottom: 4rem;
-        right: 0.8rem;
+        position: absolute;
+        bottom: 8rem;
+        left: 2rem;
     }
 
     .position2 img{
@@ -176,9 +186,9 @@
     .position3 {
         height: auto;
         width: 2rem;
-        position: relative;
-        bottom: 4rem;
-        left: 0.6rem;
+        position: absolute;
+        bottom: 8rem;
+        right: 2.5rem;
     }
 
     .position3 img{

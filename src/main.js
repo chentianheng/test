@@ -51,7 +51,7 @@ router.beforeEach((to, from, next) => {
         });
   } else {
     //  静态授权
-    if(to.name === "personal"){
+    if(to.name === "vote"){
       axios.get('/bmw/api/mp/oauth2/base?code=' + code)
           .then(function (response) {
               let result = response.data

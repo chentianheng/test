@@ -1,8 +1,7 @@
 <template>
     <div class="bgContainer">
-        <p class="title">#一直潮一直秀——THE3联名T恤设计大赛#</p>
         <img class="subTitleImg" src="../../assets/icon/subTitleImg.png" alt="">
-        <p class="subTitle">温馨提示：用户每人每天投票一次</p>
+        <!--<p class="subTitle">温馨提示：用户每人每天投票一次</p>-->
         <div class="list">
             <Work
                 v-for="( work,index ) in works"
@@ -10,6 +9,7 @@
                 :data="work"
             ></Work>
         </div>
+        <img class="footerBtn" src="../../assets/icon/detailBtn-0.png" @click="toAty" alt="">
         <!--我的作品-->
         <!--todo：根据缓存查到昵称，然后请求查看票数-->
         <!--<p class="name">我的票数：111111</p>-->
@@ -25,161 +25,114 @@
         components: {
             Work
         },
+        created(){
+            let number = 10;
+            let that  = this
+            const axios = require('axios')
+            axios({
+                method:'get',
+                url:'/bmw/api/user/rank?number='+ number,
+                responseType:'json'
+            })
+                .then(function(response){
+                  let result = response.data;
+
+                  if(result.status === 1){
+                      let rankList = result.data;
+                      for(let index in rankList){
+                          let str = rankList[index].clothesJson;
+                          encodeURIComponent(str);
+                          let obj = JSON.parse(str);
+                          decodeURIComponent(str);
+                          rankList[index].clothesJson =obj;
+                          // console.log(rankList[index].clothesJson)
+                      }
+                      // console.log(rankList)
+                      that.$store.commit("setRankList",rankList)
+                  }
+                });
+
+            this.rankList = this.$store.state.rankList;
+            // console.log(this.rankList)
+        },
         data(){
             return{
-                works:[
-                    { clothes:{
-                            front:{
-                                position:1,
-                                imgUrl:require("@/assets/icon/pic1.png"),
-                                textShow : false,
-                                iconShow : true,
-                                text:{
-                                    textMsg : "",
-                                    fontSize : 12
-                                },
+                //works数组是demo，rankList数据为正式数据
+                works:[{
+                    city: "广州",
+                    clothesJson: {
+                        front:{
+                            leftShow : true,
+                            rightShow : true,
+                            middleShow : true,
+                            frontLeftImgUrl:require("@/assets/icon/pic9.png"),
+                            frontRightImgUrl:require("@/assets/icon/pic1.png"),
+                            frontMiddleImgUrl:require("@/assets/icon/pic3.png"),
+                            textShow : false,
+                            text:{
+                                textMsg : "",
+                                fontSize : 12
                             },
-                            back:{
-                                position:3,
-                                imgUrl:require("@/assets/icon/pic2.png"),
-                                textShow : false,
-                                iconShow : true,
-                                text:{
-                                    textMsg : "",
-                                    fontSize : 12
-                                },
-                            },
-                            color:"Blue",
                         },
-                        user:{
-                            name:"user111",
-                            headImgURL:require("@/assets/icon/icon15.png"),
-                            vote:10000,
-                            rank:1
-                        }
-                    },
-                    { clothes:{
-                            front:{
-                                position:1,
-                                imgUrl:require("@/assets/icon/pic6.png"),
-                                textShow : false,
-                                iconShow : true,
-                                text:{
-                                    textMsg : "",
-                                    fontSize : 12
-                                },
+                        back:{
+                            backImgUrl:"",
+                            textShow : false,
+                            iconShow : true,
+                            text:{
+                                textMsg : "",
+                                fontSize : 12
                             },
-                            back:{
-                                position:3,
-                                imgUrl:require("@/assets/icon/pic8.png"),
-                                textShow : false,
-                                iconShow : true,
-                                text:{
-                                    textMsg : "",
-                                    fontSize : 12
-                                },
-                            },
-                            color:"Blue",
                         },
-                        user:{
-                            name:"user111",
-                            headImgURL:require("@/assets/icon/icon12.png"),
-                            vote:10000,
-                            rank:1
-                        }
-                    },
-                    { clothes:{
-                            front:{
-                                position:1,
-                                imgUrl:require("@/assets/icon/pic9.png"),
-                                textShow : false,
-                                iconShow : true,
-                                text:{
-                                    textMsg : "",
-                                    fontSize : 12
-                                },
-                            },
-                            back:{
-                                position:3,
-                                imgUrl:require("@/assets/icon/pic2.png"),
-                                textShow : true,
-                                iconShow : false,
-                                text:{
-                                    textMsg : "",
-                                    fontSize : 12
-                                },
-                            },
-                            color:"Grey",
+                        color:"White",
+                        reason:{
+                            options:["外观", "内饰", "操控", "品牌", "科技感", "动力"],
+                            selected:[],
                         },
-                        user:{
-                            name:"user111",
-                            headImgURL:require("@/assets/icon/icon15.png"),
-                            vote:10000,
-                            rank:1
-                        }
-                    },
-                    { clothes:{
-                            front:{
-                                position:1,
-                                imgUrl:require("@/assets/icon/pic1.png"),
-                                textShow : false,
-                                iconShow : true,
-                                text:{
-                                    textMsg : "",
-                                    fontSize : 12
-                                },
-                            },
-                            back:{
-                                position:3,
-                                imgUrl:require("@/assets/icon/pic1.png"),
-                                textShow : false,
-                                iconShow : true,
-                                text:{
-                                    textMsg : "",
-                                    fontSize : 12
-                                },
-                            },
-                            color:"Blue",
+                        name:"",
+                        sex:"lady",
+                        phone:"",
+                        fourS:{
+                            options:[
+                                "广州宝悦汽车贸易有限公司",
+                                "广东粤宝汽车销售服务有限公司",
+                                "广州宝悦汽车贸易有限公司第一分公司",
+                                "广州宝泽汽车销售服务有限公司",
+                                "广州粤之宝汽车销售服务有限公司",
+                                "广州宝泰行汽车销售服务有限公司",
+                                "广州市广德宝汽车销售服务有限公司",
+                                "广州市昌宝汽车销售服务有限公司",
+                                "广州宝升行汽车销售服务有限公司",
+                                "广州君宝汽车销售服务有限公司",
+                                "广东南方宝诚汽车销售服务有限公司"],
+                            selected:"",
                         },
-                        user:{
-                            name:"user111",
-                            headImgURL:require("@/assets/icon/icon15.png"),
-                            vote:10000,
-                            rank:1
-                        }
-                    },
-                    { clothes:{
-                            front:{
-                                position:1,
-                                imgUrl:require("@/assets/icon/pic1.png"),
-                                textShow : false,
-                                iconShow : true,
-                                text:{
-                                    textMsg : "",
-                                    fontSize : 12
-                                },
-                            },
-                            back:{
-                                position:3,
-                                imgUrl:require("@/assets/icon/pic1.png"),
-                                textShow : false,
-                                iconShow : true,
-                                text:{
-                                    textMsg : "",
-                                    fontSize : 12
-                                },
-                            },
-                            color:"Blue",
-                        },
-                        user:{
-                            name:"user111",
-                            headImgURL:require("@/assets/icon/icon15.png"),
-                            vote:10000,
-                            rank:1
-                        }
-                    }
-                    ],
+                        uploadSuccessful:false
 
+                    },
+                    country: "中国",
+                    createdTime: 1561712169000,
+                    groupId: 0,
+                    headImgUrl: "http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTI8xh7PP4kT4Ud9icROGjFeUduAnAJwCcaP0jmt95uNwKoqqY53qyAXYCiaM1fal25DYDrWxujPAzjQ/132",
+                    id: 1,
+                    language: "zh_CN",
+                    nickname: "Rico",
+                    openId: "oHDTCwe1bF3_w4LIu4cvqM-16J7o",
+                    province: "广东",
+                    qrScene: "",
+                    qrSceneStr: "",
+                    remark: "",
+                    sex: 1,
+                    sexDesc: "男",
+                    subscribeScene: "",
+                    unionId: "",
+                    vote: 0
+                },
+                   ],
+                rankList:[],
+            }
+        },methods:{
+            toAty(){
+                this.$router.push('/activity')
             }
         }
     }
@@ -190,7 +143,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        background-image: url("../../assets/background.png");
+        background-image: url("../../assets/background-2.jpg");
         background-size:  100%  auto;
         background-repeat: no-repeat;
         background-color: black;
@@ -200,11 +153,11 @@
         display: flex;
         flex-wrap:wrap;
         overflow-y: auto;
-        width: 21rem;
+        width: 90%;
         height: 25rem;
         margin-top: 1rem;
         margin-bottom: 1rem;
-        background-color: rgba(255,255,255,0.1);
+        /*background-color: rgba(255,255,255,0.1);*/
     }
 
     /*滚动条样式*/
@@ -216,7 +169,7 @@
     .list::-webkit-scrollbar-thumb{
         border-radius: 10px;
         /*background-color: #1a3b88;*/
-        background-color: rgba(28,105,212,0.8);
+        background-color: white;
     }
 
     .title {
@@ -228,13 +181,18 @@
     }
 
     .subTitleImg {
-        width: 12rem;
+        margin-top: 3rem;
+        width: 16rem;
         margin-bottom: 4px;
     }
 
     .subTitle {
         color: rgba(255,255,255,0.7);
         font-size: 11px;
+    }
+
+    .footerBtn {
+        width: 10rem;
     }
 
     .name {

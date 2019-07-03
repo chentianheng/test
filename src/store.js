@@ -53,7 +53,8 @@ export default new Vuex.Store({
        },
        uploadSuccessful:false
      },
-    user: {}
+    user: {},
+    rankList:[],
   },
   mutations: {
     setClothes(state, clothes) {
@@ -61,6 +62,9 @@ export default new Vuex.Store({
     },
     setUser(state, user) {
       state.user = user
+    },
+    setRankList(state,rankList)  {
+        state.rankList = rankList
     }
   },
   actions: {

@@ -1,27 +1,28 @@
 <template>
     <div class="bgContainer">
-    <!--<div class="blackContainer animated zoomIn" >-->
-        <!--&lt;!&ndash;front衣服视图&ndash;&gt;-->
-        <!--<div class="" v-show="frontShow">-->
-            <!--<div class="clothesImgBoarder">-->
-                <!--&lt;!&ndash;衣服编辑框+颜色位置&ndash;&gt;-->
-                <!--<img style="width: 30px;position: relative;left: 6rem;"-->
-                     <!--src="../assets/icon/changeIcon.png"-->
-                     <!--@click="changeClothes"-->
-                     <!--alt=""/>-->
+         <div class="blackContainer animated zoomIn" >
+        <!--front衣服视图-->
+        <div class="" v-show="frontShow">
+            <div class="clothesImgBoarder">
+                <!--衣服编辑框+颜色位置-->
+                <img style="width: 30px;position: relative;left: 6rem;"
+                     src="../assets/icon/changeIcon.png"
+                     @click="changeClothes"
+                     alt=""/>
 
-                <!--<div class="clothesImg animated fadeIn">-->
-                    <!--<div :class="`front${clothes.color}`"></div>-->
+                <div class="clothesImg animated fadeIn">
+                    <!--todo:字符串拼接：works.clothesJson.color就会报错，查查是不是长度问题还是其他问题-->
+                    <!--<div :class="`front${works.clothesJson.color}`"></div>-->
                     <!--&lt;!&ndash;左方的icon&ndash;&gt;-->
-                    <!--<i v-show="clothes.front.leftShow" class="position1"><img :src="clothes.front.frontLeftImgUrl" height="30" alt=""/></i>-->
+                    <!--<i v-show="works.clothesJson.front.leftShow" class="position1"><img :src="works.clothesJson.front.frontLeftImgUrl" height="30" alt=""/></i>-->
                     <!--&lt;!&ndash;右方的icon&ndash;&gt;-->
-                    <!--<i v-show="clothes.front.rightShow" class="position2"><img :src="clothes.front.frontRightImgUrl" height="30" alt=""/></i>-->
+                    <!--<i v-show="works.clothesJson.front.rightShow" class="position2"><img :src="works.clothesJson.front.frontRightImgUrl" height="30" alt=""/></i>-->
                     <!--&lt;!&ndash;正方的icon&ndash;&gt;-->
-                    <!--<i v-show="clothes.front.middleShow" class="position3"><img :src="clothes.front.frontMiddleImgUrl" height="30" alt=""/></i>-->
-                    <!--<p class="text" v-show="clothes.front.textShow" :style="{ fontSize: clothes.front.text.fontSize + 'px' }">{{ clothes.front.text.textMsg }}</p>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
+                    <!--<i v-show="works.clothesJson.front.middleShow" class="position3"><img :src="works.clothesJson.front.frontMiddleImgUrl" height="30" alt=""/></i>-->
+                    <!--<p class="text" v-show="works.clothesJson.front.textShow" :style="{ fontSize: works.clothesJson.front.text.fontSize + 'px' }">{{ works.clothesJson.front.text.textMsg }}</p>-->
+                </div>
+            </div>
+        </div>
         <!--&lt;!&ndash;Back衣服视图&ndash;&gt;-->
         <!--<div class="" v-show="backShow">-->
             <!--<div class="clothesImgBoarder">-->
@@ -32,28 +33,116 @@
                      <!--alt=""/>-->
 
                 <!--<div class="clothesImg animated fadeIn">-->
-                    <!--<div :class="`back${clothes.color}`"></div>-->
-                    <!--<i v-show="clothes.back.iconShow" class="position3"><img :src="clothes.back.backImgUrl" height="30" alt=""/></i>-->
-                    <!--<p class="text" v-show="clothes.back.textShow" :style="{ fontSize: clothes.back.text.fontSize + 'px' }">{{ clothes.back.text.textMsg }}</p>-->
+                    <!--<div :class="`back${works.clothesJson.color}`"></div>-->
+                    <!--<i v-show="works.clothesJson.back.iconShow" class="position3"><img :src="works.clothesJson.back.backImgUrl" height="30" alt=""/></i>-->
+                    <!--&lt;!&ndash;<p class="text" v-show="works.clothesJson.back.textShow" :style="{ fontSize: works.clothesJson.back.text.fontSize + 'px' }">{{ clothes.back.text.textMsg }}</p>&ndash;&gt;-->
                 <!--</div>-->
             <!--</div>-->
         <!--</div>-->
         <!--<p class="pTitle">设计上传完成</p>-->
-        <!--&lt;!&ndash;<p class="content">*了解更多活动详情，请咨询宝马当地授权经销商。</p>&ndash;&gt;-->
-        <!--<button class="voteBtn">分享拉票</button>-->
-        <!--<button class="voteBtn" @click="toInvitation">发布会详情</button>-->
-    <!--</div>-->
+        <!--<p class="content">*了解更多活动详情，请咨询宝马当地授权经销商。</p>-->
+        <img class="footerBtn" src="../assets/icon/voteBtn2.png" alt="">
+        <img class="footerBtn" src="../assets/icon/detailBtn-0.png" @click="toAty" alt="">
+    </div>
     </div>
 </template>
 
 <script>
     export default {
-        name: "Vote"
+        name: "Vote",
+        data(){
+            return{
+                //works数组是demo，rankList数据为正式数据
+                works:[{
+                    city: "广州",
+                    clothesJson: {
+                        front:{
+                            leftShow : true,
+                            rightShow : true,
+                            middleShow : true,
+                            frontLeftImgUrl:require("@/assets/icon/pic9.png"),
+                            frontRightImgUrl:require("@/assets/icon/pic1.png"),
+                            frontMiddleImgUrl:require("@/assets/icon/pic3.png"),
+                            textShow : false,
+                            text:{
+                                textMsg : "",
+                                fontSize : 12
+                            },
+                        },
+                        back:{
+                            backImgUrl:"",
+                            textShow : false,
+                            iconShow : true,
+                            text:{
+                                textMsg : "",
+                                fontSize : 12
+                            },
+                        },
+                        color:"White",
+                        reason:{
+                            options:["外观", "内饰", "操控", "品牌", "科技感", "动力"],
+                            selected:[],
+                        },
+                        name:"",
+                        sex:"lady",
+                        phone:"",
+                        fourS:{
+                            options:[
+                                "广州宝悦汽车贸易有限公司",
+                                "广东粤宝汽车销售服务有限公司",
+                                "广州宝悦汽车贸易有限公司第一分公司",
+                                "广州宝泽汽车销售服务有限公司",
+                                "广州粤之宝汽车销售服务有限公司",
+                                "广州宝泰行汽车销售服务有限公司",
+                                "广州市广德宝汽车销售服务有限公司",
+                                "广州市昌宝汽车销售服务有限公司",
+                                "广州宝升行汽车销售服务有限公司",
+                                "广州君宝汽车销售服务有限公司",
+                                "广东南方宝诚汽车销售服务有限公司"],
+                            selected:"",
+                        },
+                        uploadSuccessful:false
+
+                    },
+                    country: "中国",
+                    createdTime: 1561712169000,
+                    groupId: 0,
+                    headImgUrl: "http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTI8xh7PP4kT4Ud9icROGjFeUduAnAJwCcaP0jmt95uNwKoqqY53qyAXYCiaM1fal25DYDrWxujPAzjQ/132",
+                    id: 1,
+                    language: "zh_CN",
+                    nickname: "Rico",
+                    openId: "oHDTCwe1bF3_w4LIu4cvqM-16J7o",
+                    province: "广东",
+                    qrScene: "",
+                    qrSceneStr: "",
+                    remark: "",
+                    sex: 1,
+                    sexDesc: "男",
+                    subscribeScene: "",
+                    unionId: "",
+                    vote: 0
+                },
+                ],
+                rankList:[],
+                frontShow:true,
+                backShow:false,
+            }
+        },
+        methods:{
+            changeClothes(){
+                this.frontShow =!this.frontShow;
+                this.backShow =!this.backShow;
+            },
+            toAty(){
+                this.$router.push('/activity')
+            }
+        }
     }
 </script>
 
 <style scoped>
     .bgContainer {
+        position: relative;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -339,5 +428,10 @@
         width: 15rem;
         height: 25rem;
         background-repeat: no-repeat;
+    }
+
+    .footerBtn {
+        margin-top: 1rem;
+        width: 10rem;
     }
 </style>
