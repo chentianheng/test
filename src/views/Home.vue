@@ -1,5 +1,7 @@
 <template>
     <div class="bgContainer">
+        <!--点击提示-->
+        <img class="tips animated bounceIn delay-5s infinite " src="../assets/icon/click.png"  alt="" @click="toClothes">
         <img class="title animated fadeInUp" src="../assets/icon/homeTitle.png" alt="">
         <img class="clothes animated flipInX" src="../assets/clothes/frontWhite.png" alt="">
         <div class="contents animated bounceIn  " @click="toClothes">
@@ -170,5 +172,14 @@
         /*background-image: url("../assets/rules/background2.png");*/
         /*background-size: auto 100%;*/
         /*background-repeat: no-repeat;*/
+    }
+
+    .tips{
+        position: absolute;
+        height: 30px;
+        width: auto;
+        right: 45%;
+        top: 45%;
+        z-index: 1000
     }
 </style>

@@ -1,5 +1,7 @@
 <template>
-    <div class="bgContainer">
+    <div class="bgContainer" >
+        <!--点击提示-->
+        <img class="tips animated bounceIn delay-3s infinite " src="../assets/icon/click.png"  @click="toRanking" alt="" >
          <div class="blackContainer animated zoomIn" >
         <!--front衣服视图-->
         <div class="" v-show="frontShow">
@@ -93,6 +95,9 @@
             changeClothes(){
                 this.frontShow =!this.frontShow;
                 this.backShow =!this.backShow;
+            },
+            toRanking(){
+              this.$router.push('/ranking')
             },
             toAty(){
                 this.$router.push('/activity')
@@ -472,5 +477,14 @@
         max-width: 150px;
         font-size: 14px;
         height: auto;
+    }
+
+    .tips{
+        position: absolute;
+        height: 50px;
+        width: auto;
+        right: 20%;
+        top: 80%;
+        z-index: 1000
     }
 </style>

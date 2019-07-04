@@ -228,12 +228,6 @@
                     },{
                         iconUrl:require("@/assets/icon/icon26.png"),
                         imgUrl:require("@/assets/icon/pic26.png"),
-                    },{
-                        iconUrl:require("@/assets/icon/icon27.png"),
-                        imgUrl:require("@/assets/icon/pic27.png"),
-                    },{
-                        iconUrl:require("@/assets/icon/icon28.png"),
-                        imgUrl:require("@/assets/icon/pic28.png"),
                     }],
                 frontLeftImgUrl:"",
                 frontRightImgUrl:"",
@@ -718,7 +712,7 @@
 
     .iconContainer {
         display: flex;
-        width: 140rem;
+        width: 130rem;
         height: 5rem;
     }
 

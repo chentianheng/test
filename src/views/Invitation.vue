@@ -1,5 +1,7 @@
 <template>
     <div class="bgContainer animated fadeInUp" @click="toActivity">
+        <!--点击提示-->
+        <img class="tips animated bounceIn delay-3s infinite " src="../assets/icon/click.png"  alt="" >
         <img style="position: absolute;height: 45px;width: auto;right: 10px;top: 10px;z-index: 10"
              src="../assets/icon/ranking.png" @click="toRanking" alt=""/>
         <img class="design" src="../assets/design.png" alt="">
@@ -85,5 +87,14 @@
         margin-top: 4px;
         text-align: left;
         font-weight: 600;
+    }
+
+    .tips{
+        position: absolute;
+        height: 30px;
+        width: auto;
+        right: 45%;
+        top: 45%;
+        z-index: 1000
     }
 </style>

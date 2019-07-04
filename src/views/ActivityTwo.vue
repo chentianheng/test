@@ -1,5 +1,7 @@
 <template>
     <div class="bgContainer">
+        <!--点击提示-->
+        <img class="tips animated bounceIn delay-3s infinite " src="../assets/icon/click.png"  @click="toRanking" alt="" >
         <img style="position: absolute;height: 45px;width: auto;right: 10px;top: 10px;z-index: 10"
              src="../assets/icon/ranking.png" @click="toRanking" alt=""/>
         <!--<div :style="{height : outHeight}"></div>-->
@@ -126,5 +128,14 @@
         left: 5%;
         animation-delay: 1500ms;
         overflow-y: hidden;
+    }
+
+    .tips{
+        position: absolute;
+        height: 30px;
+        width: auto;
+        right: 10px;
+        top: 30px;
+        z-index: 1000
     }
 </style>
