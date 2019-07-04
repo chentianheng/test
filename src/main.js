@@ -30,6 +30,7 @@ router.beforeEach( async (to, from, next) => {
 
   if (!store.state.url) {
     store.commit("setUrl", removeParam("isappinstalled", removeParam("from", location.href.split('#')[0])))
+    console.log("URL is: " + store.state.url)
   }
 
   if (!openID && !code) {
