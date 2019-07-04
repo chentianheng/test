@@ -28,12 +28,18 @@ router.beforeEach( async (to, from, next) => {
   let voteOpenID = to.query.openID;
   let user = store.state.user
 
-  if (!store.state.url) {
-    let url = location.href.split('#')[0]
-    if (url.indexOf("from") > -1 || url.indexOf("isappinstalled") > -1) {
-      window.location.href = removeParam("isappinstalled", removeParam("from", location.href.split('#')[0]))
-    } else {
-      store.commit("setUrl", removeParam("isappinstalled", removeParam("from", location.href.split('#')[0])));
+  let ua = navigator.userAgent.toLowerCase();
+  let isAndroid = ua.indexOf('Android') > -1 || ua.indexOf('Adr') > -1;
+  if (isAndroid) {
+    store.commit("setUrl", location.href.split('#')[0]);
+  } else {
+    if (!store.state.url) {
+      let url = location.href.split('#')[0];
+      if (url.indexOf("from") > -1 || url.indexOf("isappinstalled") > -1) {
+        window.location.href = removeParam("isappinstalled", removeParam("from", location.href.split('#')[0]))
+      } else {
+        store.commit("setUrl", location.href.split('#')[0]);
+      }
     }
   }
 
