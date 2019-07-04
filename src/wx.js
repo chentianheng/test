@@ -1,4 +1,33 @@
 import store from './store'
+import axios from 'axios'
+import VueCookie from 'vue-cookie';
+
+export async function dynamic(code) {
+  await axios.get('/bmw/api/mp/oauth2?code=' + code)
+    .then(function (response) {
+      let result = response.data
+      if (result.status === 1) {
+        let user = result.data;
+        VueCookie.set("openID", user.openID)
+        store.commit("setUser", user)
+      } else {
+        console.log(result.msg)
+      }
+    })
+}
+
+export async function base(code) {
+  await axios.get('/bmw/api/mp/oauth2/base?code=' + code)
+    .then(function (response) {
+      let result = response.data
+      if (result.status === 1) {
+        let openID = result.data;
+        VueCookie.set("openID", openID)
+      } else {
+        console.log(result.msg)
+      }
+    })
+}
 
 export async function share() {
   await store.dispatch('latestWxConfig')

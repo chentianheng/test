@@ -20,7 +20,7 @@ Vue.use(VueCookie);
 
 Vue.config.productionTip = false
 
-
+import {dynamic, base} from "./wx";
 router.beforeEach( async (to, from, next) => {
   const axios = require('axios');
   let openID = VueCookie.get("openID");
@@ -37,78 +37,54 @@ router.beforeEach( async (to, from, next) => {
     }
   }
 
-  if (!openID && !code) {
-    //先跳转到微信端请求授权
-    if (to.name === 'vote') {
-      window.location.href = ("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx5b5f9dbc5c61f4e9&redirect_uri=" + encodeURIComponent("http://binarytre.com/vote?openID=" + voteOpenID) + "&response_type=code&scope=snsapi_userinfo&state=&connect_redirect=1#wechat_redirect")
+  if (to.name === 'vote') {
+    if (openID) {
+      next()
     } else {
-      window.location.href = ("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx5b5f9dbc5c61f4e9&redirect_uri=http%3A%2F%2Fbinarytre.com&response_type=code&scope=snsapi_userinfo&state=&connect_redirect=1#wechat_redirect")
+      if (code) {
+        base(code);
+        next()
+      } else {
+        window.location.href = ("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx5b5f9dbc5c61f4e9&redirect_uri=" + encodeURIComponent("http://binarytre.com/vote?openID=" + voteOpenID) + "&response_type=code&scope=snsapi_userinfo&state=&connect_redirect=1#wechat_redirect")
+      }
     }
-  }
-
-  if (user && user.hasOwnProperty("openID")){
-    if (to.name === "clothes") {
-      // console.log(user.clothesJson)
+  } else if (to.name === 'clothes') {
+    if (openID && user && user.hasOwnProperty("openID")) {
       if (user.clothesJson) {
         next({ path: '/ranking' })
       }else {
         next()
       }
     }
-  } else if (openID && to.name !== 'vote') {
-    await axios.get('/bmw/api/user/' + openID)
-      .then(function (response) {
-        let result = response.data
-        if (result.status === 1) {
-          let user = result.data;
-          store.commit("setUser", user)
-          VueCookie.set("openID", user.openID)
-          if (to.name === "clothes") {
-            // console.log(user.clothesJson)
-            if (user.clothesJson) {
-              next({ path: '/ranking' })
-            }else {
-              next()
-            }
-          }
-        } else {
-          console.log(result.msg)
-        }
-      });
   } else {
-    //  静态授权
-    if(to.name === "vote"){
-      await axios.get('/bmw/api/mp/oauth2/base?code=' + code)
-        .then(function (response) {
-          let result = response.data
-          if (result.status === 1) {
-            let openID = result.data;
-            VueCookie.set("openID", openID)
-          } else {
-            console.log(result.msg)
-          }
-        })
-    } else {
-      await axios.get('/bmw/api/mp/oauth2?code=' + code)
+    if (openID) {
+      await axios.get('/bmw/api/user/' + openID)
         .then(function (response) {
           let result = response.data
           if (result.status === 1) {
             let user = result.data;
-            store.commit("setUser", user)
-            VueCookie.set("openID", user.openID)
-            if (from.name === "home") {
-              console.log(user.clothesJson)
-              if (user.clothesJson) {
-                next({ path: '/ranking' })
-              }else {
-                next()
+            if (user) {
+              store.commit("setUser", user);
+              VueCookie.set("openID", user.openID)
+            } else {
+              if (code) {
+                dynamic(code);
+                next();
+              } else {
+                window.location.href = ("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx5b5f9dbc5c61f4e9&redirect_uri=http%3A%2F%2Fbinarytre.com&response_type=code&scope=snsapi_userinfo&state=&connect_redirect=1#wechat_redirect")
               }
             }
           } else {
             console.log(result.msg)
           }
-          // store.commit()
-        })
+        });
+    } else {
+      if (code) {
+        dynamic(code);
+        next();
+      } else {
+        window.location.href = ("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx5b5f9dbc5c61f4e9&redirect_uri=http%3A%2F%2Fbinarytre.com&response_type=code&scope=snsapi_userinfo&state=&connect_redirect=1#wechat_redirect")
+      }
     }
   }
   next()
