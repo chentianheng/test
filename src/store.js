@@ -55,7 +55,8 @@ export default new Vuex.Store({
      },
     user: {},
     rankList:[],
-    wxConfig: {}
+    wxConfig: {},
+    url: 'http://binarytre.com'
   },
   mutations: {
     setClothes(state, clothes) {
@@ -69,14 +70,17 @@ export default new Vuex.Store({
     },
     updateWxConfig(state, wxConfig) {
       state.wxConfig = wxConfig
+    },
+    setUrl(state, url) {
+      state.url = url
     }
   },
   actions: {
-    async latestWxConfig({commit}, url) {
+    async latestWxConfig({state, commit}) {
       const axios = require('axios');
       await axios({
         method: 'get',
-        url: '/bmw/api/mp/oauth2/JsTicket?url=' + url,
+        url: '/bmw/api/mp/oauth2/JsTicket?url=' + state.url,
         responseType: 'json'
       }).then(response => {
         let data = response.data;

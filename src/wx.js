@@ -1,7 +1,7 @@
 import store from './store'
 
 export async function share() {
-  await store.dispatch('latestWxConfig', "http://binarytre.com/")
+  await store.dispatch('latestWxConfig')
   wx.config(store.state.wxConfig)
   let option = {
     title: '全城寻求潮流达人', // 分享标题, 请自行替换
