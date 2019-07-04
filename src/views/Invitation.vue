@@ -1,27 +1,31 @@
 <template>
-    <div class="bgContainer  " @click="toActivity">
+    <div class="bgContainer  " >
         <!--点击提示-->
-        <img class="tips animated bounceIn delay-3s infinite " src="../assets/icon/click.png"  alt="" >
-        <img style="position: absolute;height: 45px;width: auto;right: 10px;top: 10px;z-index: 10"
+        <img style="position: absolute;height: 45px;width: auto;right: 10px;top: 10px;z-index: 1000"
              src="../assets/icon/ranking.png" @click="toRanking" alt=""/>
-        <img class="design" src="../assets/design.png" alt="">
-        <div  class="animated fadeIn" style="height: 90%;overflow-y: auto;display: flex;align-items: center;flex-direction: column">
-            <img class="content" src="../assets/designTitle.png" alt="">
-            <img class="content" src="../assets/designSubTitle.png" alt="">
-            <p class="title">活动时间</p>
-            <p class="detail">2019年7月13日18:30</p>
-            <p class="title">活动地点</p>
-            <p class="detail">广州塔二层观景平台</p>
-            <br>
-            <p class="title">活动流程</p>
-            <p class="detail">18:30-19:30 签到-暖场秀</p>
-            <p class="detail">19:30-19:55 BMW3系故事说 </p>
-            <p class="detail">19:55-20:21 新车亮相讲解 </p>
-            <p class="detail">20:21-20:30 重燃MISSION3 </p>
-            <p class="detail">20:30-21:00 BMW3系电音派对</p>
+        <div @click="toActivity">
+            <img class="tips animated bounceIn delay-3s infinite " src="../assets/icon/click.png"  alt="" >
+
+            <img class="design" src="../assets/design.png" alt="">
+            <div  class="animated fadeIn" style="height: 90%;overflow-y: auto;display: flex;align-items: center;flex-direction: column">
+                <img class="content" src="../assets/designTitle.png" alt="">
+                <img class="content" src="../assets/designSubTitle.png" alt="">
+                <p class="title">活动时间</p>
+                <p class="detail">2019年7月13日18:30</p>
+                <p class="title">活动地点</p>
+                <p class="detail">广州塔二层观景平台</p>
+                <br>
+                <p class="title">活动流程</p>
+                <p class="detail">18:30-19:30 签到-暖场秀</p>
+                <p class="detail">19:30-19:55 BMW3系故事说 </p>
+                <p class="detail">19:55-20:21 新车亮相讲解 </p>
+                <p class="detail">20:21-20:30 重燃MISSION3 </p>
+                <p class="detail">20:30-21:00 BMW3系电音派对</p>
+            </div>
+
+            <footer style="color: #FFFFFF;font-size: 16px;margin-top: 2px;position: absolute;bottom: 1rem">最终解释权归所有BMW中国所有</footer>
         </div>
 
-        <footer style="color: #FFFFFF;font-size: 16px;margin-top: 2px;position: absolute;bottom: 1rem">最终解释权归所有BMW中国所有</footer>
     </div>
 </template>
 
