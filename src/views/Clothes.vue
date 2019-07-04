@@ -155,17 +155,17 @@
                 clothesImgUrl:require("@/assets/clothes/frontWhite.png"),
                 iconBars:[
                     {
-                        iconUrl:require("@/assets/icon/icon1.png"),
-                        imgUrl:require("@/assets/icon/pic1.png"),
+                        iconUrl:require("@/assets/icon/icon23.png"),
+                        imgUrl:require("@/assets/icon/pic23.png"),
                     },{
-                        iconUrl:require("@/assets/icon/icon2.png"),
-                        imgUrl:require("@/assets/icon/pic2.png"),
+                        iconUrl:require("@/assets/icon/icon24.png"),
+                        imgUrl:require("@/assets/icon/pic24.png"),
                     },{
-                        iconUrl:require("@/assets/icon/icon3.png"),
-                        imgUrl:require("@/assets/icon/pic3.png"),
+                        iconUrl:require("@/assets/icon/icon25.png"),
+                        imgUrl:require("@/assets/icon/pic25.png"),
                     },{
-                        iconUrl:require("@/assets/icon/icon4.png"),
-                        imgUrl:require("@/assets/icon/pic4.png"),
+                        iconUrl:require("@/assets/icon/icon26.png"),
+                        imgUrl:require("@/assets/icon/pic26.png"),
                     },{
                         iconUrl:require("@/assets/icon/icon5.png"),
                         imgUrl:require("@/assets/icon/pic5.png"),
@@ -173,20 +173,20 @@
                         iconUrl:require("@/assets/icon/icon6.png"),
                         imgUrl:require("@/assets/icon/pic6.png"),
                     },{
-                        iconUrl:require("@/assets/icon/icon7.png"),
-                        imgUrl:require("@/assets/icon/pic7.png"),
-                    },{
-                        iconUrl:require("@/assets/icon/icon8.png"),
-                        imgUrl:require("@/assets/icon/pic8.png"),
-                    },{
                         iconUrl:require("@/assets/icon/icon9.png"),
                         imgUrl:require("@/assets/icon/pic9.png"),
                     },{
-                        iconUrl:require("@/assets/icon/icon10.png"),
-                        imgUrl:require("@/assets/icon/pic10.png"),
+                        iconUrl:require("@/assets/icon/icon28.png"),
+                        imgUrl:require("@/assets/icon/pic28.png"),
+                    },{
+                        iconUrl:require("@/assets/icon/icon27.png"),
+                        imgUrl:require("@/assets/icon/pic27.png"),
                     },{
                         iconUrl:require("@/assets/icon/icon11.png"),
                         imgUrl:require("@/assets/icon/pic11.png"),
+                    },{
+                        iconUrl:require("@/assets/icon/icon10.png"),
+                        imgUrl:require("@/assets/icon/pic10.png"),
                     },{
                         iconUrl:require("@/assets/icon/icon13.png"),
                         imgUrl:require("@/assets/icon/pic13.png"),
@@ -218,17 +218,17 @@
                         iconUrl:require("@/assets/icon/icon22.png"),
                         imgUrl:require("@/assets/icon/pic22.png"),
                     },{
-                        iconUrl:require("@/assets/icon/icon23.png"),
-                        imgUrl:require("@/assets/icon/pic23.png"),
+                        iconUrl:require("@/assets/icon/icon1.png"),
+                        imgUrl:require("@/assets/icon/pic1.png"),
                     },{
-                        iconUrl:require("@/assets/icon/icon24.png"),
-                        imgUrl:require("@/assets/icon/pic24.png"),
+                        iconUrl:require("@/assets/icon/icon2.png"),
+                        imgUrl:require("@/assets/icon/pic2.png"),
                     },{
-                        iconUrl:require("@/assets/icon/icon25.png"),
-                        imgUrl:require("@/assets/icon/pic25.png"),
+                        iconUrl:require("@/assets/icon/icon3.png"),
+                        imgUrl:require("@/assets/icon/pic3.png"),
                     },{
-                        iconUrl:require("@/assets/icon/icon26.png"),
-                        imgUrl:require("@/assets/icon/pic26.png"),
+                        iconUrl:require("@/assets/icon/icon4.png"),
+                        imgUrl:require("@/assets/icon/pic4.png"),
                     }],
                 frontLeftImgUrl:"",
                 frontRightImgUrl:"",
@@ -715,7 +715,7 @@
 
     .iconContainer {
         display: flex;
-        width: 130rem;
+        width: 135rem;
         height: 5rem;
     }
 

@@ -5,20 +5,35 @@
             <img class="design" src="../assets/design.png" alt="">
             <div  class="animated fadeIn" style="height: 90%;overflow-y: auto;display: flex;align-items: center;flex-direction: column">
                 <img class="content" src="../assets/designTitle.png" alt="">
-                <img class="content" src="../assets/designSubTitle.png" alt="">
-                <p class="title">活动时间</p>
-                <p class="detail">2019年7月13日18:30</p>
-                <p class="title">活动地点</p>
-                <p class="detail">广州塔二层观景平台</p>
+                <!--<img class="content" src="../assets/designSubTitle.png" alt="">-->
+                <div class="title"><p>活动时间</p></div>
+                <div class="detail"><p>2019年7月13日18:30</p></div>
+                <div class="title"><p>活动地点</p></div>
+                <div class="detail"><p>广州塔二层观景平台</p></div>
                 <br>
-                <p class="title">活动流程</p>
-                <p class="detail">18:30-19:30 签到-暖场秀</p>
-                <p class="detail">19:30-19:55 BMW3系故事说 </p>
-                <p class="detail">19:55-20:21 新车亮相讲解 </p>
-                <p class="detail">20:21-20:30 重燃MISSION3 </p>
-                <p class="detail">20:30-21:00 BMW3系电音派对</p>
+                <div class="title"><p>活动流程</p></div>
+                <div class="detail2">
+                    <p>18:30-19:30</p>
+                    <p>签到-暖场秀</p>
+                </div>
+                <div class="detail2">
+                    <p>19:30-19:55</p>
+                    <p>全新BMW 3系故事说</p>
+                </div>
+                <div class="detail2">
+                    <p>19:55-20:21</p>
+                    <p>新车亮相讲解</p>
+                </div>
+                <div class="detail2">
+                    <p>20:21-20:30</p>
+                    <p>重燃MISSION3</p>
+                </div>
+                <div class="detail2">
+                    <p>20:30-21:00</p>
+                    <p>全新BMW 3系电音派对</p>
+                </div>
             </div>
-            <footer style="color: #FFFFFF;font-size: 16px;margin-top: 2px;position: absolute;bottom: 1rem">最终解释权归所有BMW中国所有</footer>
+            <footer style="color: #FFFFFF;font-size: 13px;margin-top: 2px;position: absolute;bottom: 1rem">详情请联系BMW广州特约授权经销商</footer>
     </div>
 </template>
 
@@ -29,7 +44,7 @@
         name: "Invitation",
         methods:{
             toActivity(){
-                this.$router.push('/activity')
+                this.$router.push('/navigation')
             },
             toRanking(){
                 this.$router.push('/ranking')
@@ -46,7 +61,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        background-image: url("../assets/background-3.png");
+        background-image: url("../assets/background-kv.png");
         background-size:  100%  auto;
         background-repeat: no-repeat;
         background-color: black;
@@ -61,6 +76,7 @@
     .content {
         margin-top: 3rem;
         width: 80%;
+        margin-bottom: 2rem;
     }
 
     .content  + .content{
@@ -71,26 +87,39 @@
 
     .title {
         color: white;
-        background-color: #3E3A39;
-        font-size: 16px;
+        background-color: rgba(255,255,255,0.73);
+        font-size: 12px;
         padding: 2px 5px;
         width: 75%;
         margin-top: 4px;
-        text-align: left;
-        font-weight: 600;
+        /*text-align: left;*/
+        font-weight: 500;
+        text-align: center;
     }
 
     .detail {
-        color: black;
-        background-color: rgba(255,255,255,0.5);
-        font-size: 16px;
+        color: white;
+        background-color: rgba(0,0,0,0.23);
+        font-size: 12px;
         padding: 2px 5px;
         width: 75%;
         margin-top: 4px;
-        text-align: left;
-        font-weight: 600;
+        /*text-align: left;*/
+        font-weight: 500;
     }
 
+    .detail2 {
+        color: white;
+        background-color: rgba(0,0,0,0.23);
+        font-size: 12px;
+        padding: 2px 5px;
+        width: 75%;
+        margin-top: 4px;
+        /*text-align: left;*/
+        font-weight: 500;
+        display: flex;
+        justify-content: space-between;
+    }
     .tips{
         position: absolute;
         height: 30px;

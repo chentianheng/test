@@ -3,7 +3,7 @@
         <div class="tableContainer animated fadeInUp">
             <p class="title">填写信息</p>
             <!--选择宝马3的理由-->
-            <label class="label" for="like">*选择全新宝马3系的理由（多选）：</label>
+            <label class="label" for="like">*选择全新BMW 3系的理由（多选）：</label>
             <select class="select" v-model="clothes.reason.selected"  multiple id="like">
                     <option v-for="(multOption,index) in clothes.reason.options"
                             :value="multOption"
@@ -168,7 +168,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        background-image: url("../assets/background-3.png");
+        background-image: url("../assets/background-kv.png");
         background-size:  100%  auto;
         background-repeat: no-repeat;
         background-color: black;

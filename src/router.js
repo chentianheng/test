@@ -12,6 +12,7 @@ import Invitation from './views/Invitation'
 import Activity from './views/Activity'
 import ActivityTwo from './views/ActivityTwo'
 import Vote from './views/Vote'
+import Navigation from './views/Navigation'
 
 Vue.use(Router);
 
@@ -99,7 +100,15 @@ export default new Router({
       meta:{
         title:'投票页面'
       }
-    },
+    },{
+      path:'/navigation',
+      name:'navigation',
+      component:Navigation,
+      meta: {
+        title: '导航页面'
+      }
+    }
+
 
 
 

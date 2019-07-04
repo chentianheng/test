@@ -3,9 +3,9 @@
         <!--点击提示-->
         <img class="tips animated bounceIn delay-5s infinite " src="../assets/icon/click.png"  alt="" @click="toClothes">
         <img class="title animated fadeInUp" src="../assets/icon/homeTitle.png" alt="">
-        <img class="clothes animated flipInX" src="../assets/clothes/frontWhite.png" alt="">
+        <img class="clothes animated flipInX" @click="toClothes" src="../assets/clothes/frontWhite.png" alt="">
         <div class="contents animated bounceIn  " @click="toClothes">
-            <img src="../assets/icon/homeIcon.png" alt="" style="width: 50%">
+            <img src="../assets/icon/homeIcon.png" alt="" style="width: 30%">
         </div>
 
         <!--弹窗-->
@@ -13,15 +13,15 @@
         <div class="img animated fadeIn" @click="show1" v-show="showOne">
             <img style="width: 80%" src="../assets/rules/content1.png" alt="" >
             <!--页脚-->
-            <footer style="position: absolute;bottom: 2px;color: #727171;font-size: 12px">最终解释权归所有BMW中国所有</footer>
+            <footer style="position: absolute;bottom: 2px;color: #727171;font-size: 12px;z-index: 300">最终解释权归BMW广州经销商所有</footer>
         </div>
         <div class="img animated fadeIn" @click="show2" v-show="showTwo">
-            <img style="width: 60%" src="../assets/rules/content2.png" alt="" >
-            <footer style="position: absolute;bottom: 2px;color: #727171;font-size: 12px">最终解释权归所有BMW中国所有</footer>
+            <img style="width: 70%" src="../assets/rules/content2.png" alt="" >
+            <footer style="position: absolute;bottom: 2px;color: #727171;font-size: 12px;z-index: 300">最终解释权归BMW广州经销商所有</footer>
         </div>
         <div class="img animated fadeIn" @click="show3" v-show="showThree">
             <img style="width: 90%" src="../assets/rules/content3.png" alt="" >
-            <footer style="position: absolute;bottom: 2px;color: #727171;font-size: 12px">最终解释权归所有BMW中国所有</footer>
+            <footer style="position: absolute;bottom: 2px;color: #727171;font-size: 12px;z-index: 300">最终解释权归BMW广州经销商所有</footer>
         </div>
 
         <div class="footerBtn">
@@ -105,7 +105,7 @@
 
     .contents {
         position: relative;
-        bottom: 14rem;
+        bottom: 13.5rem;
         /*animation-duration: 1500ms;*/
         animation-delay: 1500ms;
     }
@@ -185,6 +185,6 @@
         width: auto;
         right: 45%;
         top: 45%;
-        z-index: 1000
+        z-index: 100
     }
 </style>
