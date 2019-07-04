@@ -69,7 +69,6 @@
     name: "Vote",
     async created() {
       await this.$store.dispatch('latestWxConfig', location.href.split('#')[0])
-      console.log(this.$store.state.wxConfig)
       wx.config(this.$store.state.wxConfig)
       this.share();
       // 1.从路由拿回openID
@@ -144,12 +143,12 @@
       },
       // 分享方法，用nnn
       share() {
-        console.log('share')
         var that = this
+        let url = encodeURIComponent(location.href.split('#')[0])
         this.option = {
-          title: 'BMW T恤创造局', // 分享标题, 请自行替换
-          desc: '快来参与活动吧', // 分享描述, 请自行替换
-          link: "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx5b5f9dbc5c61f4e9&redirect_uri=http%3A%2F%2Fbinarytre.com&response_type=code&scope=snsapi_userinfo&state=&connect_redirect=1#wechat_redirect", // 分享链接，根据自身项目决定是否需要split
+          title: '全城寻求潮流达人', // 分享标题, 请自行替换
+          desc: '全新BMW 3系广州发布会', // 分享描述, 请自行替换
+          link: "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx5b5f9dbc5c61f4e9&redirect_uri="+ url +"&response_type=code&scope=snsapi_base&state=&connect_redirect=1#wechat_redirect", // 分享链接，根据自身项目决定是否需要split
           imgUrl: "https://mo.bintre.com/bmw.png" // 分享图标, 请自行替换，需要绝对路径
         }
         wx.onMenuShareTimeline({

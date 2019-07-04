@@ -35,7 +35,7 @@
     },
     async created() {
       await this.init()
-      this.rank()
+      await this.rank()
     },
     methods: {
       toAty() {
