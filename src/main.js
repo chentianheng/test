@@ -27,7 +27,9 @@ router.beforeEach( async (to, from, next) => {
   let voteOpenID = to.query.openID;
   let user = store.state.user
 
-  store.commit("setUrl", location.href.split('#')[0])
+  if (!store.state.url && store.state.url === "http://binarytre.com") {
+    store.commit("setUrl", location.href.split('#')[0])
+  }
 
   if (!openID && !code) {
     //先跳转到微信端请求授权
