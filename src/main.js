@@ -30,7 +30,7 @@ router.beforeEach( async (to, from, next) => {
 
   if (!store.state.url) {
     let url = location.href.split('#')[0]
-    if (url.indexOf("from") || url.indexOf("isappinstalled")) {
+    if (url.indexOf("from") > -1 || url.indexOf("isappinstalled") > -1) {
       window.location.href = removeParam("isappinstalled", removeParam("from", location.href.split('#')[0]))
     } else {
       store.commit("setUrl", removeParam("isappinstalled", removeParam("from", location.href.split('#')[0])));
