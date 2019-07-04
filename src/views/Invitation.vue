@@ -26,6 +26,8 @@
 </template>
 
 <script>
+    import {share} from "../wx";
+
     export default {
         name: "Invitation",
         methods:{
@@ -35,6 +37,9 @@
             toRanking(){
                 this.$router.push('/ranking')
             }
+        },
+        created() {
+          share()
         }
     }
 </script>

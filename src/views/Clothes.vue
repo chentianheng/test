@@ -140,6 +140,8 @@
 </template>
 
 <script>
+    import {share} from "../wx";
+
     export default {
         name: "Clothes",
         data(){
@@ -251,6 +253,7 @@
         },
         created(){
             this.clothes = this.$store.state.clothes
+            share()
         },
         methods:{
             frontTextPlus(){

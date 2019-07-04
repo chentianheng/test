@@ -21,6 +21,8 @@
 </template>
 
 <script>
+    import {share} from "../../wx";
+
     export default {
         name: "Personal",
         data(){
@@ -32,7 +34,10 @@
                     rank:1232
                 },
             }
-        }
+        },
+      created() {
+          share()
+      }
     }
 </script>
 

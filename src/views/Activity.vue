@@ -22,13 +22,18 @@
 </template>
 
 <script>
-    export default {
+  import {share} from "../wx";
+
+  export default {
         name: "Activity",
         data(){
             return{
                 innerHeight: (window.innerHeight) + 'px',
                 outHeight: this.innerHeight
             }
+        },
+        created() {
+          share()
         },
         methods:{
             toActivityTwo(){

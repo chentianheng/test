@@ -20,6 +20,8 @@
 </template>
 
 <script>
+    import {share} from "../wx";
+
     export default {
         name: "ActivityTwo",
         data(){
@@ -28,6 +30,9 @@
                 outHeight: this.innerHeight
             }
         },
+      created() {
+          share()
+      },
         methods:{
             toRanking(){
                  this.$router.push('/ranking')

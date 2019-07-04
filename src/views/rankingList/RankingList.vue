@@ -21,6 +21,7 @@
 <script>
   import Work from './components/Work'
   import VueCookie from 'vue-cookie';
+  import {share} from "../../wx";
 
   export default {
     name: "rankingList",
@@ -36,6 +37,7 @@
     async created() {
       await this.init()
       await this.rank()
+      share()
     },
     methods: {
       toAty() {

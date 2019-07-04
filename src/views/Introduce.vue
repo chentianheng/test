@@ -15,12 +15,17 @@
 </template>
 
 <script>
+    import {share} from "../wx";
+
     export default {
         name: "introduce",
         methods:{
             backHome(){
                 this.$router.push('/')
             }
+        },
+        created() {
+          share()
         }
     }
 </script>

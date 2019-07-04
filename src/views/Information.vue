@@ -97,6 +97,8 @@
 </template>
 
 <script>
+    import {share} from "../wx";
+
     export default {
         name: "Information",
         data(){
@@ -111,6 +113,7 @@
         created() {
             this.clothes = this.$store.state.clothes
             this.clothes.fourS.selected = "请选择经销商"
+            share()
         },
         methods:{
             upload(){
