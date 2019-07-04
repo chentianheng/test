@@ -421,7 +421,7 @@
             },
             toInfo(){
                 // console.log(this.clothes)
-                if (!this.frontLeftImgUrl  && !this.frontRightImgUrl && !this.frontMiddleImgUrl   && !this.backImgUrl  && !this.clothes.front.text) {
+                if (!this.frontLeftImgUrl  && !this.frontRightImgUrl && !this.frontMiddleImgUrl   && !this.backImgUrl  && !this.clothes.front.text.textMsg) {
                     this.toast('请先完成您的作品')
                 }else {
                     this.$store.commit("setClothes", this.clothes)
