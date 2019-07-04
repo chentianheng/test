@@ -62,6 +62,7 @@
 </template>
 
 <script>
+  import VueCookie from 'vue-cookie';
   // 分享开发nnn
   export default {
     name: "Vote",
@@ -113,7 +114,7 @@
         const axios = require('axios');
         let that = this;
         let userID = this.user.id;
-        let openID = this.$store.state.user.openID;
+        let openID = VueCookie.get("openID");
         axios({
           method: 'post',
           url: '/bmw/api/vote',
