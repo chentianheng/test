@@ -1,10 +1,14 @@
 <template>
-    <div class="bgContainer"  @click="toActivity">
+    <div class="bgContainer"  >
         <!--点击提示-->
-        <img class="tips animated bounceIn delay-3s infinite " src="../assets/icon/click.png"  alt="" >
-        <img class="content1 animated fadeIn " src="../assets/navi/1.png"  alt="">
-        <img class="content2 animated fadeInUp delay-1s" src="../assets/navi/2.png"  alt="">
-        <img class="content3 animated fadeInUp delay-1s" src="../assets/navi/3.png"  alt="">
+        <img style="position: absolute;height: 45px;width: auto;right: 10px;top: 10px;z-index: 10"
+             src="../assets/icon/ranking.png" @click="toRanking" alt=""/>
+        <div class="minContainer" >
+            <img class="tips animated bounceIn delay-3s infinite " src="../assets/icon/click.png"  @click="toRanking" alt="" >
+            <img class="content1 animated fadeIn " src="../assets/navi/1.png"  alt="">
+            <img class="content2 animated fadeInUp delay-1s" src="../assets/navi/2.png"  alt="">
+            <img class="content3 animated fadeInUp delay-1s" src="../assets/navi/3.png"  alt="">
+        </div>
     </div>
 </template>
 
@@ -34,6 +38,13 @@
         background-color: black;
     }
 
+    .minContainer{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        align-items: center;
+    }
 
     .tips{
         position: absolute;
@@ -50,11 +61,20 @@
     }
 
     .content2 {
-        width: 80%;
+        width: 75%;
     }
 
     .content3 {
         margin-top: 2rem;
-        width: 80%;
+        width: 75%;
+    }
+
+    .tips{
+        position: absolute;
+        height: 30px;
+        width: auto;
+        right: 10px;
+        top: 30px;
+        z-index: 1000
     }
 </style>
