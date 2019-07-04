@@ -80,7 +80,7 @@ export default new Vuex.Store({
       const axios = require('axios');
       await axios({
         method: 'get',
-        url: '/bmw/api/mp/oauth2/JsTicket?url=' + "http://binarytre.com/vote?openID=oHDTCwQxLWZAAymzc3f4KmLIBQVc",
+        url: '/bmw/api/mp/oauth2/JsTicket?url=' + location.href.split('#')[0],
         responseType: 'json'
       }).then(response => {
         let data = response.data;
