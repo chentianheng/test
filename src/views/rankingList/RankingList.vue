@@ -68,7 +68,7 @@
         }
       },
       rank() {
-        let number = 40;
+        let number = 200;
         const axios = require('axios')
         axios({
           method: 'get',
