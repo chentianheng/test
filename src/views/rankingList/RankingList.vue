@@ -1,7 +1,7 @@
 <template>
   <div class="bgContainer">
     <img class="subTitleImg animated fadeInLeftBig" src="../../assets/icon/subTitleImg.png" alt="">
-    <p class="subTitle animated fadeIn delay-1s">温馨提示：用户每人每天投票一次</p>
+    <p class="subTitle animated fadeIn delay-1s">温馨提示：用户每人每天投票一次 {{navigator.userAgent.toLowerCase()}}</p>
     <div class="list animated bounceIn delay-1s">
       <Work
               v-for="( work,index ) in works"
