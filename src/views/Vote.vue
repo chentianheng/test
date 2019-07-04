@@ -139,7 +139,7 @@
       },
       // 分享方法，用nnn
       async share() {
-        let url = encodeURIComponent("http://binarytre.com/vote?openID=" + this.openID)
+        let url = "http://binarytre.com/vote?openID=" + this.openID
         await this.$store.dispatch('latestWxConfig', url)
         wx.config(this.$store.state.wxConfig)
         var that = this
