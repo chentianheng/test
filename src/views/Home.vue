@@ -79,7 +79,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        background-image: url("../assets/background-2.jpg");
+        background-image: url("../assets/background-2.png");
         background-size:  100%  auto;
         background-repeat: no-repeat;
         background-color: black;
