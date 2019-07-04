@@ -141,11 +141,12 @@
       async share() {
         await this.$store.dispatch('latestWxConfig', location.href.split('#')[0])
         wx.config(this.$store.state.wxConfig)
+        console.log(location.href.split('#')[0])
         var that = this
         this.option = {
           title: '全城寻求潮流达人', // 分享标题, 请自行替换
           desc: '全新BMW 3系广州发布会', // 分享描述, 请自行替换
-          link: encodeURIComponent("http://binarytre.com/vote?openID=" + this.openID), // 分享链接，根据自身项目决定是否需要split
+          link: location.href.split('#')[0], // 分享链接，根据自身项目决定是否需要split
           imgUrl: "https://mo.bintre.com/bmw.png" // 分享图标, 请自行替换，需要绝对路径
         }
         wx.onMenuShareTimeline({
@@ -168,7 +169,7 @@
           success: function () {
             alert('分享给朋友成功')
             // 用户确认分享后执行的回调函数
-            console.log(that.option.link)
+            console.log(location.href.split('#')[0])
           },
           cancel: function () {
             // 用户取消分享后执行的回调函数
