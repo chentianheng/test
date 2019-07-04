@@ -168,6 +168,7 @@
           success: function () {
             alert('分享给朋友成功')
             // 用户确认分享后执行的回调函数
+            console.log(this.option.link)
           },
           cancel: function () {
             // 用户取消分享后执行的回调函数
