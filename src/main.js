@@ -31,6 +31,7 @@ router.beforeEach( async (to, from, next) => {
   let ua = navigator.userAgent.toLowerCase();
   let isAndroid = ua.indexOf('Android') > -1 || ua.indexOf('Adr') > -1;
   if (isAndroid) {
+    alert("isAndroid: " + location.href.split('#')[0])
     store.commit("setUrl", location.href.split('#')[0]);
   } else {
     if (!store.state.url) {
