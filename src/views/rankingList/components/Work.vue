@@ -7,7 +7,7 @@
           <!--衣服上的文字-->
           <p class="text"
              v-show="data.clothes.front.textShow"
-             :style="{fontSize: data.clothes.front.text.fontSize-6 + 'px'}"
+             :style="{fontSize: data.clothes.front.text.fontSize-8 + 'px'}"
              v-html="data.clothes.front.text.textMsg"
           ></p>
           <!--左方的icon-->
@@ -75,7 +75,6 @@
   .clothesWork {
     display: flex;
     flex-direction: column;
-    /*justify-content: center;*/
     align-items: center;
   }
 
@@ -186,6 +185,17 @@
   .position1 img {
     height: auto;
     width: 1.8rem;
+  }
+
+  .text {
+    color: #757575;
+    white-space: pre-line;
+    line-height: 1.25em;
+    height: auto;
+    width: 2.5rem;
+    position: absolute;
+    bottom: 7rem;
+    z-index: 33;
   }
 
   /*左側*/

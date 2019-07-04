@@ -32,7 +32,7 @@
 
                 <div class="clothesImg animated fadeIn">
                     <div :class="`back${clothes.color}`"></div>
-                    <i v-show="clothes.back.iconShow" class="position3"><img :src="backImgUrl" height="30" alt=""/></i>
+                    <i v-show="clothes.back.iconShow" class="position4"><img :src="backImgUrl" height="30" alt=""/></i>
                     <p class="text" v-show="clothes.back.textShow" :style="{ fontSize: clothes.back.text.fontSize + 'px' }">{{ clothes.back.text.textMsg }}</p>
                 </div>
             </div>
@@ -84,7 +84,7 @@
         <div class="iconBar animated bounceInRight" v-show="position.middlePositionShow">
             <div class="iconContainer">
                 <!--显示文字输入-->
-                <!--<i @click="frontChangeText" class="icon" ><img src="../assets/icon/text.png" width="45" alt=""/></i>-->
+                <i @click="frontChangeText" class="icon" ><img src="../assets/icon/text.png" width="45" alt=""/></i>
                 <!--显示18个控件-->
                 <i class="icon"
                    @click="frontMiddleChangeIcon(index)"
@@ -93,6 +93,17 @@
                 ><img :src="iconBar.imgUrl"  width="45" alt=""></i>
             </div>
         </div>
+
+        <!--文字输入栏-->
+        <transition name="fade">
+            <div class="positionContainerText" v-show="position.textPositionShow">
+                <!--1111-->
+                    <textarea v-model="clothes.front.text.textMsg" placeholder="请输入文字" ></textarea>
+                    <i @click="frontTextPlus" class="plus" ></i>
+                    <i @click="frontTextReduce" class="reduce" ></i>
+
+            </div>
+        </transition>
 
         <!--背icon操控-->
         <div class="iconBar animated bounceInRight" v-show="position.backPositionShow">
@@ -236,6 +247,7 @@
                     rightPositionShow:false,
                     middlePositionShow:false,
                     backPositionShow:false,
+                    textPositionShow:false,
                 },
                 changeShow:false,
                 pathShow:true,
@@ -247,6 +259,12 @@
             this.clothes = this.$store.state.clothes
         },
         methods:{
+            frontTextPlus(){
+                this.clothes.front.text.fontSize ++;
+            },
+            frontTextReduce(){
+                this.clothes.front.text.fontSize --;
+            },
             changeWhite(){
                 this.clothes.color = "White"
             },
@@ -317,6 +335,13 @@
                 this.positionItem.positionItem3 ="Off";
                 this.positionItem.positionItem4 ="Active";
             },
+            frontChangeText(){
+                // 文字显示
+                this.clothes.front.textShow = true;
+                this.clothes.front.middleShow = false;
+                this.position.middlePositionShow =false;
+                this.position.textPositionShow =true
+            },
             frontLeftChangeIcon(index){
                 this.frontLeftImgUrl = this.iconBars[index].imgUrl;
                 this.clothes.front.frontLeftImgUrl = this.frontLeftImgUrl;
@@ -366,6 +391,13 @@
                     this.changeShow =false ;
                     this.position.positionShow = true;
                     this.position.backPositionShow = false;
+                }else if (this.position.textPositionShow ) {
+                    // 111
+                    this.clothes.front.text = "";
+                    this.pathShow =true ;
+                    this.changeShow =false ;
+                    this.position.positionShow = true;
+                    this.position.textPositionShow = false
                 }
             },
             backToHome(){
@@ -387,10 +419,12 @@
                 this.position.leftPositionShow = false;
                 this.position.rightPositionShow = false;
                 this.position.backPositionShow = false;
+                this.position.textPositionShow = false
+
             },
             toInfo(){
                 // console.log(this.clothes)
-                if (this.frontLeftImgUrl === "" && this.frontRightImgUrl === "" && this.frontMiddleImgUrl === ""  && this.backImgUrl === "") {
+                if (this.frontLeftImgUrl === "" && this.frontRightImgUrl === "" && this.frontMiddleImgUrl === ""  && this.backImgUrl === "" && this.clothes.front.text === "") {
                     this.toast('请先完成您的作品')
                 }else {
                     this.$store.commit("setClothes", this.clothes)
@@ -412,6 +446,24 @@
 </script>
 
 <style scoped>
+/*动画*/
+    .fade-enter-active {
+        transition: all .4s ease;
+    }
+    .fade-leave-active{
+        transition: all .2s ease-out;
+    }
+    .fade-enter{
+        transform:translateX(100%);
+        opacity: 0;
+    }
+    .fade-leave-to{
+        transform:translateY(5rem);
+        opacity: 0;
+    }
+
+
+
     .bgContainer {
         display: flex;
         flex-direction: column;
@@ -482,7 +534,7 @@
 
     .position3 {
         height: auto;
-        width: 100px;
+        width: 80px;
         position: absolute;
         bottom: 8.5rem;
         z-index: 33;
@@ -490,7 +542,20 @@
 
     .position3 img{
         height: auto;
-        width: 100px;
+        width: 80px;
+    }
+
+    .position4 {
+        height: auto;
+        width: 80px;
+        position: absolute;
+        bottom: 11rem;
+        z-index: 33;
+    }
+
+    .position4 img{
+        height: auto;
+        width: 80px;
     }
 
     /*不同颜色的控制栏*front*/
@@ -712,6 +777,71 @@
         background-color:rgba(51,51,51,0.8) ;
         width: calc((100% - 1%)/2);
         padding: 0.5rem 0;
+    }
+
+    textarea {
+        width: 50%;
+        height: 80%;
+        background-color: rgba(255,255,255,0.5);
+        border: none;
+        font-size: 14px;
+        border-radius: 5px;
+    }
+
+    .plus {
+        background-image: url("../assets/icon/plus.png");
+        background-size: auto 50%;
+        background-position:center;
+        background-repeat: no-repeat;
+        width: 5rem;
+        height: 100%;
+        border-radius: 1px;
+        vertical-align: baseline;
+    }
+
+    .reduce {
+        background-image: url("../assets/icon/reduce.png");
+        background-size: auto 50%;
+        background-position:center;
+        background-repeat: no-repeat;
+        width: 5rem;
+        height: 100%;
+        border-radius: 1px;
+        vertical-align: baseline;
+    }
+
+    .positionContainerText {
+        margin-top: 1rem;
+        display: flex;
+        /*padding: 0.5rem 0;*/
+        width: 100%;
+        height: 5rem;
+        justify-content: center;
+        align-items: center;
+        /*margin-left: calc(16px + 1rem);*/
+        background-color: rgba(255,255,255,0.5);
+    }
+
+    .positionContainer {
+        margin-top: 1rem;
+        display: flex;
+        /*padding: 0.5rem 0;*/
+        width: 100%;
+        height: 5rem;
+        justify-content: space-between;
+        align-items: center;
+        /*margin-left: calc(16px + 1rem);*/
+    }
+
+    .text {
+        color: #757575;
+        white-space: pre-line;
+        line-height: 1.25em;
+        height: auto;
+        width: 8.8rem;
+        position: absolute;
+        bottom: 8.5rem;
+        z-index: 33;
     }
 
     .positionItemOff {

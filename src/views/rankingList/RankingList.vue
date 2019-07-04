@@ -38,7 +38,7 @@
     },
     methods: {
       toAty() {
-        this.$router.push('/activity')
+        this.$router.push('/invitation')
       },
       init() {
         this.user = this.$store.state.user
@@ -87,7 +87,7 @@
     justify-content: center;
     flex-wrap: wrap;
     overflow-y: auto;
-    width: 90%;
+    width: 98%;
     height: 25rem;
     margin-top: 1rem;
     margin-bottom: 1rem;

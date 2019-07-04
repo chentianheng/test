@@ -34,7 +34,7 @@
 
                 <div class="clothesImg animated fadeIn">
                     <div :class="`back${this.user.clothes.color}`"></div>
-                    <i v-show="this.user.clothes.back.iconShow" class="position3"><img :src="this.user.clothes.back.backImgUrl" height="30" alt=""/></i>
+                    <i v-show="this.user.clothes.back.iconShow" class="position4"><img :src="this.user.clothes.back.backImgUrl" height="30" alt=""/></i>
                     <!--<p class="text" v-show="works.clothesJson.back.textShow" :style="{ fontSize: works.clothesJson.back.text.fontSize + 'px' }">{{ clothes.back.text.textMsg }}</p>-->
                 </div>
             </div>
@@ -324,7 +324,7 @@
 
     .position3 {
         height: auto;
-        width: 100px;
+        width: 80px;
         position: absolute;
         bottom: 8.5rem;
         z-index: 33;
@@ -332,7 +332,31 @@
 
     .position3 img{
         height: auto;
-        width: 100px;
+        width: 80px;
+    }
+
+    .position4 {
+        height: auto;
+        width: 80px;
+        position: absolute;
+        bottom: 11rem;
+        z-index: 33;
+    }
+
+    .position4 img{
+        height: auto;
+        width: 80px;
+    }
+
+    .text {
+        color: #757575;
+        white-space: pre-line;
+        line-height: 1.25em;
+        height: auto;
+        width: 8.8rem;
+        position: absolute;
+        bottom: 8.5rem;
+        z-index: 33;
     }
 
     /*不同颜色的衣服的样式*front*/
