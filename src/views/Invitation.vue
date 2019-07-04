@@ -1,5 +1,7 @@
 <template>
     <div class="bgContainer animated fadeInUp" @click="toActivity">
+        <img style="position: absolute;height: 45px;width: auto;right: 10px;top: 10px;z-index: 10"
+             src="../assets/icon/ranking.png" @click="toRanking" alt=""/>
         <img class="design" src="../assets/design.png" alt="">
         <div style="height: 90%;overflow-y: auto;display: flex;align-items: center;flex-direction: column">
             <img class="content" src="../assets/designTitle.png" alt="">
@@ -27,6 +29,9 @@
         methods:{
             toActivity(){
                 this.$router.push('/activity')
+            },
+            toRanking(){
+                this.$router.push('/ranking')
             }
         }
     }

@@ -5,11 +5,12 @@
         <div class="clothesImg">
           <div :class="`front${data.clothes.color}`"></div>
           <!--衣服上的文字-->
+
+            <!--v-html="data.clothes.front.text.textMsg"-->
           <p class="text"
              v-show="data.clothes.front.textShow"
-             :style="{fontSize: data.clothes.front.text.fontSize-8 + 'px'}"
-             v-html="data.clothes.front.text.textMsg"
-          ></p>
+             :style="{fontSize: data.clothes.front.text.fontSize - 6 + 'px'}"
+          >文字设计</p>
           <!--左方的icon-->
           <i v-show="data.clothes.front.leftShow" class="position2"><img
                   :src="data.clothes.front.frontLeftImgUrl" height="30" alt=""/></i>

@@ -2,7 +2,7 @@
     <div class="bgContainer">
         <img class="title animated fadeInUp" src="../assets/icon/homeTitle.png" alt="">
         <img class="clothes animated flipInX" src="../assets/clothes/frontWhite.png" alt="">
-        <div class="contents animated bounceIn " @click="toClothes">
+        <div class="contents animated bounceIn  " @click="toClothes">
             <img src="../assets/icon/homeIcon.png" alt="" style="width: 50%">
         </div>
 
