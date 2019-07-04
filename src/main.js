@@ -32,6 +32,7 @@ router.beforeEach( async (to, from, next) => {
   let isAndroid = ua.indexOf('android') > -1 || ua.indexOf('adr') > -1;
   if (isAndroid) {
     store.commit("setUrl", location.href.split('#')[0]);
+    alert(location.href.split('#')[0])
   } else {
     if (!store.state.url) {
       let url = location.href.split('#')[0];
