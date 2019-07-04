@@ -144,7 +144,7 @@
       // 分享方法，用nnn
       share() {
         var that = this
-        let url = encodeURIComponent(location.href.split('#')[0])
+        let url = encodeURIComponent("http://binarytre.com/vote?openID" + this.openID)
         this.option = {
           title: '全城寻求潮流达人', // 分享标题, 请自行替换
           desc: '全新BMW 3系广州发布会', // 分享描述, 请自行替换
