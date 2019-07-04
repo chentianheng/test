@@ -69,6 +69,7 @@
     name: "Vote",
     async created() {
       await this.$store.dispatch('latestWxConfig', location.href.split('#')[0])
+      console.log(this.$store.state.wxConfig)
       wx.config(this.$store.state.wxConfig)
       this.share();
       // 1.从路由拿回openID
@@ -83,16 +84,11 @@
         let result = response.data;
         if (result.status === 1) {
           this.user = result.data;
-          // console.log(this.user)
           this.user.clothes = JSON.parse(decodeURIComponent(encodeURIComponent(this.user.clothesJson)))
-          // console.log(this.user)
         } else {
           console.log(result.msg)
         }
       })
-
-      // console.log(this.user)
-      // console.log(this.user.clothes)
     },
     data() {
       return {
@@ -131,12 +127,9 @@
             userID: userID
           }
         }).then(function (response) {
-          // console.log(response);
           let result = response.data;
           let msg = result.msg;
           that.toast(msg);
-          // console.log(msg);
-
         }).catch(function (error) {
           console.log(error);
         });

@@ -73,9 +73,8 @@ export default new Vuex.Store({
   },
   actions: {
     async latestWxConfig({commit}, url) {
-      console.log("test")
       const axios = require('axios');
-      axios({
+      await axios({
         method: 'get',
         url: '/bmw/api/mp/oauth2/JsTicket?url=' + url,
         responseType: 'json'
