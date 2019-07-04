@@ -36,6 +36,7 @@
 </template>
 
 <script>
+    import {share} from "@/wx.js"
     export default {
         name: "Home",
         data(){
@@ -45,6 +46,9 @@
                 showThree:false,
             }
         },
+      created() {
+          share()
+      },
         methods:{
             toClothes(){
                 this.$router.push('/clothes')
