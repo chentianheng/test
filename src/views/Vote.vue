@@ -68,14 +68,11 @@
   export default {
     name: "Vote",
     async created() {
-      await this.$store.dispatch('latestWxConfig', location.href.split('#')[0])
-      wx.config(this.$store.state.wxConfig)
-      this.share();
       // 1.从路由拿回openID
       this.openID = this.$route.query.openID
       // 2.对接接口，获取数据并储存
       const axios = require('axios');
-      axios({
+      await axios({
         method: 'get',
         url: '/bmw/api/user/' + this.openID,
         responseType: 'json'
@@ -88,6 +85,9 @@
           console.log(result.msg)
         }
       })
+      await this.$store.dispatch('latestWxConfig', location.href.split('#')[0])
+      wx.config(this.$store.state.wxConfig)
+      this.share();
     },
     data() {
       return {
@@ -144,11 +144,10 @@
       // 分享方法，用nnn
       share() {
         var that = this
-        let url = encodeURIComponent("http://binarytre.com/vote?openID" + this.openID)
         this.option = {
           title: '全城寻求潮流达人', // 分享标题, 请自行替换
           desc: '全新BMW 3系广州发布会', // 分享描述, 请自行替换
-          link: "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx5b5f9dbc5c61f4e9&redirect_uri="+ url +"&response_type=code&scope=snsapi_base&state=&connect_redirect=1#wechat_redirect", // 分享链接，根据自身项目决定是否需要split
+          link: encodeURIComponent("http://binarytre.com/vote?openID=" + this.openID), // 分享链接，根据自身项目决定是否需要split
           imgUrl: "https://mo.bintre.com/bmw.png" // 分享图标, 请自行替换，需要绝对路径
         }
         wx.onMenuShareTimeline({

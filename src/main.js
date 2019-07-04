@@ -21,10 +21,20 @@ Vue.config.productionTip = false
 
 
 router.beforeEach( async (to, from, next) => {
+  const axios = require('axios');
   let openID = VueCookie.get("openID");
   let code =to.query.code;
-  const axios = require('axios');
+  let voteOpenID = to.query.openID;
   let user = store.state.user
+
+  if (!openID && !code) {
+    //先跳转到微信端请求授权
+    if (to.name === 'vote') {
+      window.location.href("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx5b5f9dbc5c61f4e9&redirect_uri=" + encodeURIComponent("http://binarytre.com/vote?openID=" + voteOpenID) + "&response_type=code&scope=snsapi_userinfo&state=&connect_redirect=1#wechat_redirect")
+    } else {
+      window.location.href("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx5b5f9dbc5c61f4e9&redirect_uri=http%3A%2F%2Fbinarytre.com&response_type=code&scope=snsapi_userinfo&state=&connect_redirect=1#wechat_redirect")
+    }
+  }
 
   if (user && user.hasOwnProperty("openID")){
     if (to.name === "clothes") {
