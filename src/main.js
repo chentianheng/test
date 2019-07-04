@@ -28,6 +28,7 @@ router.beforeEach( async (to, from, next) => {
   let user = store.state.user
 
   if (!store.state.url) {
+    alert("URL：" + location.href.split('#')[0])
     store.commit("setUrl", location.href.split('#')[0])
   }
 
