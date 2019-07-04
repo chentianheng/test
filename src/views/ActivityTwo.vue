@@ -5,7 +5,7 @@
         <img style="position: absolute;height: 45px;width: auto;right: 10px;top: 10px;z-index: 10"
              src="../assets/icon/ranking.png" @click="toRanking" alt=""/>
         <!--<div :style="{height : outHeight}"></div>-->
-        <div class="imgContainer" :style="{height : innerHeight}">
+        <div class="imgContainer" :style="{height : innerHeight}" @click="toNavi">
             <div class="card1 animated fadeInLeft"></div>
             <div class="card2 animated fadeInRight"></div>
             <div class="card3 animated fadeInLeft"></div>
@@ -36,7 +36,10 @@
         methods:{
             toRanking(){
                  this.$router.push('/ranking')
-             }
+             },
+            toNavi(){
+                this.$router.push('/navigation')
+            }
         }
     }
 </script>
@@ -139,8 +142,8 @@
         position: absolute;
         height: 30px;
         width: auto;
-        right: 10px;
-        top: 30px;
+        right: 10%;
+        top: 45%;
         z-index: 1000
     }
 </style>

@@ -2,7 +2,7 @@
     <div class="bgContainer"  @click="toActivity">
         <!--点击提示-->
             <img class="tips animated bounceIn delay-3s infinite " src="../assets/icon/click.png"  alt="" >
-            <img class="design" src="../assets/design.png" alt="">
+            <!--<img class="design" src="../assets/design.png" alt="">-->
             <div  class="animated fadeIn" style="height: 90%;overflow-y: auto;display: flex;align-items: center;flex-direction: column">
                 <img class="content" src="../assets/designTitle.png" alt="">
                 <!--<img class="content" src="../assets/designSubTitle.png" alt="">-->
@@ -44,7 +44,7 @@
         name: "Invitation",
         methods:{
             toActivity(){
-                this.$router.push('/navigation')
+                this.$router.push('/activity')
             },
             toRanking(){
                 this.$router.push('/ranking')

@@ -100,7 +100,6 @@
                     <textarea v-model="clothes.front.text.textMsg" placeholder="请输入文字" ></textarea>
                     <i @click="frontTextPlus" class="plus" ></i>
                     <i @click="frontTextReduce" class="reduce" ></i>
-
             </div>
         </transition>
 
@@ -336,7 +335,8 @@
                 this.clothes.front.textShow = true;
                 this.clothes.front.middleShow = false;
                 this.position.middlePositionShow =false;
-                this.position.textPositionShow =true
+                this.position.textPositionShow =true;
+
             },
             frontLeftChangeIcon(index){
                 this.frontLeftImgUrl = this.iconBars[index].imgUrl;
@@ -389,7 +389,7 @@
                     this.position.backPositionShow = false;
                 }else if (this.position.textPositionShow ) {
                     // 111
-                    this.clothes.front.text = "";
+                    this.clothes.front.text.textMsg = "";
                     this.pathShow =true ;
                     this.changeShow =false ;
                     this.position.positionShow = true;
@@ -405,7 +405,7 @@
                 this.clothes.front.backImgUrl ="";
                 this.backImgUrl ="";
                 this.clothes.front.backImgUrl ="";
-                this.clothes.front.text = "";
+                this.clothes.front.text.textMsg = "";
                 this.$router.push('/')
             },
             saveChange(){
