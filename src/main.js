@@ -29,9 +29,8 @@ router.beforeEach( async (to, from, next) => {
   let user = store.state.user
 
   let ua = navigator.userAgent.toLowerCase();
-  let isAndroid = ua.indexOf('Android') > -1 || ua.indexOf('Adr') > -1;
+  let isAndroid = ua.indexOf('android') > -1 || ua.indexOf('adr') > -1;
   if (isAndroid) {
-    alert("isAndroid: " + location.href.split('#')[0])
     store.commit("setUrl", location.href.split('#')[0]);
   } else {
     if (!store.state.url) {
@@ -44,14 +43,14 @@ router.beforeEach( async (to, from, next) => {
     }
   }
 
-  if (!openID && !code) {
-    //先跳转到微信端请求授权
-    if (to.name === 'vote') {
-      window.location.href = ("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx5b5f9dbc5c61f4e9&redirect_uri=" + encodeURIComponent("http://binarytre.com/vote?openID=" + voteOpenID) + "&response_type=code&scope=snsapi_userinfo&state=&connect_redirect=1#wechat_redirect")
-    } else {
-      window.location.href = ("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx5b5f9dbc5c61f4e9&redirect_uri=http%3A%2F%2Fbinarytre.com&response_type=code&scope=snsapi_userinfo&state=&connect_redirect=1#wechat_redirect")
-    }
-  }
+  // if (!openID && !code) {
+  //   //先跳转到微信端请求授权
+  //   if (to.name === 'vote') {
+  //     window.location.href = ("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx5b5f9dbc5c61f4e9&redirect_uri=" + encodeURIComponent("http://binarytre.com/vote?openID=" + voteOpenID) + "&response_type=code&scope=snsapi_userinfo&state=&connect_redirect=1#wechat_redirect")
+  //   } else {
+  //     window.location.href = ("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx5b5f9dbc5c61f4e9&redirect_uri=http%3A%2F%2Fbinarytre.com&response_type=code&scope=snsapi_userinfo&state=&connect_redirect=1#wechat_redirect")
+  //   }
+  // }
 
   if (user && user.hasOwnProperty("openID")){
     if (to.name === "clothes") {
