@@ -5,6 +5,7 @@ import store from './store'
 import animated from 'animate.css'
 import axios from 'axios'
 import VueCookie from 'vue-cookie';
+import {removeParam} from "./wx";
 
 Vue.config.devtools = true
 // import VueTouch from 'vue-touch';
@@ -28,8 +29,7 @@ router.beforeEach( async (to, from, next) => {
   let user = store.state.user
 
   if (!store.state.url) {
-    alert("URL: " +  location.href.split('#')[0])
-    store.commit("setUrl", location.href.split('#')[0])
+    store.commit("setUrl", removeParam("isappinstalled", removeParam("from", location.href.split('#')[0])))
   }
 
   if (!openID && !code) {
