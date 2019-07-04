@@ -27,7 +27,7 @@ router.beforeEach( async (to, from, next) => {
   let voteOpenID = to.query.openID;
   let user = store.state.user
 
-  if (!store.state.url && store.state.url === "http://binarytre.com") {
+  if (!store.state.url) {
     store.commit("setUrl", location.href.split('#')[0])
   }
 

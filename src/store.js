@@ -56,7 +56,7 @@ export default new Vuex.Store({
     user: {},
     rankList:[],
     wxConfig: {},
-    url: 'http://binarytre.com'
+    url: ''
   },
   mutations: {
     setClothes(state, clothes) {
