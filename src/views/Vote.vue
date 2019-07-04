@@ -139,7 +139,7 @@
       },
       // 分享方法，用nnn
       async share() {
-        await this.$store.dispatch('latestWxConfig', location.href.split('#')[0])
+        await this.$store.dispatch('latestWxConfig', "http://binarytre.com")
         wx.config(this.$store.state.wxConfig)
         console.log(location.href.split('#')[0])
         var that = this
