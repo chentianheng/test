@@ -63,8 +63,6 @@
 
 <script>
   // 分享开发nnn
-  import wx from 'weixin-js-sdk'
-
   export default {
     name: "Vote",
     async created() {
@@ -87,6 +85,7 @@
       })
       await this.$store.dispatch('latestWxConfig', location.href.split('#')[0])
       wx.config(this.$store.state.wxConfig)
+      console.log(wx)
       this.share();
     },
     data() {
@@ -169,31 +168,6 @@
           imgUrl: that.option.imgUrl, // 分享图标
           success: function () {
             alert('分享给朋友成功')
-            // 用户确认分享后执行的回调函数
-          },
-          cancel: function () {
-            // 用户取消分享后执行的回调函数
-          }
-        })
-        wx.updateTimelineShareData({
-          title: '快来参与活动吧', // 分享标题
-          link: that.option.link, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-          imgUrl: that.option.imgUrl, // 分享图标
-          success() {
-            // alert('分享朋友圈成功')
-            // 用户确认分享后执行的回调函数
-          },
-          cancel() {
-            // 用户取消分享后执行的回调函数
-          }
-        })
-        wx.updateAppMessageShareData({
-          title: that.option.title, // 分享标题
-          desc: that.option.desc, // 分享描述
-          link: that.option.link,
-          imgUrl: that.option.imgUrl, // 分享图标
-          success: function () {
-            // alert('分享给朋友成功')
             // 用户确认分享后执行的回调函数
           },
           cancel: function () {

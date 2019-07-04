@@ -52,6 +52,7 @@
                 let user = result.data;
                 this.$store.commit("setUser", user)
                 VueCookie.set("openID", user.openID)
+                this.user = user
                 this.works.push(user)
               } else {
                 console.log(result.msg)
