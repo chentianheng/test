@@ -20,6 +20,7 @@
 
 <script>
   import Work from './components/Work'
+  import VueCookie from 'vue-cookie';
 
   export default {
     name: "rankingList",
@@ -32,8 +33,8 @@
         works: [],
       }
     },
-    created() {
-      this.init()
+    async created() {
+      await this.init()
       this.rank()
     },
     methods: {
@@ -41,9 +42,21 @@
         this.$router.push('/invitation')
       },
       init() {
-        this.user = this.$store.state.user
-        if (this.user) {
-          this.works.push(this.user)
+        const axios = require('axios');
+        let openID = VueCookie.get("openID")
+        if (openID) {
+          axios.get('/bmw/api/user/' + openID)
+            .then(response => {
+              let result = response.data
+              if (result.status === 1) {
+                let user = result.data;
+                this.$store.commit("setUser", user)
+                VueCookie.set("openID", user.openID)
+                this.works.push(user)
+              } else {
+                console.log(result.msg)
+              }
+            });
         }
       },
       rank() {

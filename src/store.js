@@ -55,6 +55,7 @@ export default new Vuex.Store({
      },
     user: {},
     rankList:[],
+    wxConfig: {}
   },
   mutations: {
     setClothes(state, clothes) {
@@ -65,9 +66,35 @@ export default new Vuex.Store({
     },
     setRankList(state,rankList)  {
         state.rankList = rankList
+    },
+    updateWxConfig(state, wxConfig) {
+      state.wxConfig = wxConfig
     }
   },
   actions: {
-
+    async latestWxConfig({commit}, url) {
+      console.log("test")
+      const axios = require('axios');
+      axios({
+        method: 'get',
+        url: '/bmw/api/mp/oauth2/JsTicket?url=' + url,
+        responseType: 'json'
+      }).then(response => {
+        let data = response.data;
+        if (data.status === 1) {
+          let result = data.data
+          let wxConfig = {
+            debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+            appId: result.appId, // 必填，公众号的唯一标识
+            timestamp: result.timestamp, // 必填，生成签名的时间戳
+            nonceStr: result.nonceStr, // 必填，生成签名的随机串
+            signature: result.signature,// 必填，签名，见附录1
+            jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'updateTimelineShareData', 'updateAppMessageShareData'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+          };
+          console.log(wxConfig)
+          commit('updateWxConfig', wxConfig)
+        }
+      })
+    }
   }
 })
