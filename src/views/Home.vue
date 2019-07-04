@@ -36,7 +36,8 @@
 </template>
 
 <script>
-    import {share} from "@/wx.js"
+    import {share} from "../wx";
+
     export default {
         name: "Home",
         data(){

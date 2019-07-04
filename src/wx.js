@@ -1,6 +1,6 @@
 import store from './store'
 
-export default async function share() {
+export async function share() {
   await store.dispatch('latestWxConfig', "http://binarytre.com/")
   wx.config(store.state.wxConfig)
   let option = {
