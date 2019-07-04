@@ -353,7 +353,7 @@
         height: auto;
         width: 80px;
         position: absolute;
-        bottom: 8.5rem;
+        bottom: 10rem;
         z-index: 33;
     }
 
@@ -366,7 +366,7 @@
         height: auto;
         width: 80px;
         position: absolute;
-        bottom: 8.5rem;
+        bottom: 11.5rem;
         z-index: 33;
     }
 

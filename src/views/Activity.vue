@@ -147,7 +147,7 @@
         position: absolute;
         height: 30px;
         width: auto;
-        right: 45%;
+        right: 10%;
         top: 45%;
         z-index: 1000
     }

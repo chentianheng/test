@@ -19,6 +19,7 @@ Vue.use(VueCookie);
 
 Vue.config.productionTip = false
 
+
 router.beforeEach( async (to, from, next) => {
   let openID = VueCookie.get("openID");
   let code =to.query.code;

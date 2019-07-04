@@ -1,11 +1,11 @@
 <template>
-    <div class="bgContainer animated fadeInUp" @click="toActivity">
+    <div class="bgContainer  " @click="toActivity">
         <!--点击提示-->
         <img class="tips animated bounceIn delay-3s infinite " src="../assets/icon/click.png"  alt="" >
         <img style="position: absolute;height: 45px;width: auto;right: 10px;top: 10px;z-index: 10"
              src="../assets/icon/ranking.png" @click="toRanking" alt=""/>
         <img class="design" src="../assets/design.png" alt="">
-        <div style="height: 90%;overflow-y: auto;display: flex;align-items: center;flex-direction: column">
+        <div  class="animated fadeIn" style="height: 90%;overflow-y: auto;display: flex;align-items: center;flex-direction: column">
             <img class="content" src="../assets/designTitle.png" alt="">
             <img class="content" src="../assets/designSubTitle.png" alt="">
             <p class="title">活动时间</p>

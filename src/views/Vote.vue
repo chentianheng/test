@@ -45,6 +45,7 @@
         <!--<p class="content">*了解更多活动详情，请咨询宝马当地授权经销商。</p>-->
         <img class="footerBtn" src="../assets/icon/voteBtn2.png" @click="toVote" alt="">
         <img class="footerBtn" src="../assets/icon/detailBtn-0.png" @click="toAty" alt="">
+        <img class="footerBtn" src="../assets/icon/joinBtn.png" @click="toHome" alt="">
     </div>
 
         <!--toast消息-->
@@ -55,9 +56,13 @@
 </template>
 
 <script>
+    // 分享开发nnn
+    import wx from 'weixin-js-sdk'
+
     export default {
         name: "Vote",
          created(){
+            this.share ();
             // 1.从路由拿回openID
             this.openID = this.$route.query.openID
             // 2.对接接口，获取数据并储存
@@ -100,7 +105,10 @@
               this.$router.push('/ranking')
             },
             toAty(){
-                this.$router.push('/activity')
+                this.$router.push('/invitation')
+            },
+            toHome(){
+                this.$router.push('/')
             },
             toVote(){
                 const axios = require('axios');
@@ -132,7 +140,67 @@
                 setTimeout(function(){
                     v.toastShow = false
                 }, 1500)
-            }
+            },
+            // 分享方法，用nnn
+            share () {
+                console.log('share')
+                var that = this
+                this.option = {
+                    title: 'BMW T恤创造局', // 分享标题, 请自行替换
+                    desc: '快来参与活动吧', // 分享描述, 请自行替换
+                    link: "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx5b5f9dbc5c61f4e9&redirect_uri=http%3A%2F%2Fbinarytre.com&response_type=code&scope=snsapi_userinfo&state=&connect_redirect=1#wechat_redirect", // 分享链接，根据自身项目决定是否需要split
+                    imgUrl: "https://mo.bintre.com/bmw.png" // 分享图标, 请自行替换，需要绝对路径
+                }
+                wx.onMenuShareTimeline({
+                    title: that.option.title, // 分享标题
+                    link: that.option.link, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                    imgUrl: that.option.imgUrl, // 分享图标
+                    success () {
+                        alert('分享朋友圈成功')
+                        // 用户确认分享后执行的回调函数
+                    },
+                    cancel () {
+                        // 用户取消分享后执行的回调函数
+                    }})
+                wx.onMenuShareAppMessage({
+                    title: that.option.title, // 分享标题
+                    desc: that.option.desc, // 分享描述
+                    link: that.option.link,
+                    imgUrl: that.option.imgUrl, // 分享图标
+                    success: function () {
+                        alert('分享给朋友成功')
+                        // 用户确认分享后执行的回调函数
+                    },
+                    cancel: function () {
+                        // 用户取消分享后执行的回调函数
+                    }
+                })
+                wx.updateTimelineShareData({
+                    title: '快来参与活动吧', // 分享标题
+                    link: that.option.link, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                    imgUrl: that.option.imgUrl, // 分享图标
+                    success () {
+                        // alert('分享朋友圈成功')
+                        // 用户确认分享后执行的回调函数
+                    },
+                    cancel () {
+                        // 用户取消分享后执行的回调函数
+                    }
+                })
+                wx.updateAppMessageShareData({
+                    title: that.option.title, // 分享标题
+                    desc: that.option.desc, // 分享描述
+                    link: that.option.link,
+                    imgUrl: that.option.imgUrl, // 分享图标
+                    success: function () {
+                        // alert('分享给朋友成功')
+                        // 用户确认分享后执行的回调函数
+                    },
+                    cancel: function () {
+                        // 用户取消分享后执行的回调函数
+                    }
+                })
+            },
         }
     }
 </script>
@@ -331,7 +399,7 @@
         height: auto;
         width: 80px;
         position: absolute;
-        bottom: 8.5rem;
+        bottom: 10rem;
         z-index: 33;
     }
 
@@ -344,7 +412,7 @@
         height: auto;
         width: 80px;
         position: absolute;
-        bottom: 11rem;
+        bottom: 11.5rem;
         z-index: 33;
     }
 
@@ -483,7 +551,7 @@
         position: absolute;
         height: 50px;
         width: auto;
-        right: 20%;
+        right: 10%;
         top: 80%;
         z-index: 1000
     }
