@@ -33,7 +33,6 @@
                 <div class="clothesImg animated fadeIn">
                     <div :class="`back${clothes.color}`"></div>
                     <i v-show="clothes.back.iconShow" class="position4"><img :src="backImgUrl" height="30" alt=""/></i>
-                    <p class="text" v-show="clothes.back.textShow" :style="{ fontSize: clothes.back.text.fontSize + 'px' }">{{ clothes.back.text.textMsg }}</p>
                 </div>
             </div>
         </div>
@@ -406,6 +405,7 @@
                 this.clothes.front.backImgUrl ="";
                 this.backImgUrl ="";
                 this.clothes.front.backImgUrl ="";
+                this.clothes.front.text = "";
                 this.$router.push('/')
             },
             saveChange(){
@@ -421,7 +421,7 @@
             },
             toInfo(){
                 // console.log(this.clothes)
-                if (this.frontLeftImgUrl === "" && this.frontRightImgUrl === "" && this.frontMiddleImgUrl === ""  && this.backImgUrl === "" && this.clothes.front.text === "") {
+                if (!this.frontLeftImgUrl  && !this.frontRightImgUrl && !this.frontMiddleImgUrl   && !this.backImgUrl  && !this.clothes.front.text) {
                     this.toast('请先完成您的作品')
                 }else {
                     this.$store.commit("setClothes", this.clothes)

@@ -10,6 +10,8 @@
       ></Work>
     </div>
     <img class="footerBtn animated fadeIn delay-2s" src="../../assets/icon/detailBtn-0.png" @click="toAty" alt="">
+    <!--new-->
+    <img class="footerBtn animated fadeIn delay-2s" src="../../assets/icon/joinBtn.png" @click="toHome" alt="">
     <!--我的作品-->
     <!--todo：根据缓存查到昵称，然后请求查看票数-->
     <!--<p class="name">我的票数：111111</p>-->
@@ -42,6 +44,9 @@
     methods: {
       toAty() {
         this.$router.push('/invitation')
+      },
+      toHome(){
+        this.$router.push('/')
       },
       init() {
         const axios = require('axios');
@@ -143,7 +148,12 @@
   }
 
   .footerBtn {
-    width: 10rem;
+    width: 9rem;
+  }
+
+  .footerBtn + .footerBtn{
+    margin-top: 1rem;
+    width: 9rem;
   }
 
   .name {
