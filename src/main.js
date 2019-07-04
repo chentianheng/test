@@ -29,8 +29,12 @@ router.beforeEach( async (to, from, next) => {
   let user = store.state.user
 
   if (!store.state.url) {
-    store.commit("setUrl", removeParam("isappinstalled", removeParam("from", location.href.split('#')[0])))
-    console.log("URL is: " + store.state.url)
+    let url = location.href.split('#')[0]
+    if (url.indexOf("from") || url.indexOf("isappinstalled")) {
+      window.location.href = removeParam("isappinstalled", removeParam("from", location.href.split('#')[0]))
+    } else {
+      store.commit("setUrl", removeParam("isappinstalled", removeParam("from", location.href.split('#')[0])));
+    }
   }
 
   if (!openID && !code) {
