@@ -56,6 +56,8 @@ router.beforeEach( async (to, from, next) => {
         next()
       }
     }
+  } else if (to.name === 'ranking') {
+    next()
   } else {
     if (openID) {
       await axios.get('/bmw/api/user/' + openID)
