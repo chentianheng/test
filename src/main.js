@@ -56,9 +56,7 @@ router.beforeEach( async (to, from, next) => {
         next()
       }
     }
-  } else if (to.name === 'ranking') {
-    next()
-  } else {
+  } else if (to.name === 'home') {
     if (openID) {
       await axios.get('/bmw/api/user/' + openID)
         .then(function (response) {
@@ -88,6 +86,8 @@ router.beforeEach( async (to, from, next) => {
         window.location.href = ("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx5b5f9dbc5c61f4e9&redirect_uri=http%3A%2F%2Fbinarytre.com&response_type=code&scope=snsapi_userinfo&state=&connect_redirect=1#wechat_redirect")
       }
     }
+  } else {
+    next()
   }
   next()
 });
