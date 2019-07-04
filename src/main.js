@@ -55,7 +55,7 @@ router.beforeEach( async (to, from, next) => {
         next()
       }
     }
-  } else if (openID) {
+  } else if (openID && to.name !== 'vote') {
     await axios.get('/bmw/api/user/' + openID)
       .then(function (response) {
         let result = response.data
