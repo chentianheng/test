@@ -139,14 +139,14 @@
       },
       // 分享方法，用nnn
       async share() {
-        let url = "http://binarytre.com/vote?openID=" + this.openID
-        await this.$store.dispatch('latestWxConfig', url)
+        await this.$store.dispatch('latestWxConfig', location.href.split('#')[0])
         wx.config(this.$store.state.wxConfig)
+        console.log(location.href.split('#')[0])
         var that = this
         this.option = {
           title: '测试', // 分享标题, 请自行替换
           desc: '测试2', // 分享描述, 请自行替换
-          link: url, // 分享链接，根据自身项目决定是否需要split
+          link: "http://binarytre.com/vote?openID=" + this.openID, // 分享链接，根据自身项目决定是否需要split
           imgUrl: "https://mo.bintre.com/bmw.png" // 分享图标, 请自行替换，需要绝对路径
         }
         wx.onMenuShareTimeline({
@@ -169,6 +169,7 @@
           success: function () {
             alert('分享给朋友成功')
             // 用户确认分享后执行的回调函数
+            console.log(location.href.split('#')[0])
           },
           cancel: function () {
             // 用户取消分享后执行的回调函数
