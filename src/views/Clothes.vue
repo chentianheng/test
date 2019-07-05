@@ -120,8 +120,9 @@
 
         <!--底部按钮-->
         <div class="footerBtnContainer" v-show="pathShow">
-            <button  class="blackBtn" @click="backToHome">取消定制</button>
-            <button class="blackBtn" @click="toInfo">提交作品</button>
+            <button  class="blackBtn1" @click="backToHome">取消定制</button>
+            <button class="blackBtn1" @click="toInfo">提交作品</button>
+            <button class="blackBtn1" @click="toInvitation">发布会详情</button>
         </div>
 
         <div class="footerBtnContainer" v-show="changeShow">
@@ -205,6 +206,9 @@
                         iconUrl:require("@/assets/icon/icon18.png"),
                         imgUrl:require("@/assets/icon/pic18.png"),
                     },{
+                        iconUrl:require("@/assets/icon/icon6.png"),
+                        imgUrl:require("@/assets/icon/pic6.png"),
+                    },{
                         iconUrl:require("@/assets/icon/icon19.png"),
                         imgUrl:require("@/assets/icon/pic19.png"),
                     },{
@@ -228,10 +232,6 @@
                     },{
                         iconUrl:require("@/assets/icon/icon3.png"),
                         imgUrl:require("@/assets/icon/pic3-2.png"),
-                    },
-                    {
-                        iconUrl:require("@/assets/icon/icon6.png"),
-                        imgUrl:require("@/assets/icon/pic6.png"),
                     }],
                 frontLeftImgUrl:"",
                 frontRightImgUrl:"",
@@ -440,7 +440,11 @@
                 setTimeout(function(){
                     v.toastShow = false
                 }, 1500)
+            },
+            toInvitation(){
+                this.$router.push('/invitation')
             }
+
 
         }
     }
@@ -770,6 +774,16 @@
         width: 100%;
     }
 
+    .blackBtn1 {
+        text-decoration: none;
+        font-size: 14px;
+        color: white;
+        border: none;
+        background-color:rgba(51,51,51,0.8) ;
+        width: calc((100% - 2%)/3);
+        padding: 0.5rem 0;
+    }
+
     .blackBtn {
         text-decoration: none;
         font-size: 14px;
@@ -778,7 +792,7 @@
         background-color:rgba(51,51,51,0.8) ;
         width: calc((100% - 1%)/2);
         padding: 0.5rem 0;
-    }
+}
 
     textarea {
         width: 50%;
