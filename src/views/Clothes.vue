@@ -166,11 +166,11 @@
                         iconUrl:require("@/assets/icon/icon26.png"),
                         imgUrl:require("@/assets/icon/pic26.png"),
                     },{
+                        iconUrl:require("@/assets/icon/icon4.png"),
+                        imgUrl:require("@/assets/icon/pic4.png"),
+                    },{
                         iconUrl:require("@/assets/icon/icon5.png"),
                         imgUrl:require("@/assets/icon/pic5.png"),
-                    },{
-                        iconUrl:require("@/assets/icon/icon6.png"),
-                        imgUrl:require("@/assets/icon/pic6.png"),
                     },{
                         iconUrl:require("@/assets/icon/icon9.png"),
                         imgUrl:require("@/assets/icon/pic9.png"),
@@ -226,8 +226,12 @@
                         iconUrl:require("@/assets/icon/icon3.png"),
                         imgUrl:require("@/assets/icon/pic3.png"),
                     },{
-                        iconUrl:require("@/assets/icon/icon4.png"),
-                        imgUrl:require("@/assets/icon/pic4.png"),
+                        iconUrl:require("@/assets/icon/icon3.png"),
+                        imgUrl:require("@/assets/icon/pic3-2.png"),
+                    },
+                    {
+                        iconUrl:require("@/assets/icon/icon6.png"),
+                        imgUrl:require("@/assets/icon/pic6.png"),
                     }],
                 frontLeftImgUrl:"",
                 frontRightImgUrl:"",

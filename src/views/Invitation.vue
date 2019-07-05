@@ -1,5 +1,5 @@
 <template>
-    <div class="bgContainer"  @click="toActivity">
+    <div class="bgContainer"  @click="toNavi">
         <!--点击提示-->
             <img class="tips animated bounceIn delay-3s infinite " src="../assets/icon/click.png"  alt="" >
             <!--<img class="design" src="../assets/design.png" alt="">-->
@@ -33,7 +33,7 @@
                     <p>全新BMW 3系电音派对</p>
                 </div>
             </div>
-            <footer style="color: #FFFFFF;font-size: 13px;margin-top: 2px;position: absolute;bottom: 1rem">详情请联系BMW广州特约授权经销商</footer>
+            <!--<footer style="color: #FFFFFF;font-size: 13px;margin-top: 2px;position: absolute;bottom: 1rem">详情请联系BMW广州特约授权经销商</footer>-->
     </div>
 </template>
 
@@ -43,8 +43,8 @@
     export default {
         name: "Invitation",
         methods:{
-            toActivity(){
-                this.$router.push('/activity')
+            toNavi(){
+                this.$router.push('/navigation')
             },
             toRanking(){
                 this.$router.push('/ranking')
@@ -124,7 +124,7 @@
         position: absolute;
         height: 30px;
         width: auto;
-        right: 45%;
+        right: 10%;
         top: 45%;
         z-index: 1000
     }

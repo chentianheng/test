@@ -5,7 +5,7 @@
         <img style="position: absolute;height: 45px;width: auto;right: 10px;top: 10px;z-index: 10"
              src="../assets/icon/ranking.png" @click="toRanking" alt=""/>
         <!--<div :style="{height : outHeight}"></div>-->
-        <div class="imgContainer" :style="{height : innerHeight}" @click="toNavi">
+        <div class="imgContainer" :style="{height : innerHeight}" >
             <div class="card1 animated fadeInLeft"></div>
             <div class="card2 animated fadeInRight"></div>
             <div class="card3 animated fadeInLeft"></div>
@@ -142,8 +142,10 @@
         position: absolute;
         height: 30px;
         width: auto;
-        right: 10%;
-        top: 45%;
+        right: 10px;
+        top: 30px;
         z-index: 1000
     }
+
+
 </style>

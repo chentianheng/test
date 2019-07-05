@@ -3,8 +3,8 @@
         <!--点击提示-->
         <img style="position: absolute;height: 45px;width: auto;right: 10px;top: 10px;z-index: 10"
              src="../assets/icon/ranking.png" @click="toRanking" alt=""/>
-        <div class="minContainer" >
-            <img class="tips animated bounceIn delay-3s infinite " src="../assets/icon/click.png"  @click="toRanking" alt="" >
+        <div class="minContainer" @click="toActivity">
+            <img class="tips animated bounceIn delay-3s infinite " src="../assets/icon/click.png"   alt="" >
             <img class="content1 animated fadeIn " src="../assets/navi/1.png"  alt="">
             <img class="content2 animated fadeInUp delay-1s" src="../assets/navi/2.png"  alt="">
             <img class="content3 animated fadeInUp delay-1s" src="../assets/navi/3.png"  alt="">
@@ -73,8 +73,9 @@
         position: absolute;
         height: 30px;
         width: auto;
-        right: 10px;
-        top: 30px;
+        right: 10%;
+        top: 45%;
         z-index: 1000
     }
+
 </style>
