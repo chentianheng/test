@@ -379,7 +379,7 @@
                     this.position.rightPositionShow = false;
                 }else if (this.position.middlePositionShow) {
                     this.frontMiddleImgUrl ="";
-                    this.clothes.front.backImgUrl ="";
+                    this.clothes.front.frontMiddleImgUrl ="";
                     this.pathShow =true ;
                     this.changeShow =false ;
                     this.position.positionShow = true;
@@ -484,7 +484,7 @@
         padding: 1rem 1rem 0;
         width: 15rem;
         height: 19rem;
-        background-color:rgba(45,45,45,0.4) ;
+        background-color: rgba(133, 133, 133, 0.4);
         overflow-y: hidden;
         margin-bottom: 1rem;
     }

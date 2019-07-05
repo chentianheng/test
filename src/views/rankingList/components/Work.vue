@@ -9,7 +9,7 @@
             <!--v-html="data.clothes.front.text.textMsg"-->
           <p class="text"
              v-show="data.clothes.front.textShow"
-             :style="{fontSize: data.clothes.front.text.fontSize - 6 + 'px'}"
+             style="font-size: 11px"
           >文字设计</p>
           <!--左方的icon-->
           <i v-show="data.clothes.front.leftShow" class="position2"><img
@@ -179,7 +179,7 @@
     height: auto;
     width: 2rem;
     position: absolute;
-    bottom: 6.8rem;
+    bottom: 7.5rem;
 
   }
 

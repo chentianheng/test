@@ -47,6 +47,13 @@
           </div>
         </div>
       </div>
+      <div class="rank">
+        <div class="userInfo">
+          <img class="headImg" :src=this.user.headImgUrl alt="">
+          <p class="nickName">{{ this.user.nickname }}</p>
+        </div>
+        <p class="vote">票数：{{ this.user.vote }}</p>
+      </div>
       <!--<p class="pTitle">设计上传完成</p>-->
       <!--<p class="content">*了解更多活动详情，请咨询宝马当地授权经销商。</p>-->
       <img class="footerBtn" src="../assets/icon/voteBtn2.png" @click="toVote" alt="">
@@ -322,7 +329,7 @@
     padding: 1rem 1rem 0;
     width: 15rem;
     height: 19rem;
-    background-color: rgba(45, 45, 45, 0.4);
+    background-color: rgba(133, 133, 133, 0.4);
     overflow-y: hidden;
     margin-bottom: 1rem;
   }
@@ -537,5 +544,44 @@
     right: 10%;
     top: 80%;
     z-index: 1000
+  }
+
+  .rank{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+  }
+
+  .userInfo{
+    display: flex;
+    align-items: center;
+  }
+
+  .headImg {
+    width: 40px;
+    border: solid 2px white;
+    border-radius: 60px;
+    margin-right: 10px;
+  }
+
+  .vote {
+    width: 6rem;
+    border: solid 1px white;
+    background-color: rgba(25, 59, 131, 0.1);
+    /*margin-top: 6px;*/
+    color: white;
+    font-weight: 200;
+    font-size: 12px;
+    /*padding-top: 2px;*/
+    /*padding-bottom: 2px;*/
+  }
+
+  .nickName {
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+    margin-top: 3px;
+    margin-bottom: 3px;
   }
 </style>

@@ -93,7 +93,7 @@
 
     .title {
         margin-top: 2rem;
-        width: 47%;
+        width: 55%;
         animation-delay: 200ms;
     }
 
