@@ -56,7 +56,7 @@
     }
 
     .content1 {
-        margin-top: 1rem;
+        margin-top: 2rem;
         width: 90%;
     }
 
