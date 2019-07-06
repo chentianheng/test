@@ -120,9 +120,9 @@
 
         <!--底部按钮-->
         <div class="footerBtnContainer" v-show="pathShow">
-            <button  class="blackBtn1" @click="backToHome">取消定制</button>
-            <button class="blackBtn1" @click="toInfo">提交作品</button>
-            <button class="blackBtn1" @click="toInvitation">发布会详情</button>
+            <!--<button  class="blackBtn1" @click="backToHome">取消定制</button>-->
+            <button class="blackBtn" @click="toInfo">提交作品</button>
+            <button class="blackBtn" @click="toInvitation">发布会详情</button>
         </div>
 
         <div class="footerBtnContainer" v-show="changeShow">
