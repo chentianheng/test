@@ -112,7 +112,7 @@
     height: 25rem;
     margin-top: 1rem;
     margin-bottom: 1rem;
-
+    -webkit-overflow-scrolling: touch;
     /*background-color: rgba(255,255,255,0.1);*/
   }
 

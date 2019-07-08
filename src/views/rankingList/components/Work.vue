@@ -22,7 +22,7 @@
                   :src="data.clothes.front.frontMiddleImgUrl" height="30" alt=""/></i>
         </div>
       </div>
-      <p class="name">{{ data.nickname }}</p>
+      <p class="name">{{ data.nickname | ellipsis}}</p>
       <div class="vote">票数：{{ data.vote }}</div>
       <!--<div class="vote">排名：{{ user.rank }}</div>-->
     </div>
@@ -33,6 +33,15 @@
 <script>
   export default {
     name: "work",
+    filters:{
+      ellipsis(value){
+        if (!value) return ''
+        if (value.length > 9){
+          return value.slice(0,9) + '..'
+        }
+        return value
+      }
+    },
     props: {
       data: {
         type: Object,
