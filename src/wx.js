@@ -34,7 +34,7 @@ export async function share() {
   wx.config(store.state.wxConfig)
   let option = {
     title: '全城寻求潮流达人', // 分享标题, 请自行替换
-    desc: '全新BMW 3系广州发布会', // 分享描述, 请自行替换
+    desc: '全新BMW 3系T恤创意制造局，等你来探！', // 分享描述, 请自行替换
     link: "http://binarytre.com/", // 分享链接，根据自身项目决定是否需要split
     imgUrl: "https://mo.bintre.com/bmw.png" // 分享图标, 请自行替换，需要绝对路径
   }
