@@ -118,24 +118,25 @@
         this.$router.push('/')
       },
       toVote() {
-        const axios = require('axios');
-        let that = this;
-        let userID = this.user.id;
-        let openID = VueCookie.get("openID");
-        axios({
-          method: 'post',
-          url: '/bmw/api/vote',
-          params: {
-            openID: openID,
-            userID: userID
-          }
-        }).then(function (response) {
-          let result = response.data;
-          let msg = result.msg;
-          that.toast(msg);
-        }).catch(function (error) {
-          console.log(error);
-        });
+        // const axios = require('axios');
+        // let that = this;
+        // let userID = this.user.id;
+        // let openID = VueCookie.get("openID");
+        // axios({
+        //   method: 'post',
+        //   url: '/bmw/api/vote',
+        //   params: {
+        //     openID: openID,
+        //     userID: userID
+        //   }
+        // }).then(function (response) {
+        //   let result = response.data;
+        //   let msg = result.msg;
+        //   that.toast(msg);
+        // }).catch(function (error) {
+        //   console.log(error);
+        // });
+        this.toast("感谢参与！投票已结束")
       },
       toast(str) {
         let v = this
