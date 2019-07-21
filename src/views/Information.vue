@@ -98,6 +98,7 @@
 
 <script>
     import {share} from "../wx";
+    import axios from "axios"
 
     export default {
         name: "Information",
@@ -118,18 +119,17 @@
         methods:{
             upload(){
                 // console.log(this.clothes.reason.selected)
-               if (this.clothes.reason.selected === null || this.clothes.reason.selected.length < 1){
+               if (!this.clothes.reason.selected  || this.clothes.reason.selected.length < 1){
                    this.toast('请选择理由')
-               } else if (this.clothes.name === "") {
+               } else if (!this.clothes.name ) {
                    this.toast('请填写姓名')
-               } else if (this.clothes.phone === "") {
+               } else if (!this.clothes.phone ) {
                    this.toast('请填写手机号')
                } else if (this.clothes.fourS.selected === "请选择经销商"){
                    this.toast('请选择经销商')
                } else {
                    this.$store.commit("setClothes", this.clothes)
                    this.clothes.uploadSuccessful = !this.clothes.uploadSuccessful
-                   const axios = require('axios');
                    axios({
                        method: 'post',
                        url:'/bmw/api/user/',

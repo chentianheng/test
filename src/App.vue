@@ -1,17 +1,11 @@
 <template>
   <div id="app">
-    <!--<div id="nav">-->
-      <!--<router-link to="/">Home</router-link> |-->
-      <!--<router-link to="/about">About</router-link>-->
-    <!--</div>-->
-    <img style="position: absolute;height: 45px;width: auto;left: 10px;top: 10px;z-index: 10"
-         src="./assets/icon/music.png" @click="startPlayOrPause" alt=""/>
+    <!--音乐icon-->
+    <img :class="audio.musicIcon" src="./assets/icon/music.png" @click="startPlayOrPause" alt=""/>
 
-
+    <!--动态视图-->
       <router-view :style="{height : myHeight}"/>
-
-
-    <div>
+    <!--音乐-->
       <audio ref="audio" id="music_mp3_0" class="dn" loop="loop"
              :src="music" :preload="audio.preload"
              @play="onPlay"
@@ -21,11 +15,11 @@
              @pause="onPause"
              @timeupdate="onTimeupdate"
              @loadedmetadata="onLoadedmetadata"></audio>
-    </div>
 
   </div>
 </template>
 <script>
+  import {audioPlay} from "./wx";
 
   export  default {
     data(){
@@ -33,6 +27,10 @@
         myHeight: (window.innerHeight) + 'px',
         music: 'https://zhaocha.yf-gz.cn/file/1558359586024_7e903f1a0ab60a058a2f3157b9ac84c8.mp3',
         audio: {
+          musicIcon: {
+            onPause: false,
+            onPlay: true
+          },
           currentTime: 0,
           maxTime: 0,
           playing: false,
@@ -58,8 +56,11 @@
         },
       }
     },
+    created(){
+      audioPlay()
+    },
     methods:{
-      // todo:引入微信js接口
+
       // audioAutoPlay(id){
       //   var audio = document.getElementById(id);
       //
@@ -115,6 +116,9 @@
       // 当音频暂停
       onPause(e) {
         this.audio.playing = false
+        console.log("onPause")
+        this.audio.musicIcon.onPlay = false
+        this.audio.musicIcon.onPause = true
       }
       ,
       // 当音频开始等待
@@ -126,7 +130,8 @@
       ,
       // 当音频开始播放
       onPlay(res) {
-        console.log('onPlay')
+        this.audio.musicIcon.onPlay = true
+        this.audio.musicIcon.onPause = false
         this.audio.playing = true
         this.audio.loading = false
         if (!this.controlList.onlyOnePlaying) {
@@ -189,4 +194,30 @@
     margin: 0;
 
   }
+
+  /*音乐样式*/
+  .onPause {
+    position: absolute;
+    height: 45px;
+    width: auto;
+    left: 10px;
+    top: 10px;
+    z-index: 10
+  }
+
+  .onPlay {
+    position: absolute;
+    height: 45px;
+    width: auto;
+    left: 10px;
+    top: 10px;
+    z-index: 10;
+    animation: rotating 2s linear infinite;
+  }
+
+  @keyframes rotating {
+    to {transform: rotate(0)}
+    from {transform: rotate(360deg)}
+  }
 </style>
+

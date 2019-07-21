@@ -94,14 +94,15 @@
         </div>
 
         <!--文字输入栏-->
-        <transition name="fade">
-            <div class="positionContainerText" v-show="position.textPositionShow">
+        <!--<transition name="fade">-->
+        <!--</transition>-->
+            <div class="positionContainerText animated bounceInRight" v-show="position.textPositionShow">
                 <!--1111-->
                     <textarea v-model="clothes.front.text.textMsg" placeholder="请输入文字" ></textarea>
                     <i @click="frontTextPlus" class="plus" ></i>
                     <i @click="frontTextReduce" class="reduce" ></i>
             </div>
-        </transition>
+
 
         <!--背icon操控-->
         <div class="iconBar animated bounceInRight" v-show="position.backPositionShow">

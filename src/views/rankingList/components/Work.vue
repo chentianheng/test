@@ -57,6 +57,7 @@
     },
     created() {
       this.data.clothes = JSON.parse(decodeURIComponent(encodeURIComponent(this.data.clothesJson)))
+      console.log(this.data)
     },
     data() {
       return {}
