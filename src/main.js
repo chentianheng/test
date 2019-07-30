@@ -45,7 +45,7 @@ router.beforeEach( async (to, from, next) => {
         base(code);
         next()
       } else {
-        window.location.href = ("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx5b5f9dbc5c61f4e9&redirect_uri=" + encodeURIComponent("http://binarytre.com/vote?openID=" + voteOpenID) + "&response_type=code&scope=snsapi_userinfo&state=&connect_redirect=1#wechat_redirect")
+        window.location.href = ("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx5b5f9dbc5c61f4e9&redirect_uri=" + encodeURIComponent("http://binarytre.com/bmw/vote?openID=" + voteOpenID) + "&response_type=code&scope=snsapi_userinfo&state=&connect_redirect=1#wechat_redirect")
       }
     }
   } else if (to.name === 'clothes') {
@@ -71,7 +71,7 @@ router.beforeEach( async (to, from, next) => {
                 dynamic(code);
                 next();
               } else {
-                window.location.href = ("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx5b5f9dbc5c61f4e9&redirect_uri=http%3A%2F%2Fbinarytre.com&response_type=code&scope=snsapi_userinfo&state=&connect_redirect=1#wechat_redirect")
+                window.location.href = ("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx5b5f9dbc5c61f4e9&redirect_uri=http%3A%2F%2Fbinarytre.com%2fbmw%2f&response_type=code&scope=snsapi_userinfo&state=&connect_redirect=1#wechat_redirect")
               }
             }
           } else {
@@ -83,7 +83,7 @@ router.beforeEach( async (to, from, next) => {
         dynamic(code);
         next();
       } else {
-        window.location.href = ("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx5b5f9dbc5c61f4e9&redirect_uri=http%3A%2F%2Fbinarytre.com&response_type=code&scope=snsapi_userinfo&state=&connect_redirect=1#wechat_redirect")
+        window.location.href = ("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx5b5f9dbc5c61f4e9&redirect_uri=http%3A%2F%2Fbinarytre.com%2fbmw%2f&response_type=code&scope=snsapi_userinfo&state=&connect_redirect=1#wechat_redirect")
       }
     }
   } else {
