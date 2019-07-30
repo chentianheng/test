@@ -1,7 +1,5 @@
 module.exports = {
-  baseUrl: process.env.NODE_ENV === 'production'
-    ? '/bmw'
-    : '/'
+  publicPath: process.env.NODE_ENV === 'production' ? '/bmw' : '/'
   // devServer: {
   //   proxy: 'http://binarytre.com'
   // }
